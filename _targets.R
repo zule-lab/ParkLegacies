@@ -17,10 +17,11 @@ tar_option_set(format = 'qs')
 
 
 
-# Homework ----------------------------------------------------------------
-source(file.path('scripts', 'park-download.R'))
-source(file.path('scripts', 'park-sampling.R'))
+
+# Scripts -----------------------------------------------------------------
+source(file.path('scripts', 'park-prep.R'))
+
 
 # Targets: all ------------------------------------------------------------
-# Automatically grab all the "targets_*" lists above
-lapply(grep('targets', ls(), value = TRUE), get)
+# Automatically grab all the "park" lists above
+lapply(grep('park', ls(), value = TRUE), get)
