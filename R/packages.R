@@ -25,3 +25,6 @@ library(ggdist)
 
 library(knitr)
 library(rmarkdown)
+
+library(downloader)
+library(bit64)
