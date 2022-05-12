@@ -1,0 +1,11 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+.Random.seed|object|9fd73a33a13dfc9d|||||||||||||||
+bb|stem|0096fc6f8d17243f|7a138206c983a1d0|d5952a468c1d9178|-55375157||t19124.8089744864s|2005da2f14a67e22|98|qs|local|vector|||0||
+city_parks|stem|65826d5d8878c7bc|f5917ee2abf68574|d0b762e6307394c3|-1235815405||t19124.8476412587s|8812ff8e88c496ee|1690784|qs|local|vector|||2.96||
+city_parks_trans|stem|e5bddeb15c3e5e69|fce9fba9a500f48c|c817d18e0223d563|-2107772170||t19124.847643627s|9d5455c0349e8516|1621119|qs|local|vector|||0.16||
+download_parks|function|2a681eeec5c1a386|||||||||||||||
+download_shp|function|c2309d8e3408ff6b|||||||||||||||
+mtl_outline|stem|67028cf79ec5e53f|e0aeaa509539b52e|0c97659f8d09abef|697573775||t19124.8090663454s|81cd42518b1aa47f|1310810|qs|local|vector|||7.9|attribute variables are assumed to be spatially constant throughout all geometries|
+outline_mtl|function|edd0068874c96bd0|||||||||||||||
+park_prep|object|086cb06d1bb5d571|||||||||||||||
+parks_download|stem|9c8891bbcca53581|b86a4de592491927|34aa11082a1b10bd|-383235620||t19124.8108967569s|3924f43e2ad85fd0|3668727|qs|local|vector|||158|repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
