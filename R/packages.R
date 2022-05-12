@@ -13,6 +13,7 @@ conflict_prefer('history', 'renv')
 library(sf)
 library(stars)
 library(terra)
+library(osmdata)
 
 library(data.table)
 library(dplyr)
