@@ -1,11 +1,16 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|9fd73a33a13dfc9d|||||||||||||||
+.Random.seed|object|9b67e08babd0c5b7|||||||||||||||
 bb|stem|0096fc6f8d17243f|7a138206c983a1d0|d5952a468c1d9178|-55375157||t19124.8089744864s|2005da2f14a67e22|98|qs|local|vector|||0||
 city_parks|stem|65826d5d8878c7bc|f5917ee2abf68574|d0b762e6307394c3|-1235815405||t19124.8476412587s|8812ff8e88c496ee|1690784|qs|local|vector|||2.96||
 city_parks_trans|stem|e5bddeb15c3e5e69|fce9fba9a500f48c|c817d18e0223d563|-2107772170||t19124.847643627s|9d5455c0349e8516|1621119|qs|local|vector|||0.16||
 download_parks|function|2a681eeec5c1a386|||||||||||||||
 download_shp|function|c2309d8e3408ff6b|||||||||||||||
+full_study_parks|stem|0a48ecd6a2aeac6d|3a5c9758b6bea434|9247424ada588702|-1663910474||t19125.0443343274s|8bdfc63beca9f13b|85427|qs|local|vector|||0.64|repeating attributes for all subgeometries for which they may not be constant|
+join_study_parks|function|a132dc8a0fb8f19d|||||||||||||||
 mtl_outline|stem|67028cf79ec5e53f|e0aeaa509539b52e|0c97659f8d09abef|697573775||t19124.8090663454s|81cd42518b1aa47f|1310810|qs|local|vector|||7.9|attribute variables are assumed to be spatially constant throughout all geometries|
 outline_mtl|function|edd0068874c96bd0|||||||||||||||
-park_prep|object|086cb06d1bb5d571|||||||||||||||
+park_prep|object|597eda65645d4173|||||||||||||||
 parks_download|stem|9c8891bbcca53581|b86a4de592491927|34aa11082a1b10bd|-383235620||t19124.8108967569s|3924f43e2ad85fd0|3668727|qs|local|vector|||158|repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
+raw_study_parks|stem|9c86ce13bbbf0e95|3ff5c263736bc701|248a4d7da47a0f45|-192563372||t19125.0223174954s|71a597cb03b15a5d|778|qs|local|vector|||0||
+save_parks|stem|0a48ecd6a2aeac6d|256e4e25f42f4439|315a6aca40cdbdb1|1481877802||t19125.0459948889s|8bdfc63beca9f13b|85427|qs|local|vector|||0.04||
+study_parks|stem||5393c351553aee55|c75e456285a67c34|-215122252||t19124.8571988915s||0|qs|local|vector|||0.14||argument studyparks is missing, with no default
