@@ -28,3 +28,4 @@ library(rmarkdown)
 
 library(downloader)
 library(bit64)
+conflict_prefer(":", "base")
