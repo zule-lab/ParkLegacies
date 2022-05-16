@@ -9,10 +9,8 @@ parks_ind <- function(ind_parks_raw) {
   u <- ind_parks_raw %>% 
     dplyr::filter(Localisati != "Localisation indéterminée - élément ponctuel approximatf") %>%
     dplyr::group_by(Name) %>%
-    dplyr::summarise(geometry = st_union(geometry),
-                     PastLandUse = dplyr::first(PastLandUse),
-                     Type = dplyr::first(Type),
-                     Id_carrier = list(Id_carrier))
+    dplyr::summarise(PastLandUse = "Industrial",
+                     geom = st_union(geometry))
   
   
 }
