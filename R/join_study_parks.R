@@ -15,18 +15,7 @@ join_study_parks <- function(studyparks, mtlparks, osmparks){
   mp <- rename(mp, ParkOfficial = Nom,
              OBJECTID = OBJECTID.x)
 
-  bdup <- studyparks %>% 
-    dplyr::filter(ParkOfficial == "Parc Fritz" | 
-           ParkOfficial == "Parc Beaconsfield") %>% 
-    rename(name = ParkOfficial) %>%
-    left_join(., osmparks, by = 'name')
-  bdup <- st_as_sf(bdup)
-  bdup <- st_cast(bdup, "POLYGON")
-  bdup <- bdup[c(41,83), c(1:5, 101)]
-  bdup <- st_cast(bdup, "MULTIPOLYGON")
-  bdup <- rename(bdup, ParkOfficial = name)
-
-  studyparks <- st_as_sf(rbind(gpo, mp, bdup))
+  studyparks <- st_as_sf(rbind(gpo, mp))
   
   studyparksu <- studyparks %>% 
     group_by(Name) %>%
