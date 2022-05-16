@@ -18,6 +18,7 @@ tar_option_set(format = 'qs')
 
 # Scripts -----------------------------------------------------------------
 source(file.path('scripts', 'park-prep.R'))
+source(file.path('scripts', 'park-historical-boundaries.R'))
 
 
 # Targets: all ------------------------------------------------------------
