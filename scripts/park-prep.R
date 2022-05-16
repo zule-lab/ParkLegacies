@@ -9,6 +9,17 @@ park_prep <- c(
       ymax = 45.7224)
     ),
   
+  # get file path for study park csv 
+  tar_target(
+    study_parks_file,
+    'input/studyparks.csv',
+    format = "file"
+  ),
+  
+  # read in study park csv 
+  tar_target(raw_study_parks,
+             fread(study_parks_file)),
+  
   # get outline of island of Montreal
   tar_target(
     mtl_outline, 
@@ -33,12 +44,6 @@ park_prep <- c(
     city_parks_trans, 
     st_transform(city_parks, 4326)
   ), 
-  
-  # read study park daa
-  tar_target(
-    raw_study_parks,
-    fread('input/studyparks.csv')
-  ),
   
   tar_target(
     full_study_parks,
