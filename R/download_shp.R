@@ -4,8 +4,8 @@ download_shp <- function(url, dest){
   
   download.file(url, dest, mode = "wb")
   
-  city_parks <- st_read(file.path("/vsizip", dest))
+  shp <- st_read(file.path("/vsizip", dest))
   
-  return(city_parks)
+  return(shp)
   
 }
