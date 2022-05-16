@@ -46,13 +46,13 @@ park_prep <- c(
   ), 
   
   tar_target(
-    full_study_parks,
+    offic_study_parks,
     join_study_parks(raw_study_parks, city_parks_trans, parks_download)
   ),
   
   tar_target(
     save_parks,
-    write_sf(full_study_parks, "output/parks_spatial.gpkg")
+    write_sf(offic_study_parks, "output/offic_parks_spatial.gpkg")
   )
   
 )

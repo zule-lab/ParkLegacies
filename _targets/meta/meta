@@ -1,26 +1,28 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|a5b5f62956fd3216|||||||||||||||
+.Random.seed|object|7f2ae01d6d46616e|||||||||||||||
 ag_bound|stem|0f13e789d5cc56f2|545244b2ccbd30f0|e03bef4f03dcc603|270069734||t19128.7072262518s|b5df1d877a76a8fa|1270|qs|local|vector|||0.02||
 ag_bound_file|stem|f646a2070d8fe021|549e43f60248cd31|ef46db3751d8e999|498860345|input/mon_historical_ag_boundaries.gpkg|t19128.7068870117s|22c04e6244b71b04|98304|file|local|vector|||0||
-agr_parks|stem||a30fe761a4b57dd0|d9748b7d01f4cf02|1987057509||t19128.7070376829s||0|qs|local|vector|||0||could not find function parks_agr
+agr_parks|stem||0fe65089172f6a4a|506a66328758e65a|1987057509||t19128.7070376829s||0|qs|local|vector|||0.11||unused argument by  Name
 bb|stem|0096fc6f8d17243f|7a138206c983a1d0|d5952a468c1d9178|-55375157||t19124.8089744864s|2005da2f14a67e22|98|qs|local|vector|||0||
 city_parks|stem|65826d5d8878c7bc|f5917ee2abf68574|4648abbcd52f7152|-1235815405||t19128.6381882489s|8812ff8e88c496ee|1690784|qs|local|vector|||2.83||
 city_parks_trans|stem|e5bddeb15c3e5e69|fce9fba9a500f48c|c817d18e0223d563|-2107772170||t19124.847643627s|9d5455c0349e8516|1621119|qs|local|vector|||0.16||
 download_parks|function|2a681eeec5c1a386|||||||||||||||
 download_shp|function|b10d876b1501a079|||||||||||||||
-full_study_parks|stem|e9cc899bfda2f5da|3a5c9758b6bea434|11f4596db89026d3|-1663910474||t19128.6264806899s|66ffdefac8dafaab|89107|qs|local|vector|||0.66|repeating attributes for all subgeometries for which they may not be constant|
+full_study_parks|stem|a42d0ac4a512b23c|3a5c9758b6bea434|b7c7187333b0eb86|-1663910474||t19128.7317438382s|1a5ab8ca1e83a1f5|88704|qs|local|vector|||0.42||
 ind_bound|stem|8745766441e255eb|81a2f9b9ab6ef554|4648abbcd52f7152|1662704907||t19128.6382283613s|272db4869f17baf1|179737|qs|local|vector|||3.44||
 ind_parks|stem|fb2dd73f23e093cd|6586bf1a6193bb74|a073f4da8c46a710|-2037504859||t19128.6698249096s|ce3a1e460fd08677|39587|qs|local|vector|||0.21||
-ind_parks_raw|stem|1df62961a766f0f5|b55b5f0c4c771038|f203d319d01cf5e7|1571713326||t19128.6510419736s|944783829303b8c1|40039|qs|local|vector|||2.14|attribute variables are assumed to be spatially constant throughout all geometries|
+ind_parks_raw|stem|1df62961a766f0f5|dc21727e870f2491|2390b9c7dd1ddea5|1571713326||t19128.7360976558s|944783829303b8c1|40039|qs|local|vector|||2.11|attribute variables are assumed to be spatially constant throughout all geometries|
 ind_trans|stem|9cc9bec37245c90b|68e638f6028784c9|7967b10d1dcc69d6|509354363||t19128.6388099395s|13a865d80adf77e3|172840|qs|local|vector|||0.06||
-join_study_parks|function|6950fd143dd64ef4|||||||||||||||
+join_study_parks|function|c88e3ea662967ff0|||||||||||||||
 mtl_outline|stem|67028cf79ec5e53f|e0aeaa509539b52e|0c97659f8d09abef|697573775||t19124.8090663454s|81cd42518b1aa47f|1310810|qs|local|vector|||7.9|attribute variables are assumed to be spatially constant throughout all geometries|
+offic_study_parks|stem|a42d0ac4a512b23c|3a5c9758b6bea434|b7c7187333b0eb86|548077235||t19128.7360727512s|1a5ab8ca1e83a1f5|88704|qs|local|vector|||0.41||
 outline_mtl|function|edd0068874c96bd0|||||||||||||||
-park_historical_boundaries|object|db90851b4950053f|||||||||||||||
-park_prep|object|940a989d32913a36|||||||||||||||
+park_historical_boundaries|object|97309558b56239a4|||||||||||||||
+park_prep|object|39efffdfd26fb660|||||||||||||||
+parks_agr|function|70825e987375ddbd|||||||||||||||
 parks_download|stem|9c8891bbcca53581|b86a4de592491927|34aa11082a1b10bd|-383235620||t19124.8108967569s|3924f43e2ad85fd0|3668727|qs|local|vector|||158|repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
 parks_ind|function|e8ab6f9ab89bec33|||||||||||||||
 raw_study_parks|stem|07ec9234cf301a74|743518ad42469220|c10789cf45d18c32|-192563372||t19128.6199175835s|b50e504d2292dad8|784|qs|local|vector|||0||
-save_parks|stem|e9cc899bfda2f5da|256e4e25f42f4439|389bcea5f41563de|1481877802||t19128.6264811401s|66ffdefac8dafaab|89107|qs|local|vector|||0.02||
+save_parks|stem|a42d0ac4a512b23c|91e33454f9bd283c|970fa6d7282e743e|1481877802||t19128.7360731783s|1a5ab8ca1e83a1f5|88704|qs|local|vector|||0.03||
 study_parks|stem||5393c351553aee55|c75e456285a67c34|-215122252||t19124.8571988915s||0|qs|local|vector|||0.14||argument studyparks is missing, with no default
 study_parks_file|stem|08190a0f2662b560|228fda69600e6573|ef46db3751d8e999|-2019551501|input/studyparks.csv|t19128.619746869s|a8fa5b2eb64d2369|1495|file|local|vector|||0||
