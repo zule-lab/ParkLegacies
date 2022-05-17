@@ -54,7 +54,7 @@ park_sampling <- c(
   
   tar_target(
     save_sp_pts, 
-    fwrite(sp_pts, "output/park_sampling_points.csv")
+    st_write(sp_pts, "output/park_sampling_points.kml")
   )
   
 )
