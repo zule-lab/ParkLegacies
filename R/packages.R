@@ -19,6 +19,7 @@ library(osmdata)
 
 library(data.table)
 library(dplyr)
+library(tidyr)
 
 library(ggplot2)
 library(ggspatial)
