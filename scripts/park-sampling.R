@@ -30,14 +30,26 @@ park_sampling <- c(
       rename(percan = `660_IndiceCanopee_2019.tif`)
   ),
   
+  tar_target(
+    wat_gr,
+    aggregate(cc, sample_grid, FUN = function(x) sum(x == 5)/length(x)) %>%
+      st_as_sf() %>%
+      rename(perwat = `660_IndiceCanopee_2019.tif`)
+  ),
+  
+  tar_target(
+    wat_cc_j,
+    st_join(cc_gr, wat_gr, join = st_equals_exact, par = 1e-9)
+  ),
+  
   # create categorical variable for canopy cover
   tar_target(
     cc_cat, 
-    cc_gr %>% 
+    wat_cc_j %>% 
       mutate(catcan = case_when(
-        percan >= 0.10 & percan <= 0.30 ~ 'low',
-        percan >= 0.31 & percan <= 0.80  ~ 'med',
-        percan >= 0.81 & percan <= 1.00  ~ 'high'))
+        percan >= 0.10 & percan <= 0.30 & perwat == 0 ~ 'low',
+        percan >= 0.31 & percan <= 0.80 & perwat == 0 ~ 'med',
+        percan >= 0.81 & percan <= 1.00 & perwat == 0 ~ 'high'))
   ),
   
   # intersect aggregated canopy measurements with associated parks 
@@ -52,9 +64,21 @@ park_sampling <- c(
     pts_sp(cc_parks)
   ),
   
+  # create 20 m x 20 m buffers surrounding the points for department of Grands Parcs
+  
+  tar_target(
+    sp_pts_buff,
+    st_buffer(sp_pts, dist = 20)
+  ),
+  
   tar_target(
     save_sp_pts, 
     st_write(sp_pts, "output/park_sampling_points.kml")
+  ),
+  
+  tar_target(
+    save_buff, 
+    st_write(sp_pts_buff, "output/park_sampling_plots.kml")
   )
   
 )
