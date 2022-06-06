@@ -20,6 +20,7 @@ tar_option_set(format = 'qs')
 source(file.path('scripts', 'park-prep.R'))
 source(file.path('scripts', 'park-historical-boundaries.R'))
 source(file.path('scripts', 'park-sampling.R'))
+source(file.path('scripts', 'soil-sampling.R'))
 
 # Targets: all ------------------------------------------------------------
 # Automatically grab all the "park" lists above
