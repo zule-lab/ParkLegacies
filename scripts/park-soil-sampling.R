@@ -11,27 +11,39 @@ park_soil_sampling <- c(
   
   # randomly sample one point within each of the four polygons / buffer
   tar_target(
-    soil_pts_geom,
+    soil_core_pts,
     st_sample(soil_grid, size = c(1,1), type = "random", by_polygon = T) %>% st_as_sf()
   ),
   
-  # get park name and historical land use for each point
+  # randomly sample three points within each buffer for earthworm quadrats
   tar_target(
-    soil_pts_int, 
-    st_intersection(st_transform(soil_pts_geom, st_crs(sample_grid)), sample_grid)
+    worm_pts_geom,
+    st_sample(sp_pts_buff, size = c(3,3), type = "random", by_polygon = T) %>% st_as_sf()
   ),
   
-  # create unique IDs
   tar_target(
-    soil_pts,
-    soil_pts_int %>% 
-      mutate(ID = paste0(gsub('\\b(\\pL)\\pL{2,}|.','\\U\\1', Name, perl = TRUE), substr(PastLandUse, 1, 3), row_number()))
+    worm_pts_int,
+    st_intersection(worm_pts_geom, sp_pts_buff)
+  ),
+  
+  # create unique ids for earthworm quadrats
+  tar_target(
+    worm_pts,
+    worm_pts_int %>%
+      group_by(PlotID) %>%
+      mutate(QuadratID = paste0(PlotID, "-", 0, row_number()))
+    
   ),
   
   # save
   tar_target(
-    save_soil_pts,
-    st_write(st_transform(soil_pts, 4326), "output/park_soil_sampling_points.kml")
+    save_soil_core_pts,
+    st_write(st_transform(soil_core_pts, 4326), "output/soil_core_sampling_points.kml", append = F)
+  ),
+  
+  tar_target(
+    save_earthworm_pts,
+    st_write(worm_pts, "output/earthworm_sampling_points.kml", append = F)
   )
   
 )

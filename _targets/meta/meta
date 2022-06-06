@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|5d0898c6f9b5dae9|||||||||||||||
+.Random.seed|object|803c35a1f2c9d4ae|||||||||||||||
 ag_bound|stem|bb841504be9c3715|a0da5e1ffdb1ac88|59251cba1e47e494|270069734||t19128.8720524258s|3ec9dcbe2ceb81bd|1298|qs|local|vector|||0.02||
 ag_bound_file|stem|d24d92d5a385c125|549e43f60248cd31|ef46db3751d8e999|498860345|input/mon_historical_ag_boundaries.gpkg|t19128.8698403878s|22c04e6244b71b04|98304|file|local|vector|||0||
 agr_parks|stem|cd794ad02babaecf|897cf3b2bf266ca9|7ddb2316a30d60e3|1987057509||t19128.7655497709s|f735b56ce2bcc8ab|1299|qs|local|vector|||0.03||
@@ -35,33 +35,39 @@ mix_parks|stem|ab5eca07822f65fd|c157cf59d2b8b392|e3d59f75045efb33|235201765||t19
 mtl_outline|stem|67028cf79ec5e53f|e0aeaa509539b52e|0c97659f8d09abef|697573775||t19124.8090663454s|81cd42518b1aa47f|1310810|qs|local|vector|||7.9|attribute variables are assumed to be spatially constant throughout all geometries|
 offic_study_parks|stem|2074abc3a460d342|3a5c9758b6bea434|e2a5acbc2653e2bd|548077235||t19128.7655235804s|dc2a7595ce44fe03|92109|qs|local|vector|||0.42||
 outline_mtl|function|edd0068874c96bd0|||||||||||||||
-park_historical_boundaries|object|39712a6b70d9f681|||||||||||||||
-park_prep|object|aadc581fcac5dfb2|||||||||||||||
-park_sampling|object|25b17e6cec57b547|||||||||||||||
-park_soil_sampling|object|587a1c93e6bcf997|||||||||||||||
+park_historical_boundaries|object|7c5b58e1814f9dd7|||||||||||||||
+park_prep|object|6567bd7db29a69b2|||||||||||||||
+park_sampling|object|c18b9767ded0285b|||||||||||||||
+park_soil_sampling|object|916712bb6b098457|||||||||||||||
 parks_agr|function|70825e987375ddbd|||||||||||||||
 parks_download|stem|9c8891bbcca53581|b86a4de592491927|34aa11082a1b10bd|-383235620||t19124.8108967569s|3924f43e2ad85fd0|3668727|qs|local|vector|||158|repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
 parks_ind|function|9bc4c571d984d9f3|||||||||||||||
 parks_mix|function|473f4684227dab49|||||||||||||||
 parks_trans|stem|cdd9a9a725daa090|0f3a1b4b2465aa54|76db4fb38a95c149|-1606554428||t19129.6000577227s|8f7be2f0a1b9fd7d|90952|qs|local|vector|||0.05||
 per_canopy|stem|6dd71d12008128c1|f4d5a1842c779662|4c458a2cc04c1e31|-981651472||t19129.691270665s|de1c6d017cb4e8a8|38|qs|local|vector|||0||
-pts_sp|function|8e4fd6923023c5ea|||||||||||||||
+pts_sp|function|ccb026feb937d420|||||||||||||||
 raw_study_parks|stem|88d9b83f06271e98|743518ad42469220|0511e2449163e619|-192563372||t19128.7655170461s|b50e504d2292dad8|784|qs|local|vector|||0||
 sample_grid|stem|46908ea3b60461c4|90ee798164e5d853|7d6786f6af631351|254998840||t19129.6184082301s|d5491b5a45c43266|572086|qs|local|vector|||158.45|attribute variables are assumed to be spatially constant throughout all geometries|
 save_all|stem|585c75750dfa4707|8a6ef4024bc9aa8e|eae6e994dd4a2d80|1816221152||t19128.9058287573s|73a73280bc28f420|86443|qs|local|vector|||0.04||
-save_buff|stem|0e1cf419be16f02c|cd0630efa1da0a83|4b613b7c102e3d93|1729510252||t19142.8864686518s|2c05b458e207a03f|3069659|qs|local|vector|||1.58||
+save_buff|stem|4517ea2dab7407a6|303b8a5011c0020b|a8ae1692667ef61b|1729510252||t19149.9149349524s|cca092bc0d5c308b|3074647|qs|local|vector|||1.86||
+save_earthworm_pts|stem|e484a823a7a265ad|3af86e7c4c5f1e90|1cd88e64211517ea|-2129114804||t19149.9266269591s|e2e7a8de3ae463b4|35854|qs|local|vector|||0.1||
 save_parks|stem|2074abc3a460d342|91e33454f9bd283c|fa14644916e21835|1481877802||t19128.76552388s|dc2a7595ce44fe03|92109|qs|local|vector|||0.02||
-save_soil_pts|stem|402bf3cac00a24ce|096e2cd7394bc3cf|df0b01d9ffd72fa4|-1928518217||t19149.6106219338s|41d4981d64512b11|25092|qs|local|vector|||0.12||
-save_sp_pts|stem|d1fc4133c1d1aaae|3aa6c59d086c6274|c590c04dc774575c|-678035486||t19142.88428261s|f9665ab8c02e15d2|11173|qs|local|vector|||0.06||
-soil_grid|stem|ff9ed6e1a55ed652|c5a2e9520cf0c805|b0eaa148e661cf1f|-1164415251||t19149.5797756547s|8121fa60685cb1af|51195|qs|local|vector|||0.8||
+save_soil_core_pts|stem|1f6e846d7d450055|8ce025e69881ead4|4a5c4f40a9a00e28|-2060752161||t19149.926625297s|362173b35c987bcb|21283|qs|local|vector|||0.05||
+save_soil_pts|stem|402bf3cac00a24ce|096e2cd7394bc3cf|3920d7c337156b93|-1928518217||t19149.6106219338s||25092|qs|local|vector|||0.08||Dataset already exists.
+save_sp_pts|stem|db90f8c65a27af02|c69a0931206c2cff|5e49d8e3a85ef2f6|-678035486||t19149.9149036671s|e0beebd28be0a8af|12372|qs|local|vector|||0.06||
+soil_core_pts|stem|7a8194d3768f22e6|d78e798486d7998d|d1fc400a51e4e3b7|-4739272||t19149.9213323885s|18e1135266aa3bcd|21639|qs|local|vector|||44.09||
+soil_grid|stem|a849294a17e30ad6|c5a2e9520cf0c805|1153243eb15883ab|-1164415251||t19149.9149132374s|22a63ff8776b84cc|51133|qs|local|vector|||0.81||
 soil_grid_sample|stem|b0e40216bca53bb3|59d7b1199dfeb34f|b3baf4edb2cda771|-942860496||t19149.5374331599s|9c461e9b7fdc571d|3618524|qs|local|vector|||3.2|attribute variables are assumed to be spatially constant throughout all geometries|
-soil_pts|stem|2e8b8081cb71dde3|30c9bab27164bb39|fc2c9fc7d3d285f4|-1431428954||t19149.6101422045s|cb7e626c83e19c8a|26152|qs|local|vector|||0.02||
-soil_pts_geom|stem|63d9daeb13ee1bc7|d78e798486d7998d|c60aa55b7edc6e62|1386283823||t19149.5802829174s|65dc36bf37a81741|21660|qs|local|vector|||43.82||
-soil_pts_int|stem|7c6e9380f90bc8c5|50cc26c8e4b29e55|46d320dca0802258|26627209||t19149.5809670424s|fd0314edd62cbf02|21572|qs|local|vector|||0.25|attribute variables are assumed to be spatially constant throughout all geometries|
+soil_pts|stem|b6f89e80841970e4|30c9bab27164bb39|e284bb035a61bdd5|-1431428954||t19149.9130545672s|a38a0e6c4d6181f4|26164|qs|local|vector|||0||
+soil_pts_geom|stem|425252f9c55aff93|d78e798486d7998d|d1fc400a51e4e3b7|1386283823||t19149.9130509692s|6d466690f63fa7b2|21724|qs|local|vector|||44.67||
+soil_pts_int|stem|1fd5df15ae619d47|50cc26c8e4b29e55|dfe5bd0b1a83d418|26627209||t19149.9130544112s|07ea1e480725d376|21601|qs|local|vector|||0.26|attribute variables are assumed to be spatially constant throughout all geometries|
 soil_sampling|object|d76e939d38dd2dd9|||||||||||||||
-sp_pts|stem|d1fc4133c1d1aaae|c280acb56e11626c|ec03fa515e27bbd0|1985273767||t19142.8839144304s|f9665ab8c02e15d2|11173|qs|local|vector|||1.08|st_centroid assumes attributes are constant over geometries of x|
-sp_pts_buff|stem|0e1cf419be16f02c|f73498b2d27b7e31|b0eac49ae56a8da9|1826599214||t19142.8855070089s|2c05b458e207a03f|3069659|qs|local|vector|||5.64||
+sp_pts|stem|db90f8c65a27af02|c280acb56e11626c|714772a645b1dcf2|1985273767||t19149.9148380089s|e0beebd28be0a8af|12372|qs|local|vector|||1.05|st_centroid assumes attributes are constant over geometries of x|
+sp_pts_buff|stem|4517ea2dab7407a6|f73498b2d27b7e31|7eaa5b2a51f8e81a|1826599214||t19149.9149025592s|cca092bc0d5c308b|3074647|qs|local|vector|||5.57||
 study_parks|stem||5393c351553aee55|c75e456285a67c34|-215122252||t19124.8571988915s||0|qs|local|vector|||0.14||argument studyparks is missing, with no default
 study_parks_file|stem|d43c0dad527f6f8f|228fda69600e6573|ef46db3751d8e999|-2019551501|input/studyparks.csv|t19128.7653896534s|a8fa5b2eb64d2369|1495|file|local|vector|||0||
 wat_cc_j|stem|c6b497d30f6d53b8|9bd35b5dc718e686|800e6b754cf7d3e3|1661905820||t19142.8824029276s|976f5e0bd0c2f667|704605|qs|local|vector|||130.73||
 wat_gr|stem|d41861f1c7b7e4ae|9221063604e5add9|f4048d3068813a65|1928342972||t19142.8728699689s|f03e72645498bc13|579859|qs|local|vector|||4844.22||
+worm_pts|stem|e484a823a7a265ad|64e983e6ca1e3d45|daffb796640e3ed1|256359856||t19149.9266256787s|e2e7a8de3ae463b4|35854|qs|local|vector|||0.02||
+worm_pts_geom|stem|8f9f8bd657045fe6|27ebd702aede2413|faf6bb7f5626079f|1592192426||t19149.9208218098s|fbe4ec8102cac7bf|16561|qs|local|vector|||15.4||
+worm_pts_int|stem|7df6aa94d776b1ba|93165a9310821400|cc86434c9faa29d9|-1180879630||t19149.9266245226s|250d284641b6f19e|27886|qs|local|vector|||30.29|attribute variables are assumed to be spatially constant throughout all geometries|
