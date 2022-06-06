@@ -64,21 +64,9 @@ park_sampling <- c(
     pts_sp(cc_parks)
   ),
   
-  # create 20 m x 20 m buffers surrounding the points for department of Grands Parcs
-  
-  tar_target(
-    sp_pts_buff,
-    st_buffer(sp_pts, dist = 20)
-  ),
-  
   tar_target(
     save_sp_pts, 
     st_write(sp_pts, "output/park_sampling_points.kml")
-  ),
-  
-  tar_target(
-    save_buff, 
-    st_write(sp_pts_buff, "output/park_sampling_plots.kml")
   )
   
 )
