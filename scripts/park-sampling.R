@@ -73,12 +73,12 @@ park_sampling <- c(
   
   tar_target(
     save_sp_pts, 
-    st_write(sp_pts, "output/park_sampling_points.kml")
+    st_write(sp_pts, "output/park_sampling_points.kml", append = F)
   ),
   
   tar_target(
     save_buff, 
-    st_write(sp_pts_buff, "output/park_sampling_plots.kml")
+    st_write(sp_pts_buff, "output/park_sampling_plots.kml", append = F)
   )
   
 )
