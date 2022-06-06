@@ -21,6 +21,7 @@ library(data.table)
 library(dplyr)
 library(tidyr)
 library(purrr)
+library(stringr)
 
 library(ggplot2)
 library(ggspatial)
