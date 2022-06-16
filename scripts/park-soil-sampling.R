@@ -3,16 +3,19 @@ park_soil_sampling <- c(
   # split sample buffers into four polygons to randomly sample
   tar_target(
     soil_grid,
-    pmap_dfr(sp_pts_buff, function(geometry, ...) {
+    pmap_dfr(sp_pts_buff, function(PlotID, geometry, ...) {
       geometry <- st_make_grid(geometry, n = c(2,2))
-      x <- st_as_sf(geometry, crs = 4326)
-    })
+      x <- st_as_sf(geometry, crs = 4326) %>% 
+        mutate(PlotID = PlotID)
+    }) 
   ),
   
   # randomly sample one point within each of the four polygons / buffer
   tar_target(
     soil_core_pts,
-    st_sample(soil_grid, size = c(1,1), type = "random", by_polygon = T) %>% st_as_sf()
+    st_sample(soil_grid, size = c(1,1), type = "random", by_polygon = T) %>% 
+      st_as_sf() %>% 
+      mutate(PlotID = soil_grid$PlotID)
   ),
   
   # randomly sample three points within each buffer for earthworm quadrats
@@ -23,7 +26,7 @@ park_soil_sampling <- c(
   
   tar_target(
     worm_pts_int,
-    st_intersection(worm_pts_geom, sp_pts_buff)
+    st_join(worm_pts_geom, sp_pts_buff)
   ),
   
   # create unique ids for earthworm quadrats
