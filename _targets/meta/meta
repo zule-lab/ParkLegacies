@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|d604bbc0c2c5c5b5|||||||||||||||
+.Random.seed|object|5efeaa6ce9f16c78|||||||||||||||
 ag_bound|stem|bb841504be9c3715|a0da5e1ffdb1ac88|59251cba1e47e494|270069734||t19128.8720524258s|3ec9dcbe2ceb81bd|1298|qs|local|vector|||0.02||
 ag_bound_file|stem|d24d92d5a385c125|549e43f60248cd31|ef46db3751d8e999|498860345|input/mon_historical_ag_boundaries.gpkg|t19128.8698403878s|22c04e6244b71b04|98304|file|local|vector|||0||
 agr_parks|stem|cd794ad02babaecf|897cf3b2bf266ca9|7ddb2316a30d60e3|1987057509||t19128.7655497709s|f735b56ce2bcc8ab|1299|qs|local|vector|||0.03||
@@ -38,7 +38,7 @@ outline_mtl|function|edd0068874c96bd0|||||||||||||||
 park_historical_boundaries|object|7c5b58e1814f9dd7|||||||||||||||
 park_prep|object|6567bd7db29a69b2|||||||||||||||
 park_sampling|object|c18b9767ded0285b|||||||||||||||
-park_soil_sampling|object|641aaef88dac600f|||||||||||||||
+park_soil_sampling|object|36df0f808cf73bcd|||||||||||||||
 parks_agr|function|70825e987375ddbd|||||||||||||||
 parks_download|stem|9c8891bbcca53581|b86a4de592491927|34aa11082a1b10bd|-383235620||t19124.8108967569s|3924f43e2ad85fd0|3668727|qs|local|vector|||158|repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
 parks_ind|function|9bc4c571d984d9f3|||||||||||||||
@@ -50,12 +50,12 @@ raw_study_parks|stem|88d9b83f06271e98|743518ad42469220|0511e2449163e619|-1925633
 sample_grid|stem|46908ea3b60461c4|90ee798164e5d853|7d6786f6af631351|254998840||t19129.6184082301s|d5491b5a45c43266|572086|qs|local|vector|||158.45|attribute variables are assumed to be spatially constant throughout all geometries|
 save_all|stem|585c75750dfa4707|8a6ef4024bc9aa8e|eae6e994dd4a2d80|1816221152||t19128.9058287573s|73a73280bc28f420|86443|qs|local|vector|||0.04||
 save_buff|stem|4517ea2dab7407a6|303b8a5011c0020b|a8ae1692667ef61b|1729510252||t19149.9149349524s|cca092bc0d5c308b|3074647|qs|local|vector|||1.86||
-save_earthworm_pts|stem|e184e913036add09|3af86e7c4c5f1e90|ae405b4b8fd89773|-2129114804||t19157.8755551123s|d022cc3f79ec7849|37215|qs|local|vector|||0.22||
+save_earthworm_pts|stem|2ddd2b64872ee505|3af86e7c4c5f1e90|feebc9e4137845d3|-2129114804||t19160.5942973844s|431f6893ea7e4491|32935|qs|local|vector|||0.22||
 save_parks|stem|2074abc3a460d342|91e33454f9bd283c|fa14644916e21835|1481877802||t19128.76552388s|dc2a7595ce44fe03|92109|qs|local|vector|||0.02||
 save_soil_core_pts|stem|56e7ef7c91bb5426|8ce025e69881ead4|eae28b84b7f0345c|-2060752161||t19159.8718795674s|00dad535b8c2fde7|24165|qs|local|vector|||0.14||
 save_soil_pts|stem|402bf3cac00a24ce|096e2cd7394bc3cf|3920d7c337156b93|-1928518217||t19149.6106219338s||25092|qs|local|vector|||0.08||Dataset already exists.
 save_sp_pts|stem|db90f8c65a27af02|c69a0931206c2cff|5e49d8e3a85ef2f6|-678035486||t19149.9149036671s|e0beebd28be0a8af|12372|qs|local|vector|||0.06||
-soil_core_pts|stem|92a7d4d58bfae8f3|c9104b0d44dedd3f|0733a0832750052c|-4739272||t19159.8718779256s|bfb2bf7d91ca1856|24463|qs|local|vector|||44.06||
+soil_core_pts|stem|92a7d4d58bfae8f3|751d090f7b0c5a64|0733a0832750052c|-4739272||t19160.5942935189s|bfb2bf7d91ca1856|24463|qs|local|vector|||44.11||
 soil_core_pts_id|stem|40e538fba6f42f9a|9094b654ef515e7b|f8d892247941f451|-772349151||t19157.8798927686s||37368|qs|local|vector|||0||no simple features geometry column present
 soil_grid|stem|18de35789f552831|2079fc3bbac1633b|9ab88e9c1086891a|-1164415251||t19159.8605176528s|e81bdcaefb1a8a83|55176|qs|local|vector|||1.39||
 soil_grid_id|stem|659644d634f79af4|323e9619de9380bd|41f4b600f72b110f|-1473216003||t19157.8844947768s|8f4daf31eab2a094|65571|qs|local|vector|||0.73||
@@ -70,6 +70,6 @@ study_parks|stem||5393c351553aee55|c75e456285a67c34|-215122252||t19124.857198891
 study_parks_file|stem|d43c0dad527f6f8f|228fda69600e6573|ef46db3751d8e999|-2019551501|input/studyparks.csv|t19128.7653896534s|a8fa5b2eb64d2369|1495|file|local|vector|||0||
 wat_cc_j|stem|c6b497d30f6d53b8|9bd35b5dc718e686|800e6b754cf7d3e3|1661905820||t19142.8824029276s|976f5e0bd0c2f667|704605|qs|local|vector|||130.73||
 wat_gr|stem|d41861f1c7b7e4ae|9221063604e5add9|f4048d3068813a65|1928342972||t19142.8728699689s|f03e72645498bc13|579859|qs|local|vector|||4844.22||
-worm_pts|stem|e184e913036add09|64e983e6ca1e3d45|16bca8f236ecd9e3|256359856||t19157.8755479002s|d022cc3f79ec7849|37215|qs|local|vector|||0.02||
-worm_pts_geom|stem|8f9f8bd657045fe6|27ebd702aede2413|faf6bb7f5626079f|1592192426||t19149.9208218098s|fbe4ec8102cac7bf|16561|qs|local|vector|||15.4||
+worm_pts|stem|2ddd2b64872ee505|4d6705111425d93d|07ee165e370f2b33|256359856||t19160.5942946887s|431f6893ea7e4491|32935|qs|local|vector|||0.09||
+worm_pts_geom|stem|67ba29a7e7a5e2c7|016839eaf5c589da|2ba01c1f39b2388b|1592192426||t19160.5937829688s|e22859505abb75b6|17382|qs|local|vector|||15.43||
 worm_pts_int|stem|172da694ef785278|8567e9976f397515|0ed027042e55704c|-1180879630||t19157.8723867834s|95a3f64f0d6388f8|29442|qs|local|vector|||0.69||
