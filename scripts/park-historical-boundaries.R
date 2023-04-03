@@ -1,4 +1,4 @@
-park_historical_boundaries <- c(
+target_historical_boundaries <- c(
   
   tar_target(
     ind_bound, 

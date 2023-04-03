@@ -1,4 +1,4 @@
-park_prep <- c(
+target_park_prep <- c(
   
   # set bbox of Montreal
   tar_target(

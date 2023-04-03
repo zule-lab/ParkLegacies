@@ -1,4 +1,4 @@
-park_sampling <- c(
+target_park_sampling <- c(
   
   tar_target(
     cc_file,
