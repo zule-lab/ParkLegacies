@@ -4,7 +4,8 @@
 
 
 # Source ------------------------------------------------------------------
-lapply(dir('R', '*.R', full.names = TRUE), source)
+library(targets)
+tar_source('R')
 
 
 
@@ -24,6 +25,7 @@ restore()
 
 # Scripts -----------------------------------------------------------------
 tar_source('scripts')
+
 
 # Targets: all ------------------------------------------------------------
 # Automatically grab all the "park" lists above
