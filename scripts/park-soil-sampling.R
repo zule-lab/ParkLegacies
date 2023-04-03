@@ -1,4 +1,4 @@
-park_soil_sampling <- c(
+target_park_soil_sampling <- c(
   
   # split sample buffers into four polygons to randomly sample
   tar_target(
