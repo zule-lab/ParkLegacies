@@ -14,7 +14,6 @@ target_park_prep <- c(
                  "input/mon_park_raw.zip")
     ),
   
-  # TODO: fix west island parks
   tar_target(
     offic_study_parks,
     join_study_parks(study_parks_file, city_parks)
