@@ -4,7 +4,7 @@
 #'
 #' @title
 
-join_all_bounds <- function(ind_bound, ag_bound_file, for_bound_file, mix_bound_file, official) {
+join_all_bounds <- function(ind_bound, ag_bound_file, for_bound, mix_bound, official) {
 
 
 # Clean -------------------------------------------------------------------
@@ -13,12 +13,8 @@ join_all_bounds <- function(ind_bound, ag_bound_file, for_bound_file, mix_bound_
   ind_bound <- st_transform(ind_bound, 4326)
   
   # clean ag read in gpkg
-  ag_bound <- read_sf(ag_bound_file) %>% 
+  ag_bound <- ag_bound_file %>% 
     rename(geom = geometry) # rename geometry to match other gpkg layers
-  
-  for_bound <- read_sf(for_bound_file)
-  
-  mix_bound <- read_sf(mix_bound_file)
 
 
 # Intersect ---------------------------------------------------------------

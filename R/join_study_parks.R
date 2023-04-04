@@ -1,15 +1,10 @@
-join_study_parks <- function(study_parks_file, city_parks){
+join_study_parks <- function(raw_study_parks, city_parks){
   
   # set bbox of Montreal
   bbox <- c(xmin = -74.0788,
     ymin = 45.3414,
     xmax = -73.3894,
     ymax = 45.7224)
-  
-  
-  ## Get study parks
-  raw_study_parks <- fread(study_parks_file)
-  
   
   ##  Get outline of island of Montreal
   # download island boundary in bbox

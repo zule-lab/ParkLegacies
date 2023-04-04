@@ -1,7 +1,4 @@
-sample_points <- function(cc_file, full_study_parks) {
-
-    cc <- read_stars(cc_file)
-  
+sample_points <- function(cc, full_study_parks) {
  
     parks_trans <- st_transform(full_study_parks, st_crs(cc))
   
