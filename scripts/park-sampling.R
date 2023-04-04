@@ -1,14 +1,14 @@
 target_park_sampling <- c(
   
-  tar_target(
-    cc_file,
-    'input/660_IndiceCanopee_2019.tif',
-    format = "file"
+  tar_file_read(
+    cc_2019,
+    'input/canopy/660_IndiceCanopee_2019.tif',
+    read_stars(!!.x)
   ),
   
   tar_target(
     sp_pts, 
-    sample_points(cc_file, full_study_parks)
+    sample_points(cc_2019, full_study_parks)
   ),
   
   tar_target(
