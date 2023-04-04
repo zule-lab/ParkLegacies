@@ -736,6 +736,19 @@
       ],
       "Hash": "4f2596dfb05dac67b9dc558e5c6fba2e"
     },
+    "gpx": {
+      "Package": "gpx",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "lubridate",
+        "rvest",
+        "xml2"
+      ],
+      "Hash": "e9b225aade0067ea54d9f4229e228baf"
+    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.3",
