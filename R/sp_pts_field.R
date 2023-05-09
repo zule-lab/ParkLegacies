@@ -4,7 +4,9 @@ sp_pts_field <- function(gps_sp_pts, mp_sp_pts) {
   gps_sp_pts <- gps_sp_pts %>%
     select(Name, geom) %>%
     rename(PlotID = Name, 
-           geometry = geom)
+           geometry = geom) %>%
+    mutate(PlotID = replace(PlotID, PlotID == 'AGR6-L0W04', 'AGR6-LOW04'),
+           PlotID = replace(PlotID, PlotID == 'IND11-LOW4', 'IND11-LOW04'))
   
   # Points recorded by phone (because GPS was dead, unavailable, teams were split up, etc.)
   mp_sp_pts <- mp_sp_pts %>%
