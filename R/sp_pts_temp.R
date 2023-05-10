@@ -1,4 +1,4 @@
-sp_pts_temp_2022 <- function(field_sp_pts, year){
+sp_pts_temp <- function(field_sp_pts, year){
   
 
   # manual input of temperature sensor sites
