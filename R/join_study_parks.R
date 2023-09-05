@@ -29,7 +29,7 @@ join_study_parks <- function(raw_study_parks, city_parks){
   mpolys <- st_make_valid(st_cast(mpolys, "POLYGON"))
   # grab polygons (small parks)
   polys <- parks$osm_polygons
-  allpolys <- st_make_valid(st_union(polys, mpolys))
+  allpolys <- st_union(st_make_valid(polys), st_make_valid(mpolys))
   # clip parks to Montreal island boundary
   wi <- st_within(allpolys, outline_allpolys)
   subwi <- vapply(wi, function(x) length(x) >= 1, TRUE)
