@@ -1,4 +1,9 @@
-sp_pts_field <- function(gps_sp_pts, mp_sp_pts) { 
+sp_pts_field <- function(gps_sp_pts_file, mp_sp_pts_file) { 
+  
+  gps_sp_pts <- read_sf(gps_sp_pts_file)
+  
+  mp_sp_pts <- read_sf(mp_sp_pts_file)
+  
   
   # GPS points
   gps_sp_pts <- gps_sp_pts %>%
