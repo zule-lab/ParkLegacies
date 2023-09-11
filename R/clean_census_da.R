@@ -101,33 +101,33 @@ clean_census_da <- function(parks, da, census){
     # divide the intersected area/total area of DA and multiply the population by that 
     # can then use this population as weight for weighted means
     mutate(popwithin = (as.numeric(areaint)/as.numeric(area))*as.numeric(totpop)) %>% 
-    select(c("Name","PastLandUse","da","geom","totpop", "popwithin", "popdens", "area", "sidehop","aptfivp","semhoup","rowhoup","aptdupp","aptbuip","otsihop","mvdwelp",
+    select(c("Name","PastLandUse","da","geom","totpop", "popwithin", "popdens", "area", "areaint", "sidehop","aptfivp","semhoup","rowhoup","aptdupp","aptbuip","otsihop","mvdwelp",
              "medinc", "lowinc", "recimmp", "indigp", "visminp", "edubacp"))
   
   # population weighted mean
   park_cen <- park_cen_pop %>%
-    group_by(Name) %>%   
+    group_by(Name, PastLandUse) %>%   
     summarize(DAcount = n(),
-              area = sum(area),
+              totarea = sum(areaint),
               geometry = st_union(geom),
-              popdens = weighted.mean(as.numeric(popdens), as.numeric(popwithin)),
-              sidehop = weighted.mean(as.numeric(sidehop), as.numeric(popwithin)),
-              aptfivp = weighted.mean(as.numeric(aptfivp), as.numeric(popwithin)),
-              semhoup = weighted.mean(as.numeric(semhoup), as.numeric(popwithin)),
-              rowhoup = weighted.mean(as.numeric(rowhoup), as.numeric(popwithin)),
-              aptdupp = weighted.mean(as.numeric(aptdupp), as.numeric(popwithin)),
-              aptbuip = weighted.mean(as.numeric(aptbuip), as.numeric(popwithin)),
-              otsihop = weighted.mean(as.numeric(otsihop), as.numeric(popwithin)),
-              mvdwelp = weighted.mean(as.numeric(mvdwelp), as.numeric(popwithin)),
-              medinc = weighted.mean(as.numeric(medinc), as.numeric(popwithin)),
-              lowinc = weighted.mean(as.numeric(lowinc), as.numeric(popwithin)),
-              recimmp = weighted.mean(as.numeric(recimmp), as.numeric(popwithin)),
-              indigp = weighted.mean(as.numeric(indigp), as.numeric(popwithin)),
-              visminp = weighted.mean(as.numeric(visminp), as.numeric(popwithin)) ,
-              edubacp = weighted.mean(as.numeric(edubacp), as.numeric(popwithin)),
+              popdens = weighted.mean(as.numeric(popdens), as.numeric(popwithin), na.rm = T),
+              sidehop = weighted.mean(as.numeric(sidehop), as.numeric(popwithin), na.rm = T),
+              aptfivp = weighted.mean(as.numeric(aptfivp), as.numeric(popwithin), na.rm = T),
+              semhoup = weighted.mean(as.numeric(semhoup), as.numeric(popwithin), na.rm = T),
+              rowhoup = weighted.mean(as.numeric(rowhoup), as.numeric(popwithin), na.rm = T),
+              aptdupp = weighted.mean(as.numeric(aptdupp), as.numeric(popwithin), na.rm = T),
+              aptbuip = weighted.mean(as.numeric(aptbuip), as.numeric(popwithin), na.rm = T),
+              otsihop = weighted.mean(as.numeric(otsihop), as.numeric(popwithin), na.rm = T),
+              mvdwelp = weighted.mean(as.numeric(mvdwelp), as.numeric(popwithin), na.rm = T),
+              medinc = weighted.mean(as.numeric(medinc), as.numeric(popwithin), na.rm = T),
+              lowinc = weighted.mean(as.numeric(lowinc), as.numeric(popwithin), na.rm = T),
+              recimmp = weighted.mean(as.numeric(recimmp), as.numeric(popwithin), na.rm = T),
+              indigp = weighted.mean(as.numeric(indigp), as.numeric(popwithin), na.rm = T),
+              visminp = weighted.mean(as.numeric(visminp), as.numeric(popwithin), na.rm = T) ,
+              edubacp = weighted.mean(as.numeric(edubacp), as.numeric(popwithin), na.rm = T),
               popwithin = sum(as.numeric(popwithin))
     ) %>%
-    distinct(Name, .keep_all = TRUE)
+    distinct(Name, PastLandUse, .keep_all = TRUE)
   
   return(park_cen)
     
