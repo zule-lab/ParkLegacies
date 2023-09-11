@@ -127,7 +127,7 @@ clean_census_da <- function(parks, da, census){
               edubacp = weighted.mean(as.numeric(edubacp), as.numeric(popwithin)),
               popwithin = sum(as.numeric(popwithin))
     ) %>%
-    distinct(Park, .keep_all = TRUE)
+    distinct(Name, .keep_all = TRUE)
   
   return(park_cen)
     
