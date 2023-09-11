@@ -12,6 +12,11 @@ target_census_prep <- c(
     census_raw,
     download_csv("https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=006_Quebec",
                  "input/quebec_census_2021/census.zip")
+  ),
+  
+  tar_target(
+    census,
+    clean_census_da(full_study_parks, da_raw, census_raw)
   )
   
 )
