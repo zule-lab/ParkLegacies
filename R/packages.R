@@ -7,9 +7,6 @@ library(targets)
 library(tarchetypes)
 library(renv)
 library(qs)
-conflict_prefer('autoload', 'renv')
-conflict_prefer('embed', 'renv')
-conflict_prefer('history', 'renv')
 
 library(sf)
 library(stars)
@@ -31,7 +28,13 @@ library(knitr)
 library(rmarkdown)
 
 library(downloader)
-library(bit64)
-conflict_prefer(":", "base")
-conflict_prefer("filter", "dplyr")
-conflict_prefer("first", "dplyr")
+suppressMessages(library(bit64))
+
+conflicts_prefer(renv::autoload, 
+                 renv::embed, 
+                 renv::history, 
+                 base::`:`,
+                 base::`%in%`,
+                 dplyr::filter,
+                 dplyr::first,
+                 .quiet = T) 
