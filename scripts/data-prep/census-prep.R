@@ -17,7 +17,6 @@ target_census_prep <- c(
   tar_target(
     census,
     clean_census_da(full_study_parks, da_raw, census_raw)
-    #TODO: fix Bois-de-Saraguay?
   )
   
 )

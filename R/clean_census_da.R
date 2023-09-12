@@ -77,6 +77,7 @@ clean_census_da <- function(parks, da, census){
   
   census_da_na <- census_da_sf %>% 
     drop_na(Name)  %>%
+    filter(area > 0) %>%
     mutate(da = as.factor(DAUID)) %>%
     mutate(across(c(totpop:edubac), ~as.numeric(.))) %>%
     select(-c(DGUID, LANDAREA, PRUID, DAUID))
