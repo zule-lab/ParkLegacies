@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|d97d34b185126d50|||||||||||||||
+.Random.seed|object|a412fd6c23ab3128|||||||||||||||
 ag_bound|stem|0e6b3cff326b5bcd|545244b2ccbd30f0|05fd24bacf961142|270069734||t19451.6124182271s|8069128c041152d4|1301|qs|local|vector|||0.03||
 ag_bound_file|stem|d24d92d5a385c125|ac27b3e77360f6b3|ef46db3751d8e999|498860345|input/park_boundaries/mon_historical_ag_boundaries.gpkg|t19450.7032749064s|22c04e6244b71b04|98304|file|local|vector|||0||
 bb|stem|0096fc6f8d17243f|7a138206c983a1d0|d5952a468c1d9178|-55375157||t19450.7445118122s|2005da2f14a67e22|98|qs|local|vector|||0||
@@ -9,11 +9,11 @@ cc_2019_file|stem|95e2546d22ed7c5b|943253d62d9a2bc7|ef46db3751d8e999|-817222590|
 cc_2021|stem|0f9facf145ed14c5|69b39ae6813d702a|bf05ad1cd31bd01e|753012034||t19605.744442785s|688e23f32551f9a9|1016|qs|local|vector|||0.02||
 cc_2021_file|stem|1726ad9c7b63c810|1885109cd4474644|ef46db3751d8e999|1815280325|input/canopy/660_IndiceCanopee_2021.tif|t19282.6529218421s|4ef891cc06aa70dd|46247932|file|local|vector|||0||
 cc_file|stem|95e2546d22ed7c5b|393c48a6b8cf7906|ef46db3751d8e999|-1366355684|input/660_IndiceCanopee_2019.tif|t19450.7106030301s|08b22ea001524a7c|44833759|file|local|vector|||0||
-census|stem|e25de2833584b307|4656525a78e69b3b|8acb5f78215c7ef8|2029300848||t19611.8402432634s|ad96066f4095bf2e|193867|qs|local|vector|||493.61|attribute variables are assumed to be spatially constant throughout all geometries. 1m22mDetected an unexpected manytomany relationship between x and y.36mℹ39m Row 19008976 of x matches multiple rows in y.36mℹ39m Row 3 of y matches multiple rows in x.36mℹ39m If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
+census|stem|fcd56e8dd02bff8f|4656525a78e69b3b|5cd457e3ae1041d9|2029300848||t19612.7105680618s|42602b3dc30551cf|194239|qs|local|vector|||485.53|attribute variables are assumed to be spatially constant throughout all geometries. 1m22mDetected an unexpected manytomany relationship between x and y.36mℹ39m Row 19008976 of x matches multiple rows in y.36mℹ39m Row 3 of y matches multiple rows in x.36mℹ39m If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
 census_raw|stem|d9cd870799db65a6|ca6b560318d6c147|5aa47ada70a4edc5|-1652463262||t19611.7416557617s|69bcb7df6f5b2e4d|219258146|qs|local|vector|||441.97||
 city_parks|stem|d99c292d9b379c83|058281d27704688f|4648abbcd52f7152|-1235815405||t19451.6124055404s|1c5faa0fe939c060|1702048|qs|local|vector|||3.16||
 city_parks_trans|stem|fe13a1b6927a6a8a|fce9fba9a500f48c|87fba366f06cd9d6|-2107772170||t19450.7451871825s|66a32715e5354181|1629117|qs|local|vector|||0.12||
-clean_census_da|function|44c44a80574898b8|||||||||||||||
+clean_census_da|function|70556a83b719e652|||||||||||||||
 da_raw|stem|afb14d8372a42158|497d0ba84342cbf0|4648abbcd52f7152|-1886873858||t19611.7203003024s|98d53793e21c5e0b|258105324|qs|local|vector|||27.27||
 download_csv|function|327b85caf08a3af3|||||||||||||||
 download_parks|function|2a681eeec5c1a386|||||||||||||||
@@ -64,26 +64,11 @@ target_park_prep|object|5bb51bf23be5cec2|||||||||||||||
 target_park_sampling|object|a7cbc24786a31859|||||||||||||||
 target_park_soil_sampling|object|5eeccf361aa52ccf|||||||||||||||
 target_temp_sp_pts|object|885117aa103dd5ca|||||||||||||||
+target_tree_prep|object|11dbdf86dafe2d85|||||||||||||||
 temp_sp_pts_2022|stem|8fb01e117ddef6fa|44f94ffe1c1d47fd|515e484e814e5537|1578158758||t19605.7480809489s|44409802c5f3d285|2582|qs|local|vector|||0.05||
 temp_sp_pts_2023|stem|2364869a1d449ff1|6a860e0450527f35|515e484e814e5537|-2084694524||t19605.748082265s|86da6de5e65c6ce3|2585|qs|local|vector|||0.03||
+trees_raw|stem|abfd1d7fb5c3227e|a4f6c3ef8f7ce9a4|019463e51a107244|190882756||t19619.7269382151s|e24b9aa23f6e5160|55291|qs|local|vector|||0.03||
+trees_raw_file|stem|2274b4ce37ebf6f4|f8a04cfa11ac6daa|ef46db3751d8e999|840228939|input/trees_openrefine.csv|t19451.6491048699s|49cd3000a2e4ee1f|1097610|file|local|vector|||0||
 worm_pts|stem|c5fdff93406af4ff|bbe9340d42b4cfa7|95771f49b5853c78|256359856||t19605.8438991964s|4508a70eccb1e455|31037|qs|local|vector|||16.94||
 worm_pts_geom|stem||016839eaf5c589da|a74125c7dc7c4943|1592192426||t19450.7445534227s||0|qs|local|vector|||0||object sp_pts_buff not found
 worm_samples|function|ba3a9889af6b62af|||||||||||||||
-clean_census_da|function|70556a83b719e652
-target_analysis_redo_canopy|object|1d26f6b98905a29b
-target_park_sampling|object|a7cbc24786a31859
-sp_pts_field|function|d08f80465294248b
-list_sp_pts|function|1334eea8cd7ddc72
-.Random.seed|object|0b165e015a05a91a
-target_park_prep|object|5bb51bf23be5cec2
-soil_cores|function|b5396068332f535c
-pts_sp|function|ccb026feb937d420
-canopy_cover|function|e1598590affa73df
-join_study_parks|function|6663de7bf66c6f3e
-download_csv|function|327b85caf08a3af3
-worm_samples|function|ba3a9889af6b62af
-target_census_prep|object|e5c7715c626a337c
-join_all_bounds|function|a61f6055aa9028eb
-download_shp|function|b10d876b1501a079
-sp_pts_temp|function|a4a29767cbfc6c47
-sample_points|function|326a0896a5225260
