@@ -381,6 +381,13 @@
       ],
       "Hash": "b4c06e554f33344e044ccd7fdca750a9"
     },
+    "datetime": {
+      "Package": "datetime",
+      "Version": "0.1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b862cbbad83fe520b3766582f7473f9a"
+    },
     "digest": {
       "Package": "digest",
       "Version": "0.6.33",
