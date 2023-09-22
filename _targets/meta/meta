@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|a412fd6c23ab3128|||||||||||||||
+.Random.seed|object|dc6d67adb30d87ae|||||||||||||||
 ag_bound|stem|0e6b3cff326b5bcd|545244b2ccbd30f0|05fd24bacf961142|270069734||t19451.6124182271s|8069128c041152d4|1301|qs|local|vector|||0.03||
 ag_bound_file|stem|d24d92d5a385c125|ac27b3e77360f6b3|ef46db3751d8e999|498860345|input/park_boundaries/mon_historical_ag_boundaries.gpkg|t19450.7032749064s|22c04e6244b71b04|98304|file|local|vector|||0||
 bb|stem|0096fc6f8d17243f|7a138206c983a1d0|d5952a468c1d9178|-55375157||t19450.7445118122s|2005da2f14a67e22|98|qs|local|vector|||0||
@@ -14,6 +14,7 @@ census_raw|stem|d9cd870799db65a6|ca6b560318d6c147|5aa47ada70a4edc5|-1652463262||
 city_parks|stem|d99c292d9b379c83|058281d27704688f|4648abbcd52f7152|-1235815405||t19451.6124055404s|1c5faa0fe939c060|1702048|qs|local|vector|||3.16||
 city_parks_trans|stem|fe13a1b6927a6a8a|fce9fba9a500f48c|87fba366f06cd9d6|-2107772170||t19450.7451871825s|66a32715e5354181|1629117|qs|local|vector|||0.12||
 clean_census_da|function|70556a83b719e652|||||||||||||||
+clean_trees|function|200b673a17f034c3|||||||||||||||
 da_raw|stem|afb14d8372a42158|497d0ba84342cbf0|4648abbcd52f7152|-1886873858||t19611.7203003024s|98d53793e21c5e0b|258105324|qs|local|vector|||27.27||
 download_csv|function|327b85caf08a3af3|||||||||||||||
 download_parks|function|2a681eeec5c1a386|||||||||||||||
@@ -26,6 +27,7 @@ full_study_parks|stem|77b913d3ad330fd5|6b726eed14671129|cdbb2cdab45c3cf9|-166391
 gps_sp_pts|stem|0f560a56c6e599d0|b60aa10e79b63ee2|6f745316175e369e|-1812725314||t19605.7444421384s|19a98f44d0408104|5047|qs|local|vector|||0.05||
 gps_sp_pts_file|stem|621569fe9edc1bfa|9803a3f92c391498|ef46db3751d8e999|1755735166|input/sampling_points/gps_sppts.gpkg|t19486.7340520431s|c2b52dd325d3488d|126976|file|local|vector|||0||
 ind_bound|stem|8745766441e255eb|8959ea5a8e813927|4648abbcd52f7152|1662704907||t19451.6124165227s|272db4869f17baf1|179737|qs|local|vector|||1.63||
+indices_trees|function|aaac975f772cf6aa|||||||||||||||
 join_all_bounds|function|a61f6055aa9028eb|||||||||||||||
 join_study_parks|function|6663de7bf66c6f3e|||||||||||||||
 list_sp_pts|function|1334eea8cd7ddc72|||||||||||||||
@@ -41,6 +43,7 @@ parks_ind|function|9bc4c571d984d9f3|||||||||||||||
 parks_mix|function|473f4684227dab49|||||||||||||||
 pts_sp|function|ccb026feb937d420|||||||||||||||
 raw_study_parks|stem|1763d3a730b2fedb|743518ad42469220|0511e2449163e619|-192563372||t19450.7451853427s|c89ce475c7699453|785|qs|local|vector|||0||
+replace_string|function|d8ff075b2cc56dfe|||||||||||||||
 sample_points|function|326a0896a5225260|||||||||||||||
 save_all|stem|77b913d3ad330fd5|8a6ef4024bc9aa8e|0c9ddfbc8032a7b7|1816221152||t19451.6148671027s|6a026f961f2a9981|84482|qs|local|vector|||0.06||
 save_full_study_parks|stem|77b913d3ad330fd5|69ce0b97ee26235b|0c9ddfbc8032a7b7|-1629091668||t19605.8428825367s|6a026f961f2a9981|84482|qs|local|vector|||0.01||
@@ -56,17 +59,18 @@ sp_pts_temp_2022|function|a4a29767cbfc6c47|||||||||||||||
 study_parks_file|stem|1763d3a730b2fedb|5167cd364e9b7b00|fe1dda78cf7b32e4|-2019551501||t19451.6124180886s|c89ce475c7699453|785|qs|local|vector|||0||
 study_parks_file_file|stem|d43c0dad527f6f8f|228fda69600e6573|ef46db3751d8e999|472593120|input/studyparks.csv|t19128.7653896534s|a8fa5b2eb64d2369|1495|file|local|vector|||0||
 target_analysis_canopy|object|ffb669a163bf4fa0|||||||||||||||
-target_analysis_redo_canopy|object|1d26f6b98905a29b|||||||||||||||
+target_analysis_redo_canopy|object|f89b882b1be0fcfa|||||||||||||||
 target_analysis_temp|object|7e2f8b871025cca0|||||||||||||||
-target_census_prep|object|e5c7715c626a337c|||||||||||||||
+target_census_prep|object|3bbf0dcd3c50f83d|||||||||||||||
 target_historical_boundaries|object|28353dd014084d7c|||||||||||||||
-target_park_prep|object|5bb51bf23be5cec2|||||||||||||||
-target_park_sampling|object|a7cbc24786a31859|||||||||||||||
+target_park_prep|object|03a6c4b47d00bf4a|||||||||||||||
+target_park_sampling|object|fb1db0b08af620e0|||||||||||||||
 target_park_soil_sampling|object|5eeccf361aa52ccf|||||||||||||||
 target_temp_sp_pts|object|885117aa103dd5ca|||||||||||||||
-target_tree_prep|object|11dbdf86dafe2d85|||||||||||||||
+target_tree_prep|object|aeb4c281bd6c96bb|||||||||||||||
 temp_sp_pts_2022|stem|8fb01e117ddef6fa|44f94ffe1c1d47fd|515e484e814e5537|1578158758||t19605.7480809489s|44409802c5f3d285|2582|qs|local|vector|||0.05||
 temp_sp_pts_2023|stem|2364869a1d449ff1|6a860e0450527f35|515e484e814e5537|-2084694524||t19605.748082265s|86da6de5e65c6ce3|2585|qs|local|vector|||0.03||
+trees_clean|stem|106dd84daaedd36e|d9981fa481c5a384|dbf463bf82e494fc|266292181||t19622.614880529s|205b4c23a4cb4124|76808|qs|local|vector|||67.64|1m22mThere were 3 warnings in mutate.The first warning was1m22m36mℹ39m In argument V1  .Primitiveas.doubleV1.Caused by warning33m39m NAs introduced by coercion1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 2 remaining warnings.. 1m22mfuns was deprecated in dplyr 0.8.0.36mℹ39m Please use a list of either functions or lambdas Simple named list listmean  mean, median  median Auto named with tibblelst tibblelstmean, median Using lambdas list mean., trim  .2,  median., na.rm  TRUE|
 trees_raw|stem|abfd1d7fb5c3227e|a4f6c3ef8f7ce9a4|019463e51a107244|190882756||t19619.7269382151s|e24b9aa23f6e5160|55291|qs|local|vector|||0.03||
 trees_raw_file|stem|2274b4ce37ebf6f4|f8a04cfa11ac6daa|ef46db3751d8e999|840228939|input/trees_openrefine.csv|t19451.6491048699s|49cd3000a2e4ee1f|1097610|file|local|vector|||0||
 worm_pts|stem|c5fdff93406af4ff|bbe9340d42b4cfa7|95771f49b5853c78|256359856||t19605.8438991964s|4508a70eccb1e455|31037|qs|local|vector|||16.94||
