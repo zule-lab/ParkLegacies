@@ -1,5 +1,17 @@
 clean_trees <- function(trees_raw){
   
+# Park Classes ------------------------------------------------------------
+
+  trees_raw <- trees_raw %>%
+    mutate(ParkClass = case_when(Park == "Bois-de-Liesse" ~ "nature",
+                                 Park == "Bois-de-Saraguay" ~ "nature",
+                                 Park == "Cap-Saint-Jacques" ~ "nature", 
+                                 Park == "Île-Bizard" ~ "nature",
+                                 Park == "L'Anse-à-l'Orme" ~ "nature", 
+                                 Park == "Pointe-aux-Prairies" ~ "nature",
+                                 .default = "city"))
+
+    
 # DBH ---------------------------------------------------------------------
 
 
@@ -20,14 +32,12 @@ clean_trees <- function(trees_raw){
   
   trees_dbh <- cbind(trees_raw, ind_dbh)
   
-
-# Mini-Plots --------------------------------------------------------------
-  # mini plot was 0.005 ha
-  # large plot was 0.08 ha
-  
   
   
 }
+
+
+
 
 
 replace_string <- function(g) {
@@ -41,3 +51,6 @@ replace_string <- function(g) {
     )
   })
 }
+
+
+
