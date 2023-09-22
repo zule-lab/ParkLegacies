@@ -33,6 +33,20 @@ clean_trees <- function(trees_raw){
   trees_dbh <- cbind(trees_raw, ind_dbh)
   
   
+
+# Species Codes -----------------------------------------------------------
+
+  # create species codes
+  trees_code <- trees_dbh %>%
+    mutate(SpCode = toupper(paste(str_sub(trees_dbh$Genus, start = 1, end = 2), str_sub(trees_dbh$Species, start = 1, end = 2), sep = "")))
+  # create unique code for dead trees as they don't have genus/species names
+  trees_code$SpCode[trees_code$CommonName == "Dead"] <- 'DEAD'
+  # create unique code for unknown species as they don't have genus/species names
+  trees_code$SpCode[trees_code$CommonName == "Unknown"] <- 'UNK'
+  # replace sugar maple code since it is the same as silver maple
+  trees_code$SpCode[trees_code$CommonName == "Sugar Maple"] <- 'ACSC' 
+  
+  return(trees_code)
   
 }
 
