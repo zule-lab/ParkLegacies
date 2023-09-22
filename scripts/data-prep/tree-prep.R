@@ -9,7 +9,7 @@ target_tree_prep <- c(
   
   tar_target(
     trees_clean,
-    clean_trees()
+    clean_trees(trees_raw)
   )
   
 
