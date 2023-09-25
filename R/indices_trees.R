@@ -8,8 +8,7 @@ indices_trees <- function(trees_clean){
 # TODO: is dataset missing a plot?
   
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
-  
-  
+
   plots <- trees_clean %>%
     filter(Date < '2022-07-18') %>%
     group_by(PlotID) %>%
@@ -33,21 +32,30 @@ indices_trees <- function(trees_clean){
   
   abundance <- trees_clean %>%
     filter(DBHCalc > 5) %>%
-    group_by(PlotID) %>% 
-    tally()
+    group_by(Park, PastLandUse) %>% 
+    tally() %>%
+    mutate(Park = trimws(Park)) %>%
+    rename(Abundance_L = n)
   
+  names <- trees_clean %>%
+    group_by(Park, PastLandUse) %>%
+    summarize() %>% 
+    mutate(Names = paste0(trimws(Park), "_", PastLandUse))
   
   
   trees_list_inext <- trees_clean %>%
-    filter(DBHCalc > 5) %>%
-    group_by(PlotID, SpCode) %>%
-    tally() %>%
-    pivot_wider(id_cols = SpCode, names_from = PlotID, values_from = n, values_fill = 0) %>%
-    column_to_rownames("SpCode")
+    group_by(Park, PastLandUse) %>% 
+    group_map(~ group_by(.x, PlotID, SpCode) %>% 
+                tally() %>% 
+                pivot_wider(id_cols = SpCode, names_from = PlotID, values_from = n, values_fill = 0) %>%
+                mutate_if(is.numeric, ~1 * (. != 0)) %>%
+                column_to_rownames("SpCode")) %>%
+    setNames(unique(names$Names))
   
-  out <- iNEXT(trees_list_inext, datatype = "abundance", q=0)
   
-  div <- estimateD(trees_list_inext, datatype="abundance",
+  out <- iNEXT(trees_list_inext, datatype = "incidence_raw", q=0)
+  
+  div <- estimateD(trees_list_inext, datatype="incidence_raw",
                    base="coverage", level=min(out$DataInfo$SC), conf=0.95)
   
   div_w <- div %>%
@@ -57,13 +65,22 @@ indices_trees <- function(trees_clean){
      pivot_wider(id_cols = c(Assemblage), 
                              names_from = Indices, 
                              values_from = c(qD, qD.LCL, qD.UCL)) %>%
-    rename(Park = Assemblage,
-           SR = qD_SR,
-           SR_LCL = qD.LCL_SR,
-           SR_UCL = qD.UCL_SR,
-           Shannon = qD_Shannon,
-           Shannon_LCL = qD.LCL_Shannon,
-           Shannon_UCL = qD.UCL_Shannon)
+    rename(Code = Assemblage,
+           SR_L = qD_SR,
+           SR_L_LCL = qD.LCL_SR,
+           SR_L_UCL = qD.UCL_SR,
+           Shannon_L = qD_Shannon,
+           Shannon_L_LCL = qD.LCL_Shannon,
+           Shannon_L_UCL = qD.UCL_Shannon) %>%
+    mutate(Park = sub("_.*", "", Code),
+           PastLandUse = sub(".*_", "", Code)) %>%
+    full_join(abundance, by = c('Park', 'PastLandUse'))
+  
+  
+
+# Small Trees -------------------------------------------------------------
+
+  
 
   
 }
