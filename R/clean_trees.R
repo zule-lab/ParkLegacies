@@ -54,7 +54,10 @@ clean_trees <- function(trees_raw, field_cc){
 
   trees_label <- trees_code %>%
     inner_join(field_cc, by = "PlotID") %>%
-    select(-c(Comments, Name))
+    select(-c(Comments, Name)) %>%
+    mutate(PastLandUse = case_when(str_starts(PlotID, "AGR") ~ "Agricultural",
+                                   str_starts(PlotID, "FOR") ~ "Forested",
+                                   str_starts(PlotID, "IND") ~ "Industrial"))
     
   
   
