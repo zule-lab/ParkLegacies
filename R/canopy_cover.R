@@ -10,7 +10,7 @@ canopy_cover <- function(sp_pts, field_sp_pts, cancov) {
   
   
   # convert to same projection as canopy cover 
-  sp_pts_trans <- st_transform(field_sp_pts, st_crs(cancov))
+  sp_pts_trans <- st_transform(st_zm(field_sp_pts), st_crs(cancov))
 
   # create 20 m square buffers around sampling points representing plots 
   plots <- st_buffer(sp_pts_trans, dist = 20, nQuadSegs=1, endCapStyle = "SQUARE")
