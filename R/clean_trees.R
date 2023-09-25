@@ -1,4 +1,4 @@
-clean_trees <- function(trees_raw){
+clean_trees <- function(trees_raw, field_cc){
   
 # Park Classes ------------------------------------------------------------
 
@@ -46,7 +46,19 @@ clean_trees <- function(trees_raw){
   # replace sugar maple code since it is the same as silver maple
   trees_code$SpCode[trees_code$CommonName == "Sugar Maple"] <- 'ACSC' 
   
-  return(trees_code)
+  
+  
+  
+
+# Park/Canopy Labels ------------------------------------------------------
+
+  trees_label <- trees_code %>%
+    inner_join(field_cc, by = "PlotID") %>%
+    select(-c(Comments, Name))
+    
+  
+  
+  return(trees_label)
   
 }
 
