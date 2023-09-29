@@ -1,41 +1,37 @@
 indices_trees <- function(trees_clean){
   
-
-# Downsample --------------------------------------------------------------
-
-# plots before Jul 18, 2022 did not have mini plots for small trees 
-# need to downsample these plots to match mini plots (large plots 0.08 ha, mini-plots 0.005 ha)
-# TODO: is dataset missing a plot?
-  
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
 
-  plots <- trees_clean %>%
-    filter(Date < '2022-07-18') %>%
-    group_by(PlotID) %>%
-    summarize()
-  
-  trees_d <- trees_clean %>%
-    mutate(Date = as.Date(Date, "%m/%d/%Y")) %>%
-    filter(Date < '2022-07-18',
-           DBHCalc <= 5) %>%
-    group_by(PlotID) %>%
-    summarize(nTrees = n(),
-              DBHCalc_med = median(DBHCalc),
-              DBHCalc_sd = sd(DBHCalc)) %>%
-    right_join(plots, by = "PlotID") %>%
-    replace(is.na(.), 0)
+# Large Trees -------------------------------------------------------------
+  large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08)
     
   
+# Small Trees -------------------------------------------------------------
+  # plots before Jul 18, 2022 did not have mini plots for small trees 
+  # only going to use plots Jul 18 and later for diversity 
+  # abundance will be offset by area in the model so can include all plots
+  #TODO: current bug in iNEXT that I don't know how to get around??
+  small_div <- calculate_div(trees_clean %>% filter(Date >= '2022-07-18'), 'DBHCalc <= 5', "S", 0.005)
   
 
-# Large Trees -------------------------------------------------------------
+# All Trees ---------------------------------------------------------------
+  # join measurements from small trees and large trees together
+  
+  
+}
+
+
+calculate_div <- function(trees_clean, desDBH, suffix, area) {
   
   abundance <- trees_clean %>%
-    filter(DBHCalc > 5) %>%
+    filter(eval(rlang::parse_expr(desDBH))) %>%
     group_by(Park, PastLandUse) %>% 
-    tally() %>%
-    mutate(Park = trimws(Park)) %>%
-    rename(Abundance_L = n)
+    reframe(Park = trimws(Park),
+            Abundance_L = n(),
+            DBH_med_L = median(DBHCalc),
+            DBH_sd_L = sd(DBHCalc)) %>%
+    unique()
+  
   
   names <- trees_clean %>%
     group_by(Park, PastLandUse) %>%
@@ -44,7 +40,8 @@ indices_trees <- function(trees_clean){
   
   
   trees_list_inext <- trees_clean %>%
-    group_by(Park, PastLandUse) %>% 
+    filter(eval(rlang::parse_expr(desDBH))) %>%
+    group_by(Park, PastLandUse) %>%
     group_map(~ group_by(.x, PlotID, SpCode) %>% 
                 tally() %>% 
                 pivot_wider(id_cols = SpCode, names_from = PlotID, values_from = n, values_fill = 0) %>%
@@ -58,29 +55,33 @@ indices_trees <- function(trees_clean){
   div <- estimateD(trees_list_inext, datatype="incidence_raw",
                    base="coverage", level=min(out$DataInfo$SC), conf=0.95)
   
+  new_columns <- c(paste0("SR_", suffix), 
+                   paste0("SR_", suffix, "_LCL"),
+                   paste0("SR_", suffix, "_UCL"), 
+                   paste0("Shannon_", suffix),
+                   paste0("Shannon_", suffix, "_LCL"),
+                   paste0("Shannon_", suffix, "_UCL"))
+  
+  old_columns <- c('qD_SR',
+                   'qD.LCL_SR',
+                   'qD.UCL_SR',
+                   'qD_Shannon',
+                   'qD.LCL_Shannon',
+                   'qD.UCL_Shannon')
+  
   div_w <- div %>%
     filter(Order.q != 2) %>%
     mutate(Indices = case_when(Order.q == 0 ~ 'SR',
                                Order.q == 1 ~ 'Shannon')) %>%
-     pivot_wider(id_cols = c(Assemblage), 
-                             names_from = Indices, 
-                             values_from = c(qD, qD.LCL, qD.UCL)) %>%
-    rename(Code = Assemblage,
-           SR_L = qD_SR,
-           SR_L_LCL = qD.LCL_SR,
-           SR_L_UCL = qD.UCL_SR,
-           Shannon_L = qD_Shannon,
-           Shannon_L_LCL = qD.LCL_Shannon,
-           Shannon_L_UCL = qD.UCL_Shannon) %>%
+    pivot_wider(id_cols = c(Assemblage), 
+                names_from = Indices, 
+                values_from = c(qD, qD.LCL, qD.UCL)) %>%
+    rename(Code = Assemblage) %>%
+    rename_with(~ new_columns, all_of(old_columns)) %>%
     mutate(Park = sub("_.*", "", Code),
-           PastLandUse = sub(".*_", "", Code)) %>%
+           PastLandUse = sub(".*_", "", Code),
+           Area_L = area) %>%
     full_join(abundance, by = c('Park', 'PastLandUse'))
-  
-  
-
-# Small Trees -------------------------------------------------------------
-
-  
-
-  
+    
+    return(div_w)
 }
