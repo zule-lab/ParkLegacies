@@ -4,7 +4,7 @@
 #'
 #' @title
 
-join_all_bounds <- function(ind_bound, ag_bound_file, for_bound, mix_bound, official) {
+join_all_bounds <- function(ind_bound, ag_bound_file, for_bound, mix_bound, official, study_parks_file) {
 
 
 # Clean -------------------------------------------------------------------
@@ -41,11 +41,18 @@ join_all_bounds <- function(ind_bound, ag_bound_file, for_bound, mix_bound, offi
   
   missing <- missing %>% 
     summarise(Name = Name,
-           PastLandUse = PastLandUse, 
+           PastLandUse = PastLandUse,
            geom = geometry)
   
   all <- rbind(all_bound, missing)
   
+  all$Established <- study_parks_file$Established[match(all$Name, study_parks_file$Name)]
+  
+  all_age <- all %>%
+    mutate(Age = (as.integer(format(Sys.Date(), "%Y")) - as.numeric(Established))) %>%
+    select(-Established)
+  
+
   return(all)
   
 
