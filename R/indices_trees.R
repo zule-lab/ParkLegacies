@@ -1,10 +1,9 @@
-indices_trees <- function(trees_clean, full_study_parks){
+indices_trees <- function(trees_clean){
   
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
 
 # Large Trees -------------------------------------------------------------
   large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08) 
-  large_div$Age <- full_study_parks$Age[match(large_div$Name, full_study_parks$Name)]
   
 # Small Trees -------------------------------------------------------------
   # plots before Jul 18, 2022 did not have mini plots for small trees 
