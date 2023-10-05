@@ -19,12 +19,15 @@ library(tidyr)
 library(purrr)
 library(stringr)
 library(readr)
+library(tibble)
 
 library(ggplot2)
 library(ggspatial)
 library(ggdist)
 
 library(datetime)
+
+library(iNEXT)
 
 library(knitr)
 library(rmarkdown)
