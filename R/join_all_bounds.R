@@ -53,7 +53,7 @@ join_all_bounds <- function(ind_bound, ag_bound_file, for_bound, mix_bound, offi
     select(-Established)
   
 
-  return(all)
+  return(all_age)
   
 
 
