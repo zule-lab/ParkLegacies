@@ -130,6 +130,8 @@ clean_census_da <- function(parks, da, census){
     ) %>%
     distinct(Name, PastLandUse, .keep_all = TRUE)
   
+  park_cen$Age <- parks$Age[match(park_cen$Name, parks$Name)]
+  
   return(park_cen)
     
   
