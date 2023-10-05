@@ -50,10 +50,13 @@ join_study_parks <- function(raw_study_parks, city_parks){
     rename(Nom = ParkOfficial) %>% 
     dplyr::filter(Nom != "Grand parc de l'Ouest") %>% 
     left_join(., city_parks_trans, by = "Nom")
-  mp <- st_as_sf(mp)
-  mp <- mp[-c(19, 20, 22, 23, 24, 29, 30, 34, 35,  52, 54), c(1:5, 16)] # remove extra polygons
-  mp <- rename(mp, ParkOfficial = Nom,
-             OBJECTID = OBJECTID.x)
+  mp <- st_as_sf(mp) %>%
+    filter(NUM_INDEX != '2448-000' | NUM_INDEX != '2484-000' | NUM_INDEX != '0822-000' | 
+             NUM_INDEX != '0046-000' | NUM_INDEX != '0084-000' | NUM_INDEX != '1225-000' | 
+             NUM_INDEX != '2018-000') %>% # remove extra polygons
+    rename(ParkOfficial = Nom,
+           OBJECTID = OBJECTID.x) %>%
+    select(c(ParkOfficial, Name, OBJECTID, Established, PastLandUse, geometry))
 
   studyparks <- st_as_sf(rbind(gpo, mp))
   
