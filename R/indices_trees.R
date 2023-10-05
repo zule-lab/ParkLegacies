@@ -1,17 +1,18 @@
-indices_trees <- function(trees_clean){
+indices_trees <- function(trees_clean, full_study_parks){
   
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
 
 # Large Trees -------------------------------------------------------------
-  large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08)
-    
+  large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08) 
+  large_div$Age <- full_study_parks$Age[match(large_div$Name, full_study_parks$Name)]
   
 # Small Trees -------------------------------------------------------------
   # plots before Jul 18, 2022 did not have mini plots for small trees 
   # only going to use plots Jul 18 and later for diversity 
   # abundance will be offset by area in the model so can include all plots
   #TODO: current bug in iNEXT that I don't know how to get around??
-  small_div <- calculate_div(trees_clean %>% filter(Date >= '2022-07-18'), 'DBHCalc <= 5', "S", 0.005)
+  
+  #small_div <- calculate_div(trees_clean %>% filter(Date >= '2022-07-18'), 'DBHCalc <= 5', "S", 0.005)
   
 
 # All Trees ---------------------------------------------------------------
