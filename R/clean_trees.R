@@ -9,7 +9,21 @@ clean_trees <- function(trees_raw, field_cc){
                                  Park == "Île-Bizard" ~ "nature",
                                  Park == "L'Anse-à-l'Orme" ~ "nature", 
                                  Park == "Pointe-aux-Prairies" ~ "nature",
-                                 .default = "city"))
+                                 .default = "city"),
+           Park = case_when(Park == "Adrien-D-Archambault" ~ "Adrien-D.-Archambault",
+                            Park == "Baldwin " ~ "Baldwin",
+                            Park == "Benny" ~ "Parc Benny", 
+                            Park == "Boisé-de-Saint-Sulpice" ~ "Boisé-du-Saint-Sulpice",
+                            Park == "Botanical Gardens " ~ "Jardin Botanique", 
+                            Park == "Cap-Saint-Jacques" ~ "Cap Saint-Jacques",
+                            Park == "Centennial" ~ "Parc Centennial",
+                            Park == "Fritz" ~ "Park Fritz",
+                            Park == "Coulée-Grou" ~ "Coulée Grou",
+                            Park == "Île-Bizard" ~ "Ile-Bizard",
+                            Park == "L'Anse-à-l'Orme" ~ "L'Anse-À-L'Orme",
+                            Park == "Lafontaine" ~ "La Fontaine",
+                            Park == "Saint-Gabriel " ~ "Parc Saint-Gabriel",
+                            .default = Park))
 
     
 # DBH ---------------------------------------------------------------------
