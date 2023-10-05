@@ -1,8 +1,9 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|34b75e2bab9bcae2|||||||||||||||
+.Random.seed|object|9694fd9671326009|||||||||||||||
 ag_bound|stem|0e6b3cff326b5bcd|545244b2ccbd30f0|05fd24bacf961142|270069734||t19451.6124182271s|8069128c041152d4|1301|qs|local|vector|||0.03||
 ag_bound_file|stem|d24d92d5a385c125|ac27b3e77360f6b3|ef46db3751d8e999|498860345|input/park_boundaries/mon_historical_ag_boundaries.gpkg|t19450.7032749064s|22c04e6244b71b04|98304|file|local|vector|||0||
 bb|stem|0096fc6f8d17243f|7a138206c983a1d0|d5952a468c1d9178|-55375157||t19450.7445118122s|2005da2f14a67e22|98|qs|local|vector|||0||
+calculate_div|function|56338b3731adcae3|||||||||||||||
 canopy_cover|function|bafde708fecf3e9d|||||||||||||||
 cc_2019|stem|f354785942bb787f|8cc8cfb14a7710f5|979e2d93f3046cb6|1255622624||t19605.7444425886s|3e5c076ac09b362e|879|qs|local|vector|||0.02||
 cc_2019_file|stem|95e2546d22ed7c5b|943253d62d9a2bc7|ef46db3751d8e999|-817222590|input/canopy/660_IndiceCanopee_2019.tif|t19450.7106030301s|08b22ea001524a7c|44833759|file|local|vector|||0||
@@ -23,20 +24,20 @@ field_cc|stem|59f82f645498887b|68739252b87ea3d4|9232b0866b92c35b|1927925432||t19
 field_sp_pts|stem|e2553097f3c52b22|debec20fc15ee416|5a67b371036ae2e2|1332763767||t19625.7625061027s|b816d999d90da7ed|5607|qs|local|vector|||0.09||
 for_bound|stem|231ef65431c3f806|fbea0a282a0cf6ba|783e982ec5b64cb4|-277368246||t19451.6124180065s|67548d1b5f78ddbb|1004|qs|local|vector|||0.02||
 for_bound_file|stem|94b625bf717e5bd3|e33ac96027b342d5|ef46db3751d8e999|-2134189180|input/park_boundaries/mon_historical_for_boundaries.gpkg|t19282.6453429806s|4d517068c1712ea2|102400|file|local|vector|||0||
-full_study_parks|stem|77b913d3ad330fd5|6b726eed14671129|cdbb2cdab45c3cf9|-1663910474||t19451.6148659762s|6a026f961f2a9981|84482|qs|local|vector|||5.64|attribute variables are assumed to be spatially constant throughout all geometries. 1m22mReturning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.36mℹ39m Please use reframe instead.36mℹ39m When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.|
+full_study_parks|stem|77b913d3ad330fd5|6b726eed14671129|1fa1b3262e9dcc16|-1663910474||t19635.6476612697s||84482|qs|local|vector|||3.81|attribute variables are assumed to be spatially constant throughout all geometries. 1m22mReturning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.36mℹ39m Please use reframe instead.36mℹ39m When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.|numbers of columns of arguments do not match
 gps_sp_pts|stem|0f560a56c6e599d0|b60aa10e79b63ee2|6f745316175e369e|-1812725314||t19605.7444421384s|19a98f44d0408104|5047|qs|local|vector|||0.05||
 gps_sp_pts_file|stem|621569fe9edc1bfa|9803a3f92c391498|ef46db3751d8e999|1755735166|input/sampling_points/gps_sppts.gpkg|t19486.7340520431s|c2b52dd325d3488d|126976|file|local|vector|||0||
 ind_bound|stem|8745766441e255eb|8959ea5a8e813927|4648abbcd52f7152|1662704907||t19451.6124165227s|272db4869f17baf1|179737|qs|local|vector|||1.63||
-indices_trees|function|d729a8710b2a0888|||||||||||||||
-join_all_bounds|function|a61f6055aa9028eb|||||||||||||||
-join_study_parks|function|6663de7bf66c6f3e|||||||||||||||
+indices_trees|function|ee4cf78cc87dd3c7|||||||||||||||
+join_all_bounds|function|31f5fc4e3e0a2ba7|||||||||||||||
+join_study_parks|function|3594a5f8c2f23621|||||||||||||||
 list_sp_pts|function|1334eea8cd7ddc72|||||||||||||||
 mix_bound|stem|3a0c27c553fa4bb6|fe17b0f8cd8e28d4|9503b9379083b645|-787585454||t19451.6124184118s|a4623b34168b46e1|23691|qs|local|vector|||0.01||
 mix_bound_file|stem|f1b7c8bbd2bdcb79|a85cf84c67453141|ef46db3751d8e999|608167189|input/park_boundaries/mon_historical_mix_boundaries.gpkg|t19282.6483923614s|2d942a7fd66b3047|200704|file|local|vector|||0||
 mp_sp_pts|stem|cead046733e2d984|91ffc45b8792d7ed|4dc25178307ce92b|-1239842288||t19605.7444429375s|8a8cc38439dcaf29|4065|qs|local|vector|||0||
 mp_sp_pts_file|stem|5fa60562b99fe1dc|b83100938c82fe11|ef46db3751d8e999|-303180598|input/sampling_points/MP_points.kml|t19451.567920807s|505e8ad2cefd3189|63188|file|local|vector|||0||
 mtl_outline|stem|3c69b3bed1556064|e0aeaa509539b52e|0c97659f8d09abef|697573775||t19450.7451852435s|33a4fe8e9499c63d|1263462|qs|local|vector|||3.97|attribute variables are assumed to be spatially constant throughout all geometries|
-offic_study_parks|stem|fd78a4ad84a6ac65|a7dc400f1d21acc0|b7711c2b67a6a03d|548077235||t19605.7480791611s|e798df7fc8f77624|77156|qs|local|vector|||189.86|attribute variables are assumed to be spatially constant throughout all geometries. repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
+offic_study_parks|stem|85f998a45c580b4c|a7dc400f1d21acc0|6fe4401fc2618b94|548077235||t19635.6476146262s|f4b23f9f29525f7a|77214|qs|local|vector|||175.95|attribute variables are assumed to be spatially constant throughout all geometries. repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
 outline_mtl|function|edd0068874c96bd0|||||||||||||||
 parks_download|stem|4beffc89a6be1423|b86a4de592491927|68a1700da7dd5543|-383235620||t19450.7478861204s|5cb9fa9343d85e26|7239248|qs|local|vector|||232.92|repeating attributes for all subgeometries for which they may not be constant. attribute variables are assumed to be spatially constant throughout all geometries|
 parks_ind|function|9bc4c571d984d9f3|||||||||||||||
@@ -56,23 +57,47 @@ sp_pts_buff|stem|58354e4d0a1d16cb|f73498b2d27b7e31|0d273c23fd377c7d|1826599214||
 sp_pts_field|function|ed93366ea8be5324|||||||||||||||
 sp_pts_temp|function|a4a29767cbfc6c47|||||||||||||||
 sp_pts_temp_2022|function|a4a29767cbfc6c47|||||||||||||||
-study_parks_file|stem|1763d3a730b2fedb|5167cd364e9b7b00|fe1dda78cf7b32e4|-2019551501||t19451.6124180886s|c89ce475c7699453|785|qs|local|vector|||0||
-study_parks_file_file|stem|d43c0dad527f6f8f|228fda69600e6573|ef46db3751d8e999|472593120|input/studyparks.csv|t19128.7653896534s|a8fa5b2eb64d2369|1495|file|local|vector|||0||
+study_parks_file|stem|a867fca9e9dd005c|5167cd364e9b7b00|3377d3f1c85e7236|-2019551501||t19635.6441161177s|8964b151b5ff8af2|744|qs|local|vector|||0.02||
+study_parks_file_file|stem|9aec2d96baae2b30|228fda69600e6573|ef46db3751d8e999|472593120|input/studyparks.csv|t19635.6420053665s|0af72d451ee32ad9|1490|file|local|vector|||0||
 target_analysis_canopy|object|ffb669a163bf4fa0|||||||||||||||
-target_analysis_redo_canopy|object|f89b882b1be0fcfa|||||||||||||||
+target_analysis_redo_canopy|object|49a388dae4ddebec|||||||||||||||
 target_analysis_temp|object|7e2f8b871025cca0|||||||||||||||
-target_census_prep|object|3bbf0dcd3c50f83d|||||||||||||||
+target_census_prep|object|db4bfbf9a2d1c49c|||||||||||||||
 target_historical_boundaries|object|28353dd014084d7c|||||||||||||||
-target_park_prep|object|03a6c4b47d00bf4a|||||||||||||||
-target_park_sampling|object|fb1db0b08af620e0|||||||||||||||
+target_park_prep|object|9ef8b166dba20c68|||||||||||||||
+target_park_sampling|object|4d76ab7708d4109e|||||||||||||||
 target_park_soil_sampling|object|5eeccf361aa52ccf|||||||||||||||
 target_temp_sp_pts|object|885117aa103dd5ca|||||||||||||||
-target_tree_prep|object|9c18c426dad8c99a|||||||||||||||
+target_tree_prep|object|55e3def77102f0f0|||||||||||||||
 temp_sp_pts_2022|stem|8fb01e117ddef6fa|44f94ffe1c1d47fd|0aead257206c295a|1578158758||t19625.7625086256s|44409802c5f3d285|2582|qs|local|vector|||0.16||
 temp_sp_pts_2023|stem|2364869a1d449ff1|6a860e0450527f35|0aead257206c295a|-2084694524||t19625.7625091817s|86da6de5e65c6ce3|2585|qs|local|vector|||0.05||
 trees_clean|stem|10638f3e9f16084f|15fc1f915eaa8bec|3824d5e8b8442444|266292181||t19625.7921491776s|5a3f0128e378566f|139083|qs|local|vector|||67.95|1m22mThere were 3 warnings in mutate.The first warning was1m22m36mℹ39m In argument V1  .Primitiveas.doubleV1.Caused by warning33m39m NAs introduced by coercion1m22m36mℹ39m Run dplyrlast_dplyr_warnings to see the 2 remaining warnings.. 1m22mfuns was deprecated in dplyr 0.8.0.36mℹ39m Please use a list of either functions or lambdas Simple named list listmean  mean, median  median Auto named with tibblelst tibblelstmean, median Using lambdas list mean., trim  .2,  median., na.rm  TRUE. 1m22mDetected an unexpected manytomany relationship between x and y.36mℹ39m Row 1005 of x matches multiple rows in y.36mℹ39m Row 232 of y matches multiple rows in x.36mℹ39m If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
+trees_indices|stem|9e97ca6d6672c5b6|3a1e6d5cf6f6c81c|234f9a05e6649d93|-2061193202||t19635.6171633509s|76f810d09de40ca1|2702|qs|local|vector|||17.22||
 trees_raw|stem|abfd1d7fb5c3227e|a4f6c3ef8f7ce9a4|019463e51a107244|190882756||t19619.7269382151s|e24b9aa23f6e5160|55291|qs|local|vector|||0.03||
 trees_raw_file|stem|2274b4ce37ebf6f4|f8a04cfa11ac6daa|ef46db3751d8e999|840228939|input/trees_openrefine.csv|t19451.6491048699s|49cd3000a2e4ee1f|1097610|file|local|vector|||0||
 worm_pts|stem|c5fdff93406af4ff|bbe9340d42b4cfa7|95771f49b5853c78|256359856||t19605.8438991964s|4508a70eccb1e455|31037|qs|local|vector|||16.94||
 worm_pts_geom|stem||016839eaf5c589da|a74125c7dc7c4943|1592192426||t19450.7445534227s||0|qs|local|vector|||0||object sp_pts_buff not found
 worm_samples|function|ba3a9889af6b62af|||||||||||||||
+clean_census_da|function|70556a83b719e652
+target_analysis_redo_canopy|object|49a388dae4ddebec
+target_park_sampling|object|4d76ab7708d4109e
+sp_pts_field|function|ed93366ea8be5324
+replace_string|function|d8ff075b2cc56dfe
+list_sp_pts|function|1334eea8cd7ddc72
+.Random.seed|object|0a1d1a531aedcb2a
+target_park_prep|object|aec0de84d6282bb8
+soil_cores|function|b5396068332f535c
+pts_sp|function|ccb026feb937d420
+canopy_cover|function|bafde708fecf3e9d
+join_study_parks|function|6663de7bf66c6f3e
+download_csv|function|327b85caf08a3af3
+worm_samples|function|ba3a9889af6b62af
+target_census_prep|object|db4bfbf9a2d1c49c
+join_all_bounds|function|66d3db75487da51e
+target_tree_prep|object|55e3def77102f0f0
+download_shp|function|b10d876b1501a079
+calculate_div|function|56338b3731adcae3
+clean_trees|function|9e26c480a7db5847
+sp_pts_temp|function|a4a29767cbfc6c47
+sample_points|function|326a0896a5225260
+indices_trees|function|ee4cf78cc87dd3c7

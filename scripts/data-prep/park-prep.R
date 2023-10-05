@@ -51,7 +51,7 @@ target_park_prep <- c(
   # full park spatial dataset
   tar_target(
     full_study_parks, 
-    join_all_bounds(ind_bound, ag_bound, for_bound, mix_bound, offic_study_parks)
+    join_all_bounds(ind_bound, ag_bound, for_bound, mix_bound, offic_study_parks, study_parks_file)
   ),
   
   # save
