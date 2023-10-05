@@ -42,4 +42,5 @@ conflicts_prefer(renv::autoload,
                  base::`%in%`,
                  dplyr::filter,
                  dplyr::first,
+                 base::match,
                  .quiet = T) 
