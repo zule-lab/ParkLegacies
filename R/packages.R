@@ -29,6 +29,8 @@ library(datetime)
 
 library(iNEXT)
 
+library(xfun)
+
 library(knitr)
 library(rmarkdown)
 
