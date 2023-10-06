@@ -1,9 +1,10 @@
-indices_trees <- function(trees_clean){
+indices_trees <- function(trees_clean, full_study_parks){
   
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
 
 # Large Trees -------------------------------------------------------------
-  large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08) 
+  large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08)
+    
   
 # Small Trees -------------------------------------------------------------
   # plots before Jul 18, 2022 did not have mini plots for small trees 
@@ -17,6 +18,12 @@ indices_trees <- function(trees_clean){
 # All Trees ---------------------------------------------------------------
   # join measurements from small trees and large trees together
   
+  # create full dataset w study park info (geom and age)
+  full <- full_study_parks %>%
+    rename(Park = Name) %>% 
+    inner_join(large_div, by = c("Park", "PastLandUse"))
+  
+  return(full)
   
 }
 
