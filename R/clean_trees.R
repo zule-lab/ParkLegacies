@@ -17,7 +17,7 @@ clean_trees <- function(trees_raw, field_cc){
                             Park == "Botanical Gardens " ~ "Jardin Botanique", 
                             Park == "Cap-Saint-Jacques" ~ "Cap Saint-Jacques",
                             Park == "Centennial" ~ "Parc Centennial",
-                            Park == "Fritz" ~ "Park Fritz",
+                            Park == "Fritz" ~ "Parc Fritz",
                             Park == "Coulée-Grou" ~ "Coulée Grou",
                             Park == "Île-Bizard" ~ "Ile-Bizard",
                             Park == "L'Anse-à-l'Orme" ~ "L'Anse-À-L'Orme",
