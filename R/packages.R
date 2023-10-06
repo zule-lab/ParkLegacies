@@ -30,6 +30,7 @@ library(datetime)
 library(iNEXT)
 
 library(xfun)
+library(janitor)
 
 library(knitr)
 library(rmarkdown)
