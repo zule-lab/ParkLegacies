@@ -8,7 +8,7 @@ target_temp_prep <- c(
   tar_target(
     temp_dfs, 
     read.csv(temp_files) %>%
-      mutate(PlotID = str_extract(basename(xfun::sans_ext(temp_files)), "[^_]+")),
+      mutate(plot_id = str_extract(basename(xfun::sans_ext(temp_files)), "[^_]+")),
     pattern = map(temp_files)
   ),
   
