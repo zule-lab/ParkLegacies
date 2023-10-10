@@ -1,11 +1,60 @@
 indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts){
-  
- con_tod <- calc_tod(temp_clean, sensor_con_pts)
 
- parks_tod <- calc_tod(temp_clean, sensor_pts)
- 
- 
+  # calculate time of day for all temp pts
+  con_tod <- calc_tod(temp_clean, sensor_con_pts)
+  parks_tod <- calc_tod(temp_clean, sensor_pts)
   
+  # need to manually alter Lingshan's control
+  
+  # calculate max and mean temps for day and night 
+  con_calc <- con_tod %>%
+    group_by(plot_id, date, tod) %>%
+    summarize(max = max(temperature_c),
+              mean = mean(temperature_c)) %>%
+    pivot_wider(names_from = tod, values_from = c(max, mean)) %>%
+    rename(con_id = plot_id)
+ 
+  parks_calc <- parks_tod %>%
+    group_by(Park, date, tod) %>%
+    summarize(max = max(temperature_c),
+              mean = mean(temperature_c)) %>%
+    pivot_wider(names_from = tod, values_from = c(max, mean))
+  
+  # calculate difference between parks and controls 
+  temp_diff <- parks_calc %>%
+    mutate(con_id = case_when(Park == 'Adrien-D.-Archambault' ~ 'CON-AT', # this control was stolen so going w closest one
+                              Park == 'Angrignon' ~ 'CON-ANG',
+                              Park == 'Arthur-Therrien' ~ 'CON-AT',
+                              Park == 'Baldwin' ~ 'CON-LAF-BAL',
+                              Park == 'Bois-de-Liesse' ~ 'CON-BDL',
+                              Park == 'Bois-de-Saraguay' ~ 'CON-BDS',
+                              Park == 'Boisé-du-Saint-Sulpice' ~ 'CON-FB-SS',
+                              Park == 'Cap Saint-Jacques' ~ 'CON-LALO-CSJ',
+                              Park == 'Coulée Grou' ~ 'CON-PaP-CG',
+                              Park == 'Félix-Leclerc' ~ 'CON-F-L',
+                              Park == 'Frédéric-Back' ~ 'CON-FB-SS',
+                              Park == 'Ile-Bizard' ~ 'CON-IB',
+                              Park == 'Jardin Botanique' ~ 'CON-LAL-LAF-JAR',
+                              Park == 'Jean-Drapeau' ~ 'CON-LAL-LAF-JAR',
+                              Park == "L'Anse-À-L'Orme" ~ 'CON-LALO-CSJ',
+                              Park == 'La Fontaine' ~ 'CON-LAF-BAL',
+                              Park == 'Lafond' ~ 'CON-LAL-LAF-JAR',
+                              Park == 'Lalancette' ~ 'CON-LAL-LAF-JAR',
+                              Park == 'Marguerite-Bourgeoys' ~ 'CON-MB-SG',
+                              Park == 'Parc Centennial' ~ 'CON-CENTENNIAL', 
+                              Park == 'Parc Fritz' ~ 'CON-Fritz', 
+                              Park == 'Parc Saint-Gabriel' ~ 'CON-MB-SG',
+                              Park == 'Père-Marquette ' ~ 'CON-P-M',
+                              Park == 'Pointe-aux-Prairies' ~ 'CON-PaP-CG',
+                              Park == 'Promenade Bellerive' ~ 'CON-P-B',
+                              Park == 'Thomas-Chapas' ~ 'CON-P-B'
+                              )) %>%
+    left_join(., con_calc, by = c('con_id', 'date'), suffix = c("", "_con")) %>%
+    mutate(max_day_diff = max_day_con - max_day,
+           mean_day_diff = mean_day_con - mean_day,
+           max_night_diff = max_night_con - max_night,
+           mean_night_diff = mean_night_con - mean_night
+           )
   
 }
 
