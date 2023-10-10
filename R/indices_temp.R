@@ -4,8 +4,6 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts){
   con_tod <- calc_tod(temp_clean, sensor_con_pts)
   parks_tod <- calc_tod(temp_clean, sensor_pts)
   
-  # need to manually alter Lingshan's control
-  
   # calculate max and mean temps for day and night 
   con_calc <- con_tod %>%
     group_by(plot_id, date, tod) %>%
