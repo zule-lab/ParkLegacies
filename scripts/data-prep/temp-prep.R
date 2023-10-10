@@ -31,7 +31,7 @@ target_temp_prep <- c(
   
   tar_target(
     temp_indices,
-    indices_temp(temp_clean, sensor_pts, sensor_con_pts)
+    indices_temp(temp_clean, sensor_pts, sensor_con_pts, trees_indices)
   )
   
 )

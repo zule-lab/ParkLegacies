@@ -1,4 +1,4 @@
-indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts){
+indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
 
   # calculate time of day for all temp pts
   con_tod <- calc_tod(temp_clean, sensor_con_pts)
@@ -45,14 +45,15 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts){
                               Park == 'Père-Marquette ' ~ 'CON-P-M',
                               Park == 'Pointe-aux-Prairies' ~ 'CON-PaP-CG',
                               Park == 'Promenade Bellerive' ~ 'CON-P-B',
-                              Park == 'Thomas-Chapas' ~ 'CON-P-B'
+                              Park == 'Thomas-Chapais' ~ 'CON-P-B'
                               )) %>%
     left_join(., con_calc, by = c('con_id', 'date'), suffix = c("", "_con")) %>%
     mutate(max_day_diff = max_day_con - max_day,
            mean_day_diff = mean_day_con - mean_day,
            max_night_diff = max_night_con - max_night,
            mean_night_diff = mean_night_con - mean_night
-           )
+           ) %>%
+    left_join(., trees_indices, by = 'Park')
   
 }
 
