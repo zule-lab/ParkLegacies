@@ -10,7 +10,8 @@ clean_temp <- function(temp_dfs, trees_clean){
            date_time = strptime(date_time, format = "%Y-%m-%d %H:%M:%S")) %>%
     select(-c("index", "x", "rh", "temp")) %>%
     drop_na(temperature_c) %>%
-    filter(date_time > '2023-06-01 00:00:00' & date_time <'2023-07-31 12:00:00')
+    filter(date_time > '2023-06-01 00:00:00' & date_time <'2023-07-31 12:00:00',
+           temperature_c < 50)
   
   plots <- trees_clean %>%
     select(Park, PlotID, catcan_2019, catcan_2021) %>% 
