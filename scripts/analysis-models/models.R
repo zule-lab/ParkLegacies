@@ -1,18 +1,13 @@
 targets_models <- c(
   
   tar_target(
-    generative_data,
-    data_generative()
-  )#,
+    model_data,
+    data_model(temp_indices, trees_indices)
+  ),
   
-  #tar_target(
-  #  generative_model,
-  #  model_generative()
-  #),
-  #
-  #tar_target(
-  #  data_model,
-  #  model_data()
-  #)
+  tar_target(
+    mean_day_model_prior,
+    model_mean_day()
+  )
   
 )
