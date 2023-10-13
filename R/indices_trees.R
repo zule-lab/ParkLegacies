@@ -21,7 +21,9 @@ indices_trees <- function(trees_clean, full_study_parks){
   # create full dataset w study park info (geom and age)
   full <- full_study_parks %>%
     rename(Park = Name) %>% 
-    inner_join(large_div, by = c("Park", "PastLandUse"))
+    inner_join(large_div, by = c("Park", "PastLandUse")) %>%
+    mutate(Park = case_when(Park == "Père-Marquette" ~ "Père-Marquette ",
+                            .default = Park))
   
   return(full)
   
@@ -88,7 +90,8 @@ calculate_div <- function(trees_clean, desDBH, suffix, area) {
     mutate(Park = sub("_.*", "", Code),
            PastLandUse = sub(".*_", "", Code),
            Area_L = area) %>%
-    full_join(abundance, by = c('Park', 'PastLandUse'))
+    full_join(abundance, by = c('Park', 'PastLandUse')) %>%
+    mutate(Dens = Abundance_L/Area_L)
     
     return(div_w)
 }
