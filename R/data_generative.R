@@ -1,22 +1,30 @@
 data_generative <- function(){
-  
+
   # we predict previously forested will have highest tree density,
   # agricultural will have lowest
-  data_for <- data.frame(plu = 'forested', dens = rnorm(1000, mean = 0, sd = 1000))
-  data_ag <- data.frame(plu = 'agricultural', dens = rnorm(1000, mean = 3000, sd = 1000))
-  data_ind <- data.frame(plu = 'industrial', dens = rnorm(1000, mean = 5000, sd = 1000))
-  
   # we predict that tree size and tree richness will be lowest in industrial sites and highest 
   # in forested sites
   
-  data_for$size <- rnorm(1000, mean = 20, sd = 5)
-  data_ag$size <- rnorm(1000, mean  = 15, sd = 5)
-  data_ind$size <- rnorm(1000, mean = 10, sd = 5)
+  avgs_dens <- c("forested" = 3000, "agricultural" = 2000, "industrial" = 2500)
+  avgs_size <- c("forested" = 20, "agricultural" = 15, "industrial" = 13)
+  avgs_richness <- c("forested" = 10, "agricultural" = 9, "industrial" = 8)
   
-  data_for$div <- rnorm(1000, mean = 12, sd = 2)
-  data_ag$div <- rnorm(1000, mean = 10, sd = 2)
-  data_ind$div <- rnorm(1000, mean = 8, sd = 2)
-   
+  # relative influence of each relationship on temp
+  b_D <- 0.008
+  b_S <- 0.009
+  b_R <- 0.001
+  
+  gen <- tibble(group = rep(names(avgs_dens), each = 100),
+         mu_dens = avgs_dens[group],
+         dens = rnorm(length(mu_dens), mean = mu_dens, sd = 1000),
+         dens_s = scale(dens),
+         mu_size = avgs_size[group],
+         size = rnorm(length(mu_size), mean = mu_size, sd = 5),
+         size_s = scale(size),
+         mu_richness = avgs_richness[group],
+         richness = rnorm(length(mu_richness), mean = mu_richness, sd = 2),
+         richness_s = scale(richness),
+         temp = rnorm(length(mu_dens), b_D*dens + b_S*size + b_R*richness, 4))
 
   
   
