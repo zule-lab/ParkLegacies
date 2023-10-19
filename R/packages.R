@@ -21,6 +21,10 @@ library(stringr)
 library(readr)
 library(tibble)
 
+library(brms)
+library(cmdstanr)
+library(tidybayes)
+
 library(ggplot2)
 library(ggdag)
 library(ggspatial)
