@@ -15,7 +15,7 @@ targets_models <- c(
     brm(temp ~ group + dens_s + size_s + richness_s,
         data = generative_data,
         family = gaussian(),
-        priors = c(
+        prior = c(
           prior(normal(0, 0.5), class = "Intercept"),
           prior(normal(0, 0.5), class = "b"),
           prior(exponential(2), class = "sigma")
