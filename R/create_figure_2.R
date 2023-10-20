@@ -1,4 +1,4 @@
-create_figure_2 <- function(full_study_parks, sp_pts){
+create_figure_2 <- function(full_study_parks, field_sp_pts){
   
 
 # Montreal boundary files -------------------------------------------------
@@ -39,16 +39,34 @@ create_figure_2 <- function(full_study_parks, sp_pts){
     geom_sf(fill = '#99acc3', data = mpols) + 
     coord_sf(xlim = c(bbi['xmin'], bbi['xmax']),
              ylim = c(bbi['ymin'], bbi['ymax'])) +
-    theme(panel.border = element_rect(size = 1, fill = NA),
+    theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
-          panel.grid = element_line(color = '#73776F', size = 0.2),
+          panel.grid = element_line(color = '#73776F', linewidth = 0.2),
           axis.text = element_text(size = 11, color = 'black'),
           axis.title = element_blank(), 
           plot.background = element_rect(fill = NA, colour = NA))
 
 # Single park plot --------------------------------------------------------
   
+  ang <- full_study_parks %>%
+    filter(Name == 'Angrignon')
   
+  ang_pts <- field_sp_pts %>%
+    filter(str_detect(PlotID, 'FOR1-|AGR1-')) %>% 
+    mutate(canopy = case_when(str_detect(PlotID, 'HIGH') ~ 'High',
+                              str_detect(PlotID, 'MED') ~ 'Medium',
+                              str_detect(PlotID, 'LOW') ~ 'Low'))
+  
+  ggplot() + 
+    geom_sf(data = ang, aes(fill = PastLandUse)) + 
+    geom_sf(data = ang_pts, aes(colour = canopy)) + 
+    theme(panel.border = element_rect(linewidth = 1, fill = NA),
+          panel.background = element_rect(fill = '#ddc48d'),
+          panel.grid = element_line(color = '#73776F', linewidth = 0.2),
+          axis.text = element_text(size = 11, color = 'black'),
+          axis.title = element_blank(), 
+          plot.background = element_rect(fill = NA, colour = NA))
+    
   
 
 # Sampling plot -----------------------------------------------------------
