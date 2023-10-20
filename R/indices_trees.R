@@ -9,9 +9,18 @@ indices_trees <- function(trees_clean, full_study_parks){
 # Small Trees -------------------------------------------------------------
   # plots before Jul 18, 2022 did not have mini plots for small trees 
   # only going to use plots Jul 18 and later for diversity 
-  # abundance will be offset by area in the model so can include all plots
-  #TODO: current bug in iNEXT that I don't know how to get around??
+  small_nondiv <- trees_clean %>% 
+    filter(Date < '2022-07-18' & DBHCalc <= 5) %>%
+    mutate(Area = 0.08) %>% 
+    group_by(Park, PastLandUse) %>% 
+    reframe(Park = trimws(Park),
+            Abundance_S = n(),
+            DBH_med_S = median(DBHCalc),
+            DBH_sd_S = sd(DBHCalc),
+            Dens_S = Abundance_S/Area) %>%
+    unique()
   
+  #TODO: current bug in iNEXT that I don't know how to get around??
   #small_div <- calculate_div(trees_clean %>% filter(Date >= '2022-07-18'), 'DBHCalc <= 5', "S", 0.005)
   
 
@@ -89,9 +98,9 @@ calculate_div <- function(trees_clean, desDBH, suffix, area) {
     rename_with(~ new_columns, all_of(old_columns)) %>%
     mutate(Park = sub("_.*", "", Code),
            PastLandUse = sub(".*_", "", Code),
-           Area_L = area) %>%
+           Area = area) %>%
     full_join(abundance, by = c('Park', 'PastLandUse')) %>%
-    mutate(Dens = Abundance_L/Area_L)
+    mutate(!!paste0('Dens_', suffix) := Abundance_L/Area)
     
     return(div_w)
 }
