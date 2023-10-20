@@ -16,8 +16,8 @@ targets_models <- c(
         data = generative_data,
         family = gaussian(),
         prior = c(
-          prior(normal(0, 0.5), class = "Intercept"),
-          prior(normal(0, 0.5), class = "b"),
+          prior(normal(0, 1), class = "Intercept"),
+          prior(normal(0, 1), class = "b"),
           prior(exponential(2), class = "sigma")
         ),
         sample_prior = 'only',
@@ -32,8 +32,8 @@ targets_models <- c(
         data = generative_data,
         family = gaussian(),
         prior = c(
-          prior(normal(0, 0.5), class = "Intercept"),
-          prior(normal(0, 0.5), class = "b"),
+          prior(normal(0, 1), class = "Intercept"),
+          prior(normal(0, 1), class = "b"),
           prior(exponential(2), class = "sigma")
         ),
         backend = 'cmdstanr',
