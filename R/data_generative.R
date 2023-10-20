@@ -10,9 +10,9 @@ data_generative <- function(){
   avgs_richness <- c("forested" = 10, "agricultural" = 9, "industrial" = 8)
   
   # relative influence of each relationship on temp
-  b_D <- 0.008
-  b_S <- 0.009
-  b_R <- 0.001
+  b_D <- 2.5
+  b_S <- 3
+  b_R <- 1
   
   gen <- tibble(group = rep(names(avgs_dens), each = 100),
          mu_dens = avgs_dens[group],
@@ -24,7 +24,7 @@ data_generative <- function(){
          mu_richness = avgs_richness[group],
          richness = rnorm(length(mu_richness), mean = mu_richness, sd = 2),
          richness_s = scale(richness),
-         temp = rnorm(length(mu_dens), b_D*dens + b_S*size + b_R*richness, 4))
+         temp = rnorm(length(mu_dens), b_D*dens_s + b_S*size_s + b_R*richness_s + 30, 0.5))
 
   
   
