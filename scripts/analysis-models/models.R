@@ -11,8 +11,24 @@ targets_models <- c(
   ),
   
   tar_target(
+    model_prior,
+    brm(temp ~ 1 + group:dens_s + group:size_s + group:richness_s,
+        data = generative_data,
+        family = gaussian(),
+        prior = c(
+          prior(normal(0, 0.5), class = "Intercept"),
+          prior(normal(0, 0.5), class = "b"),
+          prior(exponential(2), class = "sigma")
+        ),
+        sample_prior = 'only',
+        backend = 'cmdstanr',
+        iter = 1000,
+        chains = 8)
+  ),
+  
+  tar_target(
     gen_model,
-    brm(temp ~ group + dens_s + size_s + richness_s,
+    brm(temp ~ 1 + group:dens_s + group:size_s + group:richness_s,
         data = generative_data,
         family = gaussian(),
         prior = c(
