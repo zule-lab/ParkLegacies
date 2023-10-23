@@ -28,12 +28,12 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   mpols <- st_cast(mpols, "MULTIPOLYGON")
   mpols <- st_as_sf(st_make_valid(mpols))
   
-
+  
 # Montreal plot -----------------------------------------------------------
   
   bbi <- st_bbox(st_buffer(allpolys, 2.5))
   
-  ggplot() +
+  mtl <- ggplot() +
     geom_sf(fill = '#ceb99b', data = allpolys) + 
     geom_sf(fill = '#678d58', col = NA, data = full_study_parks) +
     geom_sf(fill = '#99acc3', data = mpols) + 
@@ -46,6 +46,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
           axis.title = element_blank(), 
           plot.background = element_rect(fill = NA, colour = NA))
 
+  
 # Single park plot --------------------------------------------------------
   
   ang <- full_study_parks %>%
@@ -57,25 +58,34 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
                               str_detect(PlotID, 'MED') ~ 'Medium',
                               str_detect(PlotID, 'LOW') ~ 'Low'))
   
-  ggplot() + 
+  angrignon <- ggplot() + 
     geom_sf(data = ang, aes(fill = PastLandUse)) + 
     geom_sf(data = ang_pts, aes(colour = canopy)) + 
+  #  geom_sf(fill = '#99acc3', data = mpols) +
+  #  geom_sf(aes(color = '#666666'), data = roads) + 
+    labs(fill = "", colour = "") +
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
           panel.grid = element_line(color = '#73776F', linewidth = 0.2),
           axis.text = element_text(size = 11, color = 'black'),
           axis.title = element_blank(), 
-          plot.background = element_rect(fill = NA, colour = NA))
+          plot.background = element_rect(fill = NA, colour = NA),
+          legend.position = 'top')
     
   
-
-# Sampling plot -----------------------------------------------------------
-  
-  
-  
-
 # All ---------------------------------------------------------------------
-
   
+  arrowA <- data.frame(x1 = 15, x2 = 23, y1 = 7.25, y2 = 8.75)
+  
+  ggplot() +
+    coord_equal(xlim = c(0, 40), ylim = c(0, 20), expand = FALSE) +
+    annotation_custom(ggplotGrob(mtl), xmin = 0, xmax = 20, ymin = 0, 
+                      ymax = 20) +
+    annotation_custom(ggplotGrob(angrignon), xmin = 20, xmax = 40, ymin = 3, 
+                      ymax = 18) +
+    geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2), data = arrowA, 
+                 linewidth = 1, arrow = arrow(), lineend = "round") +
+     
+    theme_void() 
   
 }
