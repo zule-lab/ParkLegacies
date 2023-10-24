@@ -33,18 +33,29 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   
   bbi <- st_bbox(st_buffer(allpolys, 2.5))
   
+  # transform study parks into points for easier visualization
+  study_pts <- full_study_parks %>% 
+    filter(Name != 'Boisé Jean-Milot' & Name != 'Monseigneur-J.-A.-Richard') %>%
+    st_make_valid() %>%
+    st_centroid()
+  
+  study_pts$PastLandUse <- factor(study_pts$PastLandUse, levels = c('Industrial', 'Agricultural', 'Forested'))
+  
   mtl <- ggplot() +
     geom_sf(fill = '#ceb99b', data = allpolys) + 
-    geom_sf(fill = '#678d58', col = NA, data = full_study_parks) +
     geom_sf(fill = '#99acc3', data = mpols) + 
+    geom_sf(aes(colour = PastLandUse), size = 2, data = study_pts) +
     coord_sf(xlim = c(bbi['xmin'], bbi['xmax']),
              ylim = c(bbi['ymin'], bbi['ymax'])) +
+    scale_colour_manual(values = c("#c2d6a4", "#669d62", "#1e3d14")) + 
+    labs(colour = "") + 
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
           panel.grid = element_line(color = '#73776F', linewidth = 0.2),
           axis.text = element_text(size = 11, color = 'black'),
           axis.title = element_blank(), 
-          plot.background = element_rect(fill = NA, colour = NA))
+          plot.background = element_rect(fill = NA, colour = NA),
+          legend.position = 'top')
 
   
 # Single park plot --------------------------------------------------------
@@ -56,14 +67,20 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
     filter(str_detect(PlotID, 'FOR1-|AGR1-')) %>% 
     mutate(canopy = case_when(str_detect(PlotID, 'HIGH') ~ 'High',
                               str_detect(PlotID, 'MED') ~ 'Medium',
-                              str_detect(PlotID, 'LOW') ~ 'Low'))
+                              str_detect(PlotID, 'LOW') ~ 'Low')) 
+  ang_pts$canopy <- factor(ang_pts$canopy, levels = c('Low', 'Medium', 'High'))
+  
+  bba <- st_bbox(ang)
   
   angrignon <- ggplot() + 
     geom_sf(data = ang, aes(fill = PastLandUse)) + 
-    geom_sf(data = ang_pts, aes(colour = canopy)) + 
-  #  geom_sf(fill = '#99acc3', data = mpols) +
-  #  geom_sf(aes(color = '#666666'), data = roads) + 
-    labs(fill = "", colour = "") +
+    geom_sf(data = ang_pts, aes(shape = canopy)) + 
+    geom_sf(fill = '#99acc3', data = mpols) +
+    coord_sf(xlim = c(bba['xmin'], bba['xmax']),
+             ylim = c(bba['ymin'], bba['ymax'])) +
+    scale_fill_manual(values = c("#669d62", "#1e3d14")) + 
+    scale_shape_manual(values = c(2, 4, 16)) + 
+    labs(fill = "", shape = "") +
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
           panel.grid = element_line(color = '#73776F', linewidth = 0.2),
@@ -75,9 +92,9 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   
 # All ---------------------------------------------------------------------
   
-  arrowA <- data.frame(x1 = 15, x2 = 23, y1 = 7.25, y2 = 8.75)
+  arrowA <- data.frame(x1 = 14.75, x2 = 23, y1 = 6, y2 = 8.75)
   
-  ggplot() +
+  full <- ggplot() +
     coord_equal(xlim = c(0, 40), ylim = c(0, 20), expand = FALSE) +
     annotation_custom(ggplotGrob(mtl), xmin = 0, xmax = 20, ymin = 0, 
                       ymax = 20) +
@@ -87,5 +104,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
                  linewidth = 1, arrow = arrow(), lineend = "round") +
      
     theme_void() 
+  
+  ggsave('graphics/figure_2.png', full, width = 12, height = 14, units = 'in', dpi = 450)
   
 }
