@@ -11,7 +11,7 @@ targets_models <- c(
   ),
   
   tar_target(
-    model_prior,
+    prior_model,
     brm(temp ~ 1 + group:dens_s + group:size_s + group:richness_s,
         data = generative_data,
         family = gaussian(),
@@ -28,13 +28,13 @@ targets_models <- c(
   
   tar_target(
     prior_diagnostics,
-    model_diagnostics(model_prior, 'prior_only')
+    model_diagnostics(prior_model, 'prior_only')
   ),
   
   tar_target(
     prior_range,
-    conditional_effects(model_prior)
-    # prior ranges look good
+    conditional_effects(prior_model)
+    # prior ranges look representative of data ranges
   ),
   
   tar_target(
@@ -55,6 +55,21 @@ targets_models <- c(
   tar_target(
     generative_diagnostics,
     model_diagnostics(gen_model, 'generative')
+  ),
+  
+  tar_target(
+    max_day_model,
+    brm(max_day ~ 1 + PastLandUse:Dens_L_s +  PastLandUse:SR_L_s +  PastLandUse:DBH_med_L_s,
+        data = real_data,
+        family = gaussian(),
+        prior = c(
+          prior(normal(0, 0.5), class = "Intercept"),
+          prior(normal(0, 0.5), class = "b"),
+          prior(exponential(1), class = "sigma")
+        ),
+        backend = 'cmdstanr',
+        iter = 1000,
+        chains = 8)
   )
   
 )
