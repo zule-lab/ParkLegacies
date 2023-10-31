@@ -24,6 +24,7 @@ library(tibble)
 library(brms)
 library(cmdstanr)
 library(tidybayes)
+library(bayesplot)
 
 library(ggplot2)
 library(ggdag)
