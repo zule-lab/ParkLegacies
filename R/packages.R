@@ -31,6 +31,7 @@ library(ggdag)
 library(ggspatial)
 library(ggdist)
 library(grid)
+library(patchwork)
 
 library(datetime)
 
