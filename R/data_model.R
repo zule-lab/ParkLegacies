@@ -10,7 +10,7 @@ data_model <- function(temp_indices, type){
            SR_L_s = scale(SR_L), 
            DBH_med_L_s = scale(DBH_med_L), 
            Dens_L_s = scale(Dens_L)) %>% 
-    select(c(Park, max_day, max_night, mean_day, mean_night, PastLandUse, SR_L_s, DBH_med_L_s, Dens_L_s))
+    select(c(Park, Age, max_day, max_night, mean_day, mean_night, PastLandUse, SR_L_s, DBH_med_L_s, Dens_L_s))
   }
   
   else if (type == 'landuse'){
