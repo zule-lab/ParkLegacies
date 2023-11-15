@@ -2853,6 +2853,23 @@
       "Repository": "CRAN",
       "Hash": "0d0056cc5383fbc240ccd0cb584bf436"
     },
+    "zarg": {
+      "Package": "zarg",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "zarg",
+      "RemoteUsername": "robitalec",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "d41cceeb3480ced291e5d1d7941a430f188d2186",
+      "Requirements": [
+        "brms",
+        "qs",
+        "targets"
+      ],
+      "Hash": "203dfc7311c71f0d7961ff3408cb10e1"
+    },
     "zoo": {
       "Package": "zoo",
       "Version": "1.8-12",
