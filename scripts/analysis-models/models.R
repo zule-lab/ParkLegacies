@@ -18,8 +18,8 @@ targets_models <- c(
     formula = mean_day ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s + (1 | Park),
     family = gaussian(),
     prior = c( 
-          prior(normal(0, 1), class = "b"),
-          prior(normal(0, 1), class = "Intercept"),
+          prior(normal(0, 0.5), class = "b"),
+          prior(normal(0, 0.5), class = "Intercept"),
           prior(exponential(1), class = "sd"),
           prior(exponential(1), class = "sigma")
         ),
@@ -96,5 +96,7 @@ targets_models <- c(
     chains = 2,
     cores = 2
   )
+
+ # add model diagnostics
   
 )
