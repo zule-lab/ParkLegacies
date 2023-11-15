@@ -6,12 +6,6 @@ library(conflicted)
 library(targets)
 library(tarchetypes)
 library(renv)
-library(qs)
-
-library(sf)
-library(stars)
-library(terra)
-library(osmdata)
 
 library(data.table)
 library(dplyr)
@@ -20,11 +14,6 @@ library(purrr)
 library(stringr)
 library(readr)
 library(tibble)
-
-library(brms)
-library(cmdstanr)
-library(tidybayes)
-library(bayesplot)
 
 library(ggplot2)
 library(ggdag)
@@ -36,6 +25,7 @@ library(patchwork)
 library(datetime)
 
 library(iNEXT)
+library(zarg)
 
 library(suncalc)
 
@@ -46,7 +36,21 @@ library(knitr)
 library(rmarkdown)
 
 library(downloader)
-suppressMessages(library(bit64))
+
+suppressPackageStartupMessages({
+  library(sf)
+  library(stars)
+  library(terra)
+  library(osmdata)
+  
+  library(qs)
+  library(bit64)
+  
+  library(brms)
+  library(cmdstanr)
+  library(tidybayes)
+  library(bayesplot)
+})
 
 conflicts_prefer(renv::autoload, 
                  renv::embed, 
