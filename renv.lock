@@ -1322,13 +1322,8 @@
     "iNEXT": {
       "Package": "iNEXT",
       "Version": "3.0.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "iNEXT",
-      "RemoteUsername": "AnneChao",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "9a2ceb13fb39bcf8fc6d4804f61b8b3c4d66bbe4",
+      "Source": "Repository",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "Rcpp",
@@ -1337,7 +1332,7 @@
         "reshape2",
         "stats"
       ],
-      "Hash": "5053f72b6b3e6c74573d7a0b7a073fde"
+      "Hash": "2ffb7027ef96c234c3c1ce6fef215ff8"
     },
     "igraph": {
       "Package": "igraph",
