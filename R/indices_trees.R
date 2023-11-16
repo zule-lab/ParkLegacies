@@ -51,7 +51,7 @@ calculate_div <- function(trees_clean, desDBH, suffix, area) {
     unique()
   
   
-  names <- trees_clean %>%
+  names <- trees_clean %>% 
     group_by(Park, PastLandUse) %>%
     summarize() %>% 
     mutate(Names = paste0(trimws(Park), "_", PastLandUse))
