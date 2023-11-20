@@ -82,7 +82,7 @@ targets_models <- c(
   # Model 5: total effect of past land-use type on cooling
   zar_brms(
     model_5,
-    formula = mean_day_s ~ 1 + mean_day_con_s + PastLandUse + Age + (1 | Park),
+    formula = mean_day_s ~ 1 + mean_day_con_s + PastLandUse + Age_s + (1 | Park),
     data = real_data_cooling,
     family = gaussian(),
     prior = c( 

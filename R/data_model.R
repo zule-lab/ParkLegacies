@@ -7,6 +7,7 @@ data_model <- function(temp_indices, type){
     ungroup() %>% 
     mutate(Park = as.factor(Park),
            PastLandUse = as.factor(PastLandUse),
+           Age_s = scale(Age),
            mean_day_s = scale(mean_day), 
            mean_day_con_s = scale(mean_day_con),
            mean_night_s = scale(mean_night), 
@@ -14,7 +15,7 @@ data_model <- function(temp_indices, type){
            SR_L_s = scale(SR_L), 
            DBH_med_L_s = scale(DBH_med_L), 
            Dens_L_s = scale(Dens_L)) %>% 
-    select(c(Park, date, Age, mean_day_s, mean_day_con_s, mean_night_s, mean_night_con_s, PastLandUse, SR_L_s, DBH_med_L_s, Dens_L_s))
+    select(c(Park, date, Age_s, mean_day_s, mean_day_con_s, mean_night_s, mean_night_con_s, PastLandUse, SR_L_s, DBH_med_L_s, Dens_L_s))
   }
   
   else if (type == 'landuse'){
