@@ -33,7 +33,7 @@ targets_models <- c(
   # Model 2-4: total effect of past land use type on tree variables 
   zar_brms(
     model_2,
-    formula = Dens_L_s ~ 1 + (1 | PastLandUse),
+    formula = Dens_L ~ 1 + (1 | PastLandUse),
     data = real_data_landuse,
     family = gaussian(),
     prior = c(
@@ -49,7 +49,7 @@ targets_models <- c(
 
   zar_brms(
     model_3,
-    formula = DBH_med_L_s ~ 1 + (1 | PastLandUse),
+    formula = DBH_med_L ~ 1 + (1 | PastLandUse),
     data = real_data_landuse,
     family = gaussian(),
     prior = c(
@@ -65,7 +65,7 @@ targets_models <- c(
 
   zar_brms(
     model_4,
-    formula = SR_L_s ~ 1 + (1 | PastLandUse),
+    formula = SR_L ~ 1 + (1 | PastLandUse),
     data = real_data_landuse,
     family = gaussian(),
     prior = c(
@@ -99,17 +99,30 @@ targets_models <- c(
 
   tar_target(
     model_list,
-    list(model_1_brms_sample, model_2_brms_sample, model_3_brms_sample, model_4_brms_sample, model_5_brms_sample)
+    list(model_1_brms_sample = "model_1", model_2_brms_sample = "model_2", model_3_brms_sample = "model_3", 
+         model_4_brms_sample = "model_4", model_5_brms_sample = "model_5")
+  ),
+
+  tar_target(
+    prior_model_list,
+    list(model_1_brms_sample_prior = "prior_model_1", model_2_brms_sample_prior = "prior_model_2", 
+         model_3_brms_sample_prior = "prior_model_3", model_4_brms_sample_prior = "prior_model_4", 
+         model_5_brms_sample_prior = "prior_model_5")
+  ),
+  
+  # add prior checks 
+  tar_target(
+    model_prior_plots,
+    plot_prior(prior_model_list, -3, 3, names(prior_model_list)),
+    pattern = map(prior_model_list)
   ),
 
   # model diagnostics
   tar_target(
     model_diag_plots,
-    model_diagnostics(model_list),
+    model_diagnostics(model_list, names(model_list)),
     pattern = map(model_list)
   )
   
- # add prior checks 
-
   
 )
