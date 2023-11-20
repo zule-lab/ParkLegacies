@@ -23,7 +23,7 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
     mutate(con_id = case_when(Park == 'Adrien-D.-Archambault' ~ 'CON-AT', # this control was stolen so going w closest one
                               Park == 'Angrignon' ~ 'CON-ANG',
                               Park == 'Arthur-Therrien' ~ 'CON-AT',
-                              Park == 'Baldwin' ~ 'CON-LAF-BAL',
+                              Park == 'Baldwin' ~ 'CON-LAL-LAF-JAR',
                               Park == 'Bois-de-Liesse' ~ 'CON-BDL',
                               Park == 'Bois-de-Saraguay' ~ 'CON-BDS',
                               Park == 'Boisé-du-Saint-Sulpice' ~ 'CON-FB-SS',
@@ -35,7 +35,7 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
                               Park == 'Jardin Botanique' ~ 'CON-LAL-LAF-JAR',
                               Park == 'Jean-Drapeau' ~ 'CON-LAL-LAF-JAR',
                               Park == "L'Anse-À-L'Orme" ~ 'CON-LALO-CSJ',
-                              Park == 'La Fontaine' ~ 'CON-LAF-BAL',
+                              Park == 'La Fontaine' ~ 'CON-LAL-LAF-JAR',
                               Park == 'Lafond' ~ 'CON-LAL-LAF-JAR',
                               Park == 'Lalancette' ~ 'CON-LAL-LAF-JAR',
                               Park == 'Marguerite-Bourgeoys' ~ 'CON-MB-SG',
@@ -44,7 +44,7 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
                               Park == 'Parc Saint-Gabriel' ~ 'CON-MB-SG',
                               Park == 'Père-Marquette ' ~ 'CON-P-M',
                               Park == 'Pointe-aux-Prairies' ~ 'CON-PaP-CG',
-                              Park == 'Promenade Bellerive' ~ 'CON-P-B',
+                              Park == 'Promenade-Bellerive' ~ 'CON-P-B',
                               Park == 'Thomas-Chapais' ~ 'CON-P-B'
                               )) %>%
     left_join(., con_calc, by = c('con_id', 'date'), suffix = c("", "_con")) %>%
