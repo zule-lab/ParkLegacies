@@ -1,4 +1,6 @@
-plot_prior <- function(mod, xmin, xmax, model_name){
+plot_prior <- function(model_list, xmin, xmax, model_name){
+  
+  mod <- model_list[[1]]
   
   # how to sequence data
   seq_d <- seq(xmin, xmax, by = 0.5)
