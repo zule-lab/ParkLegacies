@@ -19,7 +19,7 @@ model_diagnostics <- function(model_list){
   coda::gelman.plot(as.mcmc(model_fit)[, "b_Intercept", ])
   
   # posterior check
-  pp_check(model_fit, ndraws = 100)
+  plot(pp_check(model_fit, ndraws = 100))
   
   dev.off()
 
