@@ -1,6 +1,10 @@
-model_diagnostics <- function(model_fit, model_name){
+model_diagnostics <- function(model_list){
   
-  pdf(paste0('graphics/diagnostics/', model_name, '.pdf'))
+  model_name <- names(model_list)
+  
+  model_fit <- model_list[[1]]
+  
+  pdf(paste0('graphics/diagnostics/', model_name, '_diagnostics.pdf'))
   
   # basic model fit plots
   plot(model_fit)

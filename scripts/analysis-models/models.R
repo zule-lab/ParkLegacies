@@ -99,29 +99,24 @@ targets_models <- c(
 
   tar_target(
     model_list,
-    list(model_1_brms_sample = "model_1", model_2_brms_sample = "model_2", model_3_brms_sample = "model_3", 
-         model_4_brms_sample = "model_4", model_5_brms_sample = "model_5")
+    list(model_1_brms_sample, model_2_brms_sample, model_3_brms_sample, 
+         model_4_brms_sample, model_5_brms_sample) %>%
+      setNames(., c('model_1', 'model_2', 'model_3', 'model_4', 'model_5'))
   ),
 
   tar_target(
     prior_model_list,
-    list(model_1_brms_sample_prior = "prior_model_1", model_2_brms_sample_prior = "prior_model_2", 
-         model_3_brms_sample_prior = "prior_model_3", model_4_brms_sample_prior = "prior_model_4", 
-         model_5_brms_sample_prior = "prior_model_5")
-  ),
-  
-  # add prior checks 
-  tar_target(
-    model_prior_plots,
-    plot_prior(prior_model_list, -3, 3, names(prior_model_list)),
-    pattern = map(prior_model_list)
+    list(model_1_brms_sample_prior, model_2_brms_sample_prior, model_3_brms_sample_prior, 
+         model_4_brms_sample_prior, model_5_brms_sample_prior) %>%
+      setNames(., c('prior_model_1', 'prior_model_2', 'prior_model_3', 'prior_model_4', 'prior_model_5'))
   ),
 
   # model diagnostics
   tar_target(
     model_diag_plots,
-    model_diagnostics(model_list, names(model_list)),
-    pattern = map(model_list)
+    model_diagnostics(model_list),
+    pattern = map(model_list), 
+    iteration = "list"
   )
   
   
