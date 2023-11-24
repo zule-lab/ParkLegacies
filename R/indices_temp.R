@@ -9,14 +9,12 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
     group_by(plot_id, date, tod) %>%
     summarize(max = max(temperature_c),
               mean = mean(temperature_c)) %>%
-    pivot_wider(names_from = tod, values_from = c(max, mean)) %>%
     rename(con_id = plot_id)
  
   parks_calc <- parks_tod %>%
     group_by(Park, date, tod) %>%
     summarize(max = max(temperature_c),
-              mean = mean(temperature_c)) %>%
-    pivot_wider(names_from = tod, values_from = c(max, mean))
+              mean = mean(temperature_c))
   
   # calculate difference between parks and controls 
   temp_diff <- parks_calc %>%
@@ -47,14 +45,9 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
                               Park == 'Promenade-Bellerive' ~ 'CON-P-B',
                               Park == 'Thomas-Chapais' ~ 'CON-P-B'
                               )) %>%
-    left_join(., con_calc, by = c('con_id', 'date'), suffix = c("", "_con")) %>%
-    mutate(max_day_diff = max_day_con - max_day,
-           mean_day_diff = mean_day_con - mean_day,
-           max_night_diff = max_night_con - max_night,
-           mean_night_diff = mean_night_con - mean_night
-           ) %>%
+    left_join(., con_calc, by = c('con_id', 'date', 'tod'), suffix = c("", "_con")) %>%
     left_join(., trees_indices, by = 'Park')
-  
+
 }
 
 
