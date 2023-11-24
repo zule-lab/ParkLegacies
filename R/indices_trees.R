@@ -23,14 +23,31 @@ indices_trees <- function(trees_clean, full_study_parks){
   #TODO: current bug in iNEXT that I don't know how to get around??
   #small_div <- calculate_div(trees_clean %>% filter(Date >= '2022-07-18'), 'DBHCalc <= 5', "S", 0.005)
   
+  # temporary fix to iNEXT issues 
+  small_mini <- trees_clean %>% 
+    filter(Date >= '2022-07-18' & DBHCalc <= 5) %>% 
+    mutate(Area = 0.005) %>% 
+    group_by(Park, PastLandUse) %>% 
+    reframe(Park = trimws(Park),
+            Abundance_S = n(),
+            DBH_med_S = median(DBHCalc),
+            DBH_sd_S = sd(DBHCalc),
+            Dens_S = Abundance_S/Area) %>% 
+    unique()
+  
+  # all small trees
+  small_trees <- rbind(small_nondiv, small_mini)
+  
 
 # All Trees ---------------------------------------------------------------
   # join measurements from small trees and large trees together
+  all_trees <- left_join(large_div, small_trees, by = c("Park", "PastLandUse"))
+  
   
   # create full dataset w study park info (geom and age)
   full <- full_study_parks %>%
     rename(Park = Name) %>% 
-    inner_join(large_div, by = c("Park", "PastLandUse")) %>%
+    inner_join(all_trees, by = c("Park", "PastLandUse")) %>%
     mutate(Park = case_when(Park == "Père-Marquette" ~ "Père-Marquette ",
                             .default = Park))
   
