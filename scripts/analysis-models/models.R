@@ -5,7 +5,7 @@ targets_models <- c(
   # Model 1: direct effect of tree variables on cooling and how those effects vary by past land use type 
   zar_brms(
     model_1,
-    formula = mean_s ~ 1 + mean_con_s + Dens_L_s + DBH_med_L_s + SR_L_s + (1 | tod) + (1 | Park),
+    formula = mean_s ~ 1 + mean_con_s + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
     family = gaussian(),
     prior = c( 
           prior(normal(0, 0.5), class = "b"),
@@ -24,8 +24,9 @@ targets_models <- c(
              mean_con_s = scale(mean_con),
              SR_L_s = scale(SR_L), 
              DBH_med_L_s = scale(DBH_med_L), 
-             Dens_L_s = scale(Dens_L)),
-    init = 0,
+             Dens_L_s = scale(Dens_L),
+             Dens_S_s = scale(Dens_S),
+             DBH_med_S_s = scale(DBH_med_S)),
     chains = 4,
     iter = 1000,
     cores = 4
