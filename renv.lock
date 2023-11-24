@@ -1347,17 +1347,18 @@
     },
     "iNEXT": {
       "Package": "iNEXT",
-      "Version": "2.0.20",
+      "Version": "3.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
+        "Rcpp",
         "ggplot2",
         "graphics",
         "reshape2",
         "stats"
       ],
-      "Hash": "2d0ed52460656d80e4190d20aa1a164a"
+      "Hash": "2ffb7027ef96c234c3c1ce6fef215ff8"
     },
     "igraph": {
       "Package": "igraph",
