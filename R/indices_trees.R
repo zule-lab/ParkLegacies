@@ -3,14 +3,14 @@ indices_trees <- function(trees_clean, full_study_parks){
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
 
 # Large Trees -------------------------------------------------------------
-  large_div <- calculate_div(trees_clean, 'DBHCalc > 5', "L", 0.08)
+  large_div <- calculate_div(trees_clean, 'DBHCalc >= 5', "L", 0.08)
     
   
 # Small Trees -------------------------------------------------------------
   # plots before Jul 18, 2022 did not have mini plots for small trees 
   # only going to use plots Jul 18 and later for diversity 
   small_nondiv <- trees_clean %>% 
-    filter(Date < '2022-07-18' & DBHCalc <= 5) %>%
+    filter(Date < '2022-07-18' & DBHCalc < 5) %>%
     mutate(Area = 0.08) %>% 
     group_by(Park, PastLandUse) %>% 
     reframe(Park = trimws(Park),
@@ -25,7 +25,7 @@ indices_trees <- function(trees_clean, full_study_parks){
   
   # temporary fix to iNEXT issues 
   small_mini <- trees_clean %>% 
-    filter(Date >= '2022-07-18' & DBHCalc <= 5) %>% 
+    filter(Date >= '2022-07-18' & DBHCalc < 5) %>% 
     mutate(Area = 0.005) %>% 
     group_by(Park, PastLandUse) %>% 
     reframe(Park = trimws(Park),
