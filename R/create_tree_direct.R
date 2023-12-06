@@ -22,7 +22,7 @@ create_tree_direct <- function(model_list){
 make_plot <- function(model, label){
   
   model %>%
-    spread_draws(b_Intercept, r_PastLandUse[condition,]) %>%
+    spread_draws(`b_Intercept`, r_PastLandUse[condition,]) %>%
     mutate(condition_mean = b_Intercept + r_PastLandUse) %>%
     ggplot(aes(y = condition, x = condition_mean)) +
     stat_halfeye() + 
