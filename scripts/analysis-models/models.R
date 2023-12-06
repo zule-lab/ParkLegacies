@@ -28,19 +28,24 @@ targets_models <- c(
              Dens_S_s = scale(Dens_S),
              DBH_med_S_s = scale(DBH_med_S)),
     chains = 4,
+    #control = list(adapt_delta = 0.9),
     iter = 1000,
     cores = 4
   ),
   
   # Model 2-4: total effect of past land use type on tree variables 
   zar_brms(
-    model_2,
-    formula = Dens_L ~ 1 + (1 | PastLandUse),
+    model_2_L,
+    formula = Dens_L_log ~ 1 + (1| PastLandUse),
     data = temp_indices %>% 
-      mutate(PastLandUse = as.factor(PastLandUse)),
+      ungroup() %>%
+      select(c(Park, Dens_L, PastLandUse)) %>% 
+      mutate(PastLandUse = as.factor(PastLandUse),
+             Dens_L_log = log(Dens_L)) %>% 
+      distinct(),
     family = gaussian(),
     prior = c(
-      prior(normal(0, 0.5), class = "Intercept"),
+      prior(normal(7, 2), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
@@ -51,13 +56,17 @@ targets_models <- c(
   ),
 
   zar_brms(
-    model_3,
-    formula = DBH_med_L ~ 1 + (1 | PastLandUse),
+    model_2_S,
+    formula = Dens_S_log ~ 1 + (1 | PastLandUse),
     data = temp_indices %>% 
-      mutate(PastLandUse = as.factor(PastLandUse)),
+      ungroup() %>%
+      select(c(Park, Dens_S, PastLandUse)) %>% 
+      mutate(PastLandUse = as.factor(PastLandUse),
+             Dens_S_log = log(Dens_S)) %>% 
+      distinct(),
     family = gaussian(),
     prior = c(
-      prior(normal(0, 0.5), class = "Intercept"),
+      prior(normal(8, 3), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
@@ -68,13 +77,17 @@ targets_models <- c(
   ),
 
   zar_brms(
-    model_4,
-    formula = SR_L ~ 1 + (1 | PastLandUse),
+    model_3_L,
+    formula = DBH_med_L_log ~ 1 + (1 | PastLandUse),
     data = temp_indices %>% 
-      mutate(PastLandUse = as.factor(PastLandUse)),
+      ungroup() %>%
+      select(c(Park, DBH_med_L, PastLandUse)) %>% 
+      mutate(PastLandUse = as.factor(PastLandUse),
+             DBH_med_L_log = log(DBH_med_L)) %>% 
+      distinct(),
     family = gaussian(),
     prior = c(
-      prior(normal(0, 0.5), class = "Intercept"),
+      prior(normal(2.5, 1), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
@@ -83,11 +96,53 @@ targets_models <- c(
     chains = 4,
     cores = 4
   ),
-  
+
+  zar_brms(
+    model_3_S,
+    formula = DBH_med_S_log ~ 1 + (1 | PastLandUse),
+    data = temp_indices %>% 
+      ungroup() %>%
+      select(c(Park, DBH_med_S, PastLandUse)) %>% 
+      mutate(PastLandUse = as.factor(PastLandUse),
+             DBH_med_S_log = log(DBH_med_S)) %>% 
+      distinct(),
+    family = gaussian(),
+    prior = c(
+      prior(normal(1, 0.5), class = "Intercept"),
+      prior(normal(0, 0.2), class = "sd"),
+      prior(exponential(1), class = "sigma")
+    ),
+    backend = 'cmdstanr',
+    iter = 1000,
+    chains = 4,
+    cores = 4
+  ),
+
+  zar_brms(
+    model_4_L,
+    formula = SR_L_log ~ 1 + (1 | PastLandUse),
+    data = temp_indices %>% 
+      ungroup() %>%
+      select(c(Park, SR_L, PastLandUse)) %>% 
+      mutate(PastLandUse = as.factor(PastLandUse),
+             SR_L_log = log(SR_L)) %>% 
+      distinct(),
+    family = gaussian(),
+    prior = c(
+      prior(normal(2, 1), class = "Intercept"),
+      prior(normal(0, 0.2), class = "sd"),
+      prior(exponential(1), class = "sigma")
+    ),
+    backend = 'cmdstanr',
+    iter = 1000,
+    chains = 4,
+    cores = 4
+  ),
+
   # Model 5: total effect of past land-use type on cooling
   zar_brms(
     model_5,
-    formula = mean_day_s ~ 1 + mean_day_con_s + PastLandUse + Age_s + (1 | tod) + (1 | Park),
+    formula = mean_s ~ 1 + mean_con_s + PastLandUse + Age_s + (1 | tod) + (1 | Park),
     data = temp_indices %>% 
       ungroup() %>% 
       mutate(Park = as.factor(Park),
@@ -103,7 +158,7 @@ targets_models <- c(
     prior = c( 
       prior(normal(0, 0.5), class = "b"),
       prior(normal(0, 0.5), class = "Intercept"),
-      prior(exponential(1), class = "sd"),
+      prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
     backend = 'cmdstanr',
@@ -114,9 +169,9 @@ targets_models <- c(
 
   tar_target(
     model_list,
-    list(model_1_brms_sample, model_2_brms_sample, model_3_brms_sample, 
-         model_4_brms_sample, model_5_brms_sample) %>%
-      setNames(., c('model_1', 'model_2', 'model_3', 'model_4', 'model_5'))
+    list(model_1_brms_sample, model_2_L_brms_sample, model_2_S_brms_sample, model_3_L_brms_sample, 
+         model_3_S_brms_sample, model_4_L_brms_sample, model_5_brms_sample) %>%
+      setNames(., c('model_1', 'model_2_L', 'model_2_S', 'model_3_L', 'model_3_S', 'model_4_L', 'model_5'))
   ),
 
   tar_target(
