@@ -23,10 +23,12 @@ make_plot <- function(model, label){
   
   model %>%
     spread_draws(`b_Intercept`, r_PastLandUse[condition,]) %>%
-    mutate(condition_mean = b_Intercept + r_PastLandUse) %>%
+    mutate(condition_mean = exp(b_Intercept + r_PastLandUse)) %>%
     ggplot(aes(y = condition, x = condition_mean)) +
     stat_halfeye() + 
     theme_classic() + 
-    labs(y = "", x = label)
+    labs(y = "", x = label)  
+    
+    
 }
   
