@@ -9,8 +9,8 @@ targets_models <- c(
     family = gaussian(),
     prior = c( 
           prior(normal(0, 0.5), class = "b"),
-          prior(normal(0, 2), class = "Intercept"),
-          prior(normal(0, 0.2), class = "sd"),
+          prior(normal(0, 3), class = "Intercept"),
+          prior(exponential(1), class = "sd"),
           prior(exponential(1), class = "sigma")
         ),
     backend = 'cmdstanr',
@@ -19,7 +19,7 @@ targets_models <- c(
       mutate(Park = as.factor(Park),
              PastLandUse = as.factor(PastLandUse),
              tod = as.factor(tod),
-             cooling = ((mean - mean_con) - (mean(mean - mean_con))),
+             cooling = ((mean - mean_con) - mean(mean - mean_con)),
              SR_L_s = scale(SR_L), 
              DBH_med_L_s = scale(DBH_med_L), 
              Dens_L_s = scale(Dens_L),
@@ -151,7 +151,7 @@ targets_models <- c(
     family = gaussian(),
     prior = c( 
       prior(normal(0, 0.5), class = "b"),
-      prior(normal(0, 2), class = "Intercept"),
+      prior(normal(0, 3), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
