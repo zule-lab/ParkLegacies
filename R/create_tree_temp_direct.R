@@ -38,7 +38,7 @@ create_tree_temp_direct <- function(model_list, temp_indices){
       ggplot(aes(x = get(x), y = .epred, color = factor(tod))) +
       stat_lineribbon() +
       scale_fill_brewer(palette = "Greys") +
-      scale_color_viridis_d(direction = -1) + 
+      scale_color_brewer() + 
       theme_classic() + 
       theme(legend.position = "none")
       

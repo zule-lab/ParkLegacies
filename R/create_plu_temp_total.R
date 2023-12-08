@@ -9,7 +9,7 @@ create_plu_temp_total <- function(model_list, temp_indices){
                 re_formula = ~ (1 | tod)) %>%
     ggplot(aes(x = .epred, fill = PastLandUse, color = tod)) +
     stat_halfeye() +
-    scale_color_viridis_d(direction = -1) + 
+    scale_color_brewer() + 
     scale_fill_manual(values = c( "#c2d6a4", "#669d62","#1e3d14"), breaks = c('Industrial', 'Agricultural', 'Forested')) + 
     theme_classic() + 
     theme(strip.background = element_blank(),
