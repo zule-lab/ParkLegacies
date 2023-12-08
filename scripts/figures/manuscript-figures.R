@@ -12,7 +12,7 @@ target_manuscript_figures <- c(
   ),
   
   tar_target(
-    tree_direct,
+    plu_tree_direct,
     create_plu_tree_direct(model_list)
   )
   
