@@ -39,8 +39,9 @@ create_tree_temp_direct <- function(model_list, temp_indices){
       stat_lineribbon() +
       scale_fill_brewer(palette = "Greys") +
       scale_color_viridis_d(direction = -1) + 
-      theme(legend.position = "none") +
-      theme_classic()
+      theme_classic() + 
+      theme(legend.position = "none")
+      
     
     # extract plot breaks on x and y axes
     atx <- c(as.numeric(na.omit(layer_scales(p)$x$break_positions())))
@@ -73,7 +74,7 @@ create_tree_temp_direct <- function(model_list, temp_indices){
   })
   
   # patchwork a list of figures 
-  w <- wrap_plots(figlist)
+  w <- wrap_plots(figlist, guides = "collect")
   
   ggsave('graphics/tree_temp_direct.png', w, width = 12, height = 10, units = c('in'))
   
@@ -82,18 +83,13 @@ create_tree_temp_direct <- function(model_list, temp_indices){
 
 
 
-
 findname <- function(xunsc){
-  
-  if(xunsc == "Dens_L"){label <- "Mean Large Tree Density (trees / ha)"}
-  
-  if(xunsc == "DBH_med_L"){label <- "Median Large Tree Size (DBH cm)"}
-  
-  if(xunsc == "SR_L"){label <- "Mean Large Species Richness (# species)"}
-  
-  if(xunsc == "Dens_S"){label <- "Mean Small Tree Density (trees / ha)"}
-  
-  if(xunsc == "DBH_med_S"){label <- "Median Small Tree Size (DBH cm)"}
-  
-  
+  switch(
+    xunsc,
+    Dens_L = "Mean Large Tree Density (trees / ha)",
+    DBH_med_L = "Median Large Tree Size (DBH cm)",
+    SR_L = "Mean Large Species Richness (# species)",
+    Dens_S = "Mean Small Tree Density (trees / ha)",
+    DBH_med_S = "Median Small Tree Size (DBH cm)"
+  )
 }
