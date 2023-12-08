@@ -12,7 +12,7 @@ target_manuscript_figures <- c(
   
   tar_target(
     plu_temp_total,
-    create_plu_temp_total()
+    create_plu_temp_total(model_list)
   ),
   
   tar_target(
