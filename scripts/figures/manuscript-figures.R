@@ -12,8 +12,18 @@ target_manuscript_figures <- c(
   ),
   
   tar_target(
+    plu_temp_total,
+    create_plu_temp_total()
+  ),
+  
+  tar_target(
     plu_tree_direct,
     create_plu_tree_direct(model_list)
+  ),
+  
+  tar_target(
+    tree_temp_direct,
+    create_tree_temp_direct()
   )
   
   
