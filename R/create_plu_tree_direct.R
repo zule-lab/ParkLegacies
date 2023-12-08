@@ -1,4 +1,4 @@
-create_tree_direct <- function(model_list){
+create_plu_tree_direct <- function(model_list){
   
   tree_mods <- model_list[c('model_2_L', 'model_2_S', 'model_3_L', 'model_3_S', 'model_4_L')]
   
@@ -13,7 +13,7 @@ create_tree_direct <- function(model_list){
   
   p <- (mod2l + mod3l + mod4l) / (mod2s + mod3s) + plot_layout(guides = "collect")
   
-  ggsave('graphics/tree_direct.png', p, width = 12, height = 10, units = 'in')
+  ggsave('graphics/plu_tree_direct.png', p, width = 12, height = 10, units = 'in')
   
 }
 
