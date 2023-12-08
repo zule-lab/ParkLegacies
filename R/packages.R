@@ -36,6 +36,7 @@ suppressPackageStartupMessages({
   
   library(knitr)
   library(rmarkdown)
+  library(gt)
   
   library(downloader)
   
