@@ -22,7 +22,7 @@ target_manuscript_figures <- c(
   
   tar_target(
     tree_temp_direct,
-    create_tree_temp_direct()
+    create_tree_temp_direct(model_list, temp_indices)
   )
   
   
