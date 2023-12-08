@@ -7,7 +7,10 @@ targets_socioeconomics <- c(
   
   tar_target(
     socioec_table,
-    gt(socioec_data) %>% 
+    socioec_data %>%
+      mutate(PastLandUse = factor(PastLandUse, levels=c("Industrial", "Agricultural", "Forested"))) %>% 
+      arrange(PastLandUse) %>% 
+      gt() %>% 
       cols_label(
         PastLandUse = "**Past Land Use**",
         popdens = "**Population Density <br>(per km<sup>2)**",
