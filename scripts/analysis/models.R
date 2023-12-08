@@ -146,12 +146,12 @@ targets_models <- c(
       mutate(Park = as.factor(Park),
              PastLandUse = as.factor(PastLandUse),
              tod = as.factor(tod),
-             cooling = ((mean - mean_con) - (mean(mean - mean_con))),
+             cooling = scale((mean - mean_con) - (mean(mean - mean_con))),
              Age_s = scale(Age)),
     family = gaussian(),
     prior = c( 
       prior(normal(0, 0.5), class = "b"),
-      prior(normal(0, 3), class = "Intercept"),
+      prior(normal(0, 0.5), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
