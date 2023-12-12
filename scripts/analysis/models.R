@@ -19,7 +19,7 @@ targets_models <- c(
       mutate(Park = as.factor(Park),
              PastLandUse = as.factor(PastLandUse),
              tod = as.factor(tod),
-             cooling = scale((mean - mean_con) - mean(mean - mean_con)),
+             cooling = scale((mean_con - mean) - mean(mean_con - mean)),
              SR_L_s = scale(SR_L), 
              DBH_med_L_s = scale(DBH_med_L), 
              Dens_L_s = scale(Dens_L),
@@ -146,7 +146,7 @@ targets_models <- c(
       mutate(Park = as.factor(Park),
              PastLandUse = as.factor(PastLandUse),
              tod = as.factor(tod),
-             cooling = scale((mean - mean_con) - (mean(mean - mean_con))),
+             cooling = scale((mean_con - mean) - mean(mean_con - mean)),
              Age_s = scale(Age)),
     family = gaussian(),
     prior = c( 
