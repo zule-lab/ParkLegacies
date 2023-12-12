@@ -89,7 +89,7 @@ create_tree_temp_direct <- function(model_list, temp_indices){
   w <- figlist[[1]] + figlist[[2]] + figlist[[3]] + figlist[[4]] + figlist[[5]] + guide_area() + 
     plot_layout(guides ='collect')
   
-  ggsave('graphics/tree_temp_direct.png', w, width = 12, height = 10, units = c('in'))
+  ggsave('graphics/tree_temp_direct.png', w, width = 14, height = 12, units = c('in'))
   
   return(w)
   
