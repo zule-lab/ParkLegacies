@@ -1,0 +1,22 @@
+# Model 1
+
+Brms:
+
+```{r, eval = F, echo = T}
+formula = cooling ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
+
+family = gaussian(),
+
+prior = c( 
+          prior(normal(0, 0.5), class = "b"),
+          prior(normal(0, 0.5), class = "Intercept"),
+          prior(normal(0, 0.2), class = "sd"),
+          prior(exponential(1), class = "sigma")
+        )
+```
+
+Math stats:
+
+$$
+(\overline{\Delta T _{control}} - \overline{\Delta T _{park}}) - \overline{(\Delta T _{control} - \Delta T _{park})} = \beta_0 + \beta _{densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS
+$$
