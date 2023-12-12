@@ -46,9 +46,8 @@ create_tree_temp_direct <- function(model_list, temp_indices){
     p <- ggplot(data = temp_indices, aes(x = get(x))) +
       stat_lineribbon(aes(x = get(x), y = .epred, color = factor(tod)), data = epred) +
       scale_fill_brewer(palette = "Greys") +
-      scale_color_manual(values = c("#CFA35E","#45A291")) +
-      theme_classic() + 
-      theme(legend.position = "top")
+      scale_color_manual(values = c("#CFA35E","#45A291"), labels = c("Day", "Night")) +
+      theme_classic()
       
     
     # extract plot breaks on x and y axes
@@ -74,21 +73,25 @@ create_tree_temp_direct <- function(model_list, temp_indices){
     
     # unscale axis labels for interpretation
     p +
-      coord_cartesian(xlim = range(relvar_s)) +
+      coord_cartesian(xlim = range(relvar_s, na.rm = TRUE)) +
       scale_x_continuous(breaks = atx,
                          labels = round(atx * sdx + meanx, 1)) + 
-      scale_y_continuous(name = "Relative Cooling Effect (deg C)", 
+      scale_y_continuous(name = "Relative Cooling Effect (\u00B0C)", 
                          breaks = aty,
                          labels = round(aty * sd(temp_indices$cooling) + mean(temp_indices$cooling), 1)) + 
-      labs(x = label)
+      labs(x = label, colour = NULL, fill = "Credible Interval")
     
     
   })
   
+  
   # patchwork a list of figures 
-  w <- wrap_plots(figlist, guides = "collect")
+  w <- figlist[[1]] + figlist[[2]] + figlist[[3]] + figlist[[4]] + figlist[[5]] + guide_area() + 
+    plot_layout(guides ='collect')
   
   ggsave('graphics/tree_temp_direct.png', w, width = 12, height = 10, units = c('in'))
+  
+  return(w)
   
 }
 
@@ -98,10 +101,10 @@ create_tree_temp_direct <- function(model_list, temp_indices){
 findname <- function(xunsc){
   switch(
     xunsc,
-    Dens_L = "Mean Large Tree Density (trees / ha)",
-    DBH_med_L = "Median Large Tree Size (DBH cm)",
-    SR_L = "Mean Large Species Richness (# species)",
-    Dens_S = "Mean Small Tree Density (trees / ha)",
-    DBH_med_S = "Median Small Tree Size (DBH cm)"
+    Dens_L = "Mean Tree Density (trees >= 5 cm DBH / ha)",
+    DBH_med_L = "Median Tree Size (trees >= 5 cm DBH)",
+    SR_L = "Mean Species Richness (# species trees >= 5 cm DBH)",
+    Dens_S = "Mean Tree Density (trees < 5 cm DBH / ha)",
+    DBH_med_S = "Median Tree Size (trees < 5 cm DBH)"
   )
 }
