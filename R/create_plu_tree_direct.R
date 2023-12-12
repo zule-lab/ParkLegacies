@@ -15,6 +15,7 @@ create_plu_tree_direct <- function(model_list){
   
   ggsave('graphics/plu_tree_direct.png', p, width = 12, height = 10, units = 'in')
   
+  return(p)
 }
 
 
