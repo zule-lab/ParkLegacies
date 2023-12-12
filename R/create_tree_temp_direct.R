@@ -73,9 +73,9 @@ create_tree_temp_direct <- function(model_list, temp_indices){
     
     # unscale axis labels for interpretation
     p +
-      coord_cartesian(xlim = range(relvar_s, na.rm = TRUE)) +
+      coord_cartesian(xlim = range(relvar_s, na.rm = TRUE), expand = F) + 
       scale_x_continuous(breaks = atx,
-                         labels = round(atx * sdx + meanx, 1)) + 
+                         labels = round(atx * sdx + meanx, 1))  +
       scale_y_continuous(name = "Relative Cooling Effect (\u00B0C)", 
                          breaks = aty,
                          labels = round(aty * sd(temp_indices$cooling) + mean(temp_indices$cooling), 1)) + 
@@ -86,7 +86,8 @@ create_tree_temp_direct <- function(model_list, temp_indices){
   
   
   # patchwork a list of figures 
-  w <- figlist[[1]] + figlist[[2]] + figlist[[3]] + figlist[[4]] + figlist[[5]] + guide_area() + 
+  w <- figlist[[1]] + figlist[[2]] + figlist[[3]] + 
+    figlist[[4]] + figlist[[5]] + guide_area() + 
     plot_layout(guides ='collect')
   
   ggsave('graphics/tree_temp_direct.png', w, width = 14, height = 12, units = c('in'))
