@@ -6,7 +6,16 @@ create_tree_temp_direct <- function(model_list, temp_indices){
   # calculate unscaled cooling and add to temp indices
   temp_indices <- temp_indices %>% 
     ungroup() %>% 
-    mutate(cooling = ((mean - mean_con) - mean(mean - mean_con)))
+    mutate(Park = as.factor(Park),
+           PastLandUse = as.factor(PastLandUse),
+           tod = as.factor(tod),
+           cooling = ((mean_con - mean) - mean(mean_con - mean)),
+           cooling_s = scale((mean_con - mean) - mean(mean_con - mean)),
+           SR_L_s = scale(SR_L), 
+           DBH_med_L_s = scale(DBH_med_L), 
+           Dens_L_s = scale(Dens_L),
+           Dens_S_s = scale(Dens_S),
+           DBH_med_S_s = scale(DBH_med_S))
   
   # how to sequence data
   seq_d <- seq(-3, 3, length.out = 500)
@@ -34,23 +43,25 @@ create_tree_temp_direct <- function(model_list, temp_indices){
                   re_formula = ~ (1 | tod))
     
     # plot slopes
-    p <- epred %>% 
-      ggplot(aes(x = get(x), y = .epred, color = factor(tod))) +
-      stat_lineribbon() +
+    p <- ggplot(data = temp_indices, aes(x = get(x))) +
+      stat_lineribbon(aes(x = get(x), y = .epred, color = factor(tod)), data = epred) +
       scale_fill_brewer(palette = "Greys") +
-      scale_color_brewer() + 
+      scale_color_manual(values = c("#CFA35E","#45A291")) +
       theme_classic() + 
-      theme(legend.position = "none")
+      theme(legend.position = "top")
       
     
     # extract plot breaks on x and y axes
     atx <- c(as.numeric(na.omit(layer_scales(p)$x$break_positions())))
     aty <- c(as.numeric(na.omit(layer_scales(p)$y$break_positions())))
     
+    
     # get variable name we are altering (without _s on the end indicating scaled)
     xunsc <- str_sub(x, end = -3)
     
     # extract original variable from dataset
+    relvar_s <- temp_indices %>% 
+      select({{x}})
     relvar <- temp_indices %>%
       select({{xunsc}})
     
@@ -63,9 +74,10 @@ create_tree_temp_direct <- function(model_list, temp_indices){
     
     # unscale axis labels for interpretation
     p +
+      coord_cartesian(xlim = range(relvar_s)) +
       scale_x_continuous(breaks = atx,
                          labels = round(atx * sdx + meanx, 1)) + 
-      scale_y_continuous(name = "Cooling Effect - Mean Cooling Effect", 
+      scale_y_continuous(name = "Relative Cooling Effect (deg C)", 
                          breaks = aty,
                          labels = round(aty * sd(temp_indices$cooling) + mean(temp_indices$cooling), 1)) + 
       labs(x = label)
