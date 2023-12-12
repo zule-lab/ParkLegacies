@@ -44,6 +44,7 @@ create_tree_temp_direct <- function(model_list, temp_indices){
     
     # plot slopes
     p <- ggplot(data = temp_indices, aes(x = get(x))) +
+      geom_jitter(aes(y = cooling), width = .1, height = 0, alpha = 0.7, colour = "grey") +
       stat_lineribbon(aes(x = get(x), y = .epred, color = factor(tod)), data = epred) +
       scale_fill_brewer(palette = "Greys") +
       scale_color_manual(values = c("#CFA35E","#45A291"), labels = c("Day", "Night")) +
