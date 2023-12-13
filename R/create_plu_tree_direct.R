@@ -2,16 +2,16 @@ create_plu_tree_direct <- function(model_list){
   
   tree_mods <- model_list[c('model_2_L', 'model_2_S', 'model_3_L', 'model_3_S', 'model_4_L')]
   
-  names(tree_mods) <- c('Mean Tree (>= 5 cm DBH) Density', 'Mean Tree (< 5 cm DBH) Density', 'Median Tree (>= 5 cm DBH) Size', 'Median Tree (< 5 cm DBH) Size', 'Mean Tree (>= 5 cm DBH) Species Richness')
+  names(tree_mods) <- c('Mean Density (trees / square meter)', 'Mean Density (trees / square meter)', 'Median Size (DBH cm)', 'Median Tree Size (DBH cm)', 'Mean Species Richness (# species)')
   
-  mod2l <- make_plot(tree_mods[[1]], names(tree_mods[1]))
-  mod2s <- make_plot(tree_mods[[2]], names(tree_mods[2]))  
+  mod2l <- make_plot(tree_mods[[1]], names(tree_mods[1])) + ggtitle('Large Trees (>= 5 cm DBH)')
+  mod2s <- make_plot(tree_mods[[2]], names(tree_mods[2])) + ggtitle('Small Trees (< 5 cm DBH)') 
   mod3l <- make_plot(tree_mods[[3]], names(tree_mods[3]))
   mod3s <- make_plot(tree_mods[[4]], names(tree_mods[4]))
   mod4l <- make_plot(tree_mods[[5]], names(tree_mods[5]))
   
   
-  p <- (mod2l + mod3l + mod4l) / (mod2s + mod3s) + plot_layout(guides = "collect")
+  p <- mod2l + mod3l + mod4l + mod2s + mod3s + guide_area() + plot_layout(guides = "collect")
   
   ggsave('graphics/plu_tree_direct.png', p, width = 12, height = 10, units = 'in')
   
@@ -30,7 +30,9 @@ make_plot <- function(model, label){
     scale_fill_manual(values = c( "#1e3d14", "#669d62", "#c2d6a4")) +  
     stat_halfeye() + 
     theme_classic() + 
-    theme(legend.position = 'none') +
+    theme(legend.position = 'none',
+          plot.title = element_text(hjust = 0.5, size = 14, face = 'bold',
+                                    color = "black")) +
     labs(y = "", x = label)  
     
     
