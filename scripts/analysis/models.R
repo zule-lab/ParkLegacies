@@ -5,7 +5,7 @@ targets_models <- c(
   # Model 1: direct effect of tree variables on cooling and how those effects vary by past land use type 
   zar_brms(
     model_1,
-    formula = cooling ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
+    formula = cooling_s ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
     family = gaussian(),
     prior = c( 
           prior(normal(0, 0.5), class = "b"),
@@ -19,7 +19,7 @@ targets_models <- c(
       mutate(Park = as.factor(Park),
              PastLandUse = as.factor(PastLandUse),
              tod = as.factor(tod),
-             cooling = scale(cooling),
+             cooling_s = scale(cooling),
              SR_L_s = scale(SR_L), 
              DBH_med_L_s = scale(DBH_med_L), 
              Dens_L_s = scale(Dens_L),
@@ -140,13 +140,13 @@ targets_models <- c(
   # Model 5: total effect of past land-use type on cooling
   zar_brms(
     model_5,
-    formula = cooling ~ 1 + PastLandUse + Age_s + (1 | tod) + (1 | Park),
+    formula = cooling_s ~ 1 + PastLandUse + Age_s + (1 | tod) + (1 | Park),
     data = temp_indices %>% 
       ungroup() %>% 
       mutate(Park = as.factor(Park),
              PastLandUse = as.factor(PastLandUse),
              tod = as.factor(tod),
-             cooling = scale(cooling),
+             cooling_s = scale(cooling),
              Age_s = scale(Age)),
     family = gaussian(),
     prior = c( 
