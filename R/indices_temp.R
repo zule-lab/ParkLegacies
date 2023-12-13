@@ -47,6 +47,10 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
                               )) %>%
     left_join(., con_calc, by = c('con_id', 'date', 'tod'), suffix = c("", "_con")) %>%
     left_join(., trees_indices, by = 'Park')
+  
+  cooling <- temp_diff %>% 
+    rowwise() %>% 
+    mutate(cooling = (mean_con - mean) - mean(temp_diff$mean_con - temp_diff$mean))
 
 }
 

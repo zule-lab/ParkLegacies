@@ -1,9 +1,5 @@
 create_plu_temp_total <- function(model_list, temp_indices){
   
-  # calculate cooling effect 
-  temp_indices <- temp_indices %>% 
-    mutate(cooling = ((mean_con - mean) - mean(mean_con - mean)))
-
   # extract relevant model from list
   model_5 <- model_list[[7]]
   
