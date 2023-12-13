@@ -107,10 +107,10 @@ create_tree_temp_direct <- function(model_list, temp_indices){
 findname <- function(xunsc){
   switch(
     xunsc,
-    Dens_L = "Mean Tree Density (trees >= 5 cm DBH / ha)",
-    DBH_med_L = "Median Tree Size (trees >= 5 cm DBH)",
-    SR_L = "Mean Species Richness (# species trees >= 5 cm DBH)",
-    Dens_S = "Mean Tree Density (trees < 5 cm DBH / ha)",
-    DBH_med_S = "Median Tree Size (trees < 5 cm DBH)"
+    Dens_L = "Mean Density(trees / square meter)",
+    DBH_med_L = "Median Size (DBH cm)",
+    SR_L = "Mean Species Richness (# species)",
+    Dens_S = "Mean Tree Density (trees / square meter)",
+    DBH_med_S = "Median Tree Size (DBH cm)"
   )
 }
