@@ -47,8 +47,7 @@ create_tree_temp_direct <- function(model_list, temp_indices){
       stat_lineribbon(aes(x = get(x), y = .epred, color = factor(tod)), data = epred) +
       scale_fill_brewer(palette = "Greys") +
       scale_color_manual(values = c("#CFA35E","#45A291"), labels = c("Day", "Night")) +
-      theme_classic() + 
-      scale_y_continuous(limits = c(-6, 6), breaks = seq(-2, -1, 0.5, 0, 0.5, 1, 2))
+      theme_classic()
       
     
     # extract plot breaks on x and y axes
