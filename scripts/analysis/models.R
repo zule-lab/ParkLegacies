@@ -179,7 +179,7 @@ targets_models <- c(
   # prior checks 
   tar_render(
     prior_predictive,
-    'grahpics/diagnostics/prior_predictive.qmd'
+    'graphics/diagnostics/prior_predictive.qmd'
   ),
 
   # model diagnostics
