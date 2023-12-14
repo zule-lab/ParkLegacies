@@ -43,7 +43,7 @@ targets_models <- c(
       distinct(),
     family = gaussian(),
     prior = c(
-      prior(normal(7, 2), class = "Intercept"),
+      prior(normal(-1.5, 2), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
@@ -64,7 +64,7 @@ targets_models <- c(
       distinct(),
     family = gaussian(),
     prior = c(
-      prior(normal(8, 3), class = "Intercept"),
+      prior(normal(-1, 5), class = "Intercept"),
       prior(normal(0, 0.2), class = "sd"),
       prior(exponential(1), class = "sigma")
     ),
@@ -170,16 +170,16 @@ targets_models <- c(
 
   tar_target(
     prior_model_list,
-    list(model_1_brms_sample_prior, model_5_brms_sample_prior) %>%
-      setNames(., c('prior_model_1', 'prior_model_5'))
+    list(model_1_brms_sample_prior, model_2_L_brms_sample_prior, model_2_S_brms_sample_prior, model_3_L_brms_sample_prior, 
+         model_3_S_brms_sample_prior, model_4_L_brms_sample_prior, model_5_brms_sample_prior) %>%
+      setNames(., c('model_1_prior', 'model_2_L_prior', 'model_2_S_prior', 'model_3_L_prior', 'model_3_S_prior', 'model_4_L_prior', 'model_5_prior'))
+    
   ),
   
-  # add prior checks 
-  tar_target(
-    model_prior_plots,
-    plot_prior(prior_model_list, -3, 3, names(prior_model_list)),
-    pattern = map(prior_model_list),
-    iteration = "list"
+  # prior checks 
+  tar_render(
+    prior_predictive,
+    'grahpics/diagnostics/prior_predictive.qmd'
   ),
 
   # model diagnostics
