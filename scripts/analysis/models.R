@@ -183,11 +183,9 @@ targets_models <- c(
   ),
 
   # model diagnostics
-  tar_target(
-    model_diag_plots,
-    model_diagnostics(model_list),
-    pattern = map(model_list), 
-    iteration = "list"
+  tar_render(
+    model_diagnostics,
+    'graphics/diagnostics/model_diagnostics.qmd'
   )
   
   
