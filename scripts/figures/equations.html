@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Supplementary Figure S3 - Model Equations</title>
+<title>Supplementary Figure S3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2561,35 +2561,29 @@ vertical-align: -.125em;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#total-effect-of-past-land-use-on-cooling-effect" id="toc-total-effect-of-past-land-use-on-cooling-effect" class="nav-link active" data-scroll-target="#total-effect-of-past-land-use-on-cooling-effect">Total Effect of Past Land-Use on Cooling Effect</a>
+  <li><a href="#model-equations" id="toc-model-equations" class="nav-link active" data-scroll-target="#model-equations">Model Equations</a></li>
+  <li><a href="#total-effect-of-past-land-use-on-cooling-effect" id="toc-total-effect-of-past-land-use-on-cooling-effect" class="nav-link" data-scroll-target="#total-effect-of-past-land-use-on-cooling-effect">Total Effect of Past Land-Use on Cooling Effect</a>
   <ul class="collapse">
   <li><a href="#model-equation" id="toc-model-equation" class="nav-link" data-scroll-target="#model-equation">Model equation:</a></li>
   <li><a href="#brms-syntax" id="toc-brms-syntax" class="nav-link" data-scroll-target="#brms-syntax">brms syntax:</a></li>
-  <li><a href="#stan-code" id="toc-stan-code" class="nav-link" data-scroll-target="#stan-code">Stan code:</a></li>
   </ul></li>
   <li><a href="#direct-effect-of-past-land-use-on-forest-composition" id="toc-direct-effect-of-past-land-use-on-forest-composition" class="nav-link" data-scroll-target="#direct-effect-of-past-land-use-on-forest-composition">Direct Effect of Past Land-Use on Forest Composition</a>
   <ul class="collapse">
   <li><a href="#model-equation-1" id="toc-model-equation-1" class="nav-link" data-scroll-target="#model-equation-1">Model equation</a></li>
   <li><a href="#brms-syntax-1" id="toc-brms-syntax-1" class="nav-link" data-scroll-target="#brms-syntax-1">brms syntax:</a></li>
-  <li><a href="#stan-code-1" id="toc-stan-code-1" class="nav-link" data-scroll-target="#stan-code-1">Stan code:</a></li>
   <li><a href="#model-equation-2" id="toc-model-equation-2" class="nav-link" data-scroll-target="#model-equation-2">Model equation</a></li>
   <li><a href="#brms-syntax-2" id="toc-brms-syntax-2" class="nav-link" data-scroll-target="#brms-syntax-2">brms syntax:</a></li>
-  <li><a href="#stan-code-2" id="toc-stan-code-2" class="nav-link" data-scroll-target="#stan-code-2">Stan code:</a></li>
   <li><a href="#model-equation-3" id="toc-model-equation-3" class="nav-link" data-scroll-target="#model-equation-3">Model equation</a></li>
   <li><a href="#brms-syntax-3" id="toc-brms-syntax-3" class="nav-link" data-scroll-target="#brms-syntax-3">brms syntax:</a></li>
-  <li><a href="#stan-code-3" id="toc-stan-code-3" class="nav-link" data-scroll-target="#stan-code-3">Stan code:</a></li>
   <li><a href="#model-equation-4" id="toc-model-equation-4" class="nav-link" data-scroll-target="#model-equation-4">Model equation</a></li>
   <li><a href="#brms-syntax-4" id="toc-brms-syntax-4" class="nav-link" data-scroll-target="#brms-syntax-4">brms syntax:</a></li>
-  <li><a href="#stan-code-4" id="toc-stan-code-4" class="nav-link" data-scroll-target="#stan-code-4">Stan code:</a></li>
   <li><a href="#model-equation-5" id="toc-model-equation-5" class="nav-link" data-scroll-target="#model-equation-5">Model equation</a></li>
   <li><a href="#brms-syntax-5" id="toc-brms-syntax-5" class="nav-link" data-scroll-target="#brms-syntax-5">brms syntax:</a></li>
-  <li><a href="#stan-code-5" id="toc-stan-code-5" class="nav-link" data-scroll-target="#stan-code-5">Stan code:</a></li>
   </ul></li>
   <li><a href="#direct-effect-of-forest-composition-on-cooling-effect" id="toc-direct-effect-of-forest-composition-on-cooling-effect" class="nav-link" data-scroll-target="#direct-effect-of-forest-composition-on-cooling-effect">Direct Effect of Forest Composition on Cooling Effect</a>
   <ul class="collapse">
   <li><a href="#model-equation-6" id="toc-model-equation-6" class="nav-link" data-scroll-target="#model-equation-6">Model equation</a></li>
   <li><a href="#brms-syntax-6" id="toc-brms-syntax-6" class="nav-link" data-scroll-target="#brms-syntax-6">brms syntax:</a></li>
-  <li><a href="#stan-code-6" id="toc-stan-code-6" class="nav-link" data-scroll-target="#stan-code-6">Stan code:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2598,7 +2592,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Supplementary Figure S3 - Model Equations</h1>
+<h1 class="title">Supplementary Figure S3</h1>
 </div>
 
 
@@ -2616,22 +2610,36 @@ vertical-align: -.125em;
 <div class="cell">
 
 </div>
+<section id="model-equations" class="level2">
+<h2 class="anchored" data-anchor-id="model-equations">Model Equations</h2>
+<p>Below are the math stats notations, as well as the <code>brms</code> notations, for all models run in our paper. Importantly, we denote the relative cooling effect as:</p>
+<p><span class="math display">
+({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})}
+</span></p>
+<p>It is important to note that in this notation, <span class="math inline">T^{park}_i</span>, indicates the temperature averaged across all sensors and times for that date (split into daytime or nighttime). Similarly, <span class="math inline">T^{control}_i</span> indicates the average temperature for the control sensor, averaged across all times for that date (split into daytime or nighttime). <span class="math inline">\overline{(T ^{control} - T^{park})}</span> indicates the average of all temperature differences, taken across dates and sites.</p>
+</section>
 <section id="total-effect-of-past-land-use-on-cooling-effect" class="level2">
 <h2 class="anchored" data-anchor-id="total-effect-of-past-land-use-on-cooling-effect">Total Effect of Past Land-Use on Cooling Effect</h2>
 <section id="model-equation" class="level3">
 <h3 class="anchored" data-anchor-id="model-equation">Model equation:</h3>
 <p><span class="math display">
-(\overline{T _{control[i]}} - \overline{T _{park[i]}}) - \overline{(T _{control} - T _{park})} \sim Normal(\mu_i, \sigma)
+({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})} \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = {\alpha_{Park, tod[i]} + \beta _{PastLandUse} *PastLandUse + \beta _{age} *Age}
-\\
-\alpha_j \sim Normal(\bar\alpha, sd)
+\mu_i = {\bar\alpha + \alpha_{Park[i]} + \alpha_{tod[i]} + \beta _{PastLandUse} *PastLandUse + \beta _{age} *Age}
 \\
 \bar\alpha \sim Normal(0, 0.5)
 \\
-\beta \sim Normal(0, 0.5)
+\alpha_{Park} ~\sim Normal(0, \sigma_{Park})
 \\
-sd \sim HalfNormal(0, 0.2)
+\alpha_{tod} ~\sim Normal(0, \sigma_{tod})
+\\
+\beta_{PastLandUse} \sim Normal(0, 0.5)
+\\
+\beta_{Age} \sim Normal(0, 0.5)
+\\
+\sigma_{Park}\sim HalfNormal(0, 0.2)
+\\
+\sigma_{tod}\sim HalfNormal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 </span></p>
@@ -2652,88 +2660,6 @@ sd \sim HalfNormal(0, 0.2)
 <li><p>Park = park where measurements were taken</p></li>
 </ul>
 </section>
-<section id="stan-code" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  int&lt;lower=1&gt; K;  // number of population-level effects
-  matrix[N, K] X;  // population-level design matrix
-  int&lt;lower=1&gt; Kc;  // number of population-level effects after centering
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  // data for group-level effects of ID 2
-  int&lt;lower=1&gt; N_2;  // number of grouping levels
-  int&lt;lower=1&gt; M_2;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_2;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_2_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-  matrix[N, Kc] Xc;  // centered version of X without an intercept
-  vector[Kc] means_X;  // column means of X before centering
-  for (i in 2:K) {
-    means_X[i - 1] = mean(X[, i]);
-    Xc[, i - 1] = X[, i] - means_X[i - 1];
-  }
-}
-parameters {
-  vector[Kc] b;  // regression coefficients
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-  vector&lt;lower=0&gt;[M_2] sd_2;  // group-level standard deviations
-  array[M_2] vector[N_2] z_2;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  vector[N_2] r_2_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  r_2_1 = (sd_2[1] * (z_2[1]));
-  lprior += normal_lpdf(b | 0, 0.5);
-  lprior += normal_lpdf(Intercept | 0, 0.5);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-  lprior += normal_lpdf(sd_2 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n] + r_2_1[J_2[n]] * Z_2_1[n];
-    }
-    target += normal_id_glm_lpdf(Y | Xc, mu, b, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-  target += std_normal_lpdf(z_2[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept - dot_product(means_X, b);
-}</code></pre>
-</div>
-</div>
-</section>
 </section>
 <section id="direct-effect-of-past-land-use-on-forest-composition" class="level2">
 <h2 class="anchored" data-anchor-id="direct-effect-of-past-land-use-on-forest-composition">Direct Effect of Past Land-Use on Forest Composition</h2>
@@ -2742,13 +2668,13 @@ generated quantities {
 <p><span class="math display">
 log(DensL_i) \sim Normal(\alpha, \sigma)
 \\
-\mu_i = \alpha_{PastLandUse[i]}
-\\
-\alpha_j \sim Normal(\bar\alpha, sd)
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
 \\
 \bar\alpha\sim Normal(-1.5 ,2)
 \\
-sd \sim HalfNormal(0, 0.2)
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 </span></p>
@@ -2766,68 +2692,21 @@ sd \sim HalfNormal(0, 0.2)
 <li><p>PastLandUse = past land use category</p></li>
 </ul>
 </section>
-<section id="stan-code-1" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code-1">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-}
-parameters {
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  lprior += normal_lpdf(Intercept | -1.5, 2);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n];
-    }
-    target += normal_lpdf(Y | mu, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept;
-}</code></pre>
-</div>
-</div>
-</section>
 <section id="model-equation-2" class="level3">
 <h3 class="anchored" data-anchor-id="model-equation-2">Model equation</h3>
-<p>$$</p>
-<p>$$</p>
+<p><span class="math display">
+log(DensS_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(-1 ,5)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+</span></p>
 </section>
 <section id="brms-syntax-2" class="level3">
 <h3 class="anchored" data-anchor-id="brms-syntax-2">brms syntax:</h3>
@@ -2842,68 +2721,21 @@ generated quantities {
 <li><p>PastLandUse = past land use category</p></li>
 </ul>
 </section>
-<section id="stan-code-2" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code-2">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-}
-parameters {
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  lprior += normal_lpdf(Intercept | -1, 5);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n];
-    }
-    target += normal_lpdf(Y | mu, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept;
-}</code></pre>
-</div>
-</div>
-</section>
 <section id="model-equation-3" class="level3">
 <h3 class="anchored" data-anchor-id="model-equation-3">Model equation</h3>
-<p>$$</p>
-<p>$$</p>
+<p><span class="math display">
+log(SizeL_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(2.5 , 1)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+</span></p>
 </section>
 <section id="brms-syntax-3" class="level3">
 <h3 class="anchored" data-anchor-id="brms-syntax-3">brms syntax:</h3>
@@ -2918,68 +2750,21 @@ generated quantities {
 <li><p>PastLandUse = past land use category</p></li>
 </ul>
 </section>
-<section id="stan-code-3" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code-3">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-}
-parameters {
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  lprior += normal_lpdf(Intercept | 2.5, 1);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n];
-    }
-    target += normal_lpdf(Y | mu, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept;
-}</code></pre>
-</div>
-</div>
-</section>
 <section id="model-equation-4" class="level3">
 <h3 class="anchored" data-anchor-id="model-equation-4">Model equation</h3>
-<p>$$</p>
-<p>$$</p>
+<p><span class="math display">
+log(SizeS_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(1, 0.5)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+</span></p>
 </section>
 <section id="brms-syntax-4" class="level3">
 <h3 class="anchored" data-anchor-id="brms-syntax-4">brms syntax:</h3>
@@ -2994,68 +2779,21 @@ generated quantities {
 <li><p>PastLandUse = past land use category</p></li>
 </ul>
 </section>
-<section id="stan-code-4" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code-4">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-}
-parameters {
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  lprior += normal_lpdf(Intercept | 1, 0.5);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n];
-    }
-    target += normal_lpdf(Y | mu, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept;
-}</code></pre>
-</div>
-</div>
-</section>
 <section id="model-equation-5" class="level3">
 <h3 class="anchored" data-anchor-id="model-equation-5">Model equation</h3>
-<p>$$</p>
-<p>$$</p>
+<p><span class="math display">
+log(RichnessL_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(2, 1)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+</span></p>
 </section>
 <section id="brms-syntax-5" class="level3">
 <h3 class="anchored" data-anchor-id="brms-syntax-5">brms syntax:</h3>
@@ -3070,64 +2808,6 @@ generated quantities {
 <li><p>PastLandUse = past land use category</p></li>
 </ul>
 </section>
-<section id="stan-code-5" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code-5">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-}
-parameters {
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  lprior += normal_lpdf(Intercept | 2, 1);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n];
-    }
-    target += normal_lpdf(Y | mu, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept;
-}</code></pre>
-</div>
-</div>
-</section>
 </section>
 <section id="direct-effect-of-forest-composition-on-cooling-effect" class="level2">
 <h2 class="anchored" data-anchor-id="direct-effect-of-forest-composition-on-cooling-effect">Direct Effect of Forest Composition on Cooling Effect</h2>
@@ -3135,17 +2815,29 @@ generated quantities {
 <h3 class="anchored" data-anchor-id="model-equation-6">Model equation</h3>
 <div style="overflow-x:auto;overflow-y:hidden;">
 <p><span class="math display">
-(\overline{T _{control[i]}} - \overline{T _{park[i]}}) - \overline{(T _{control} - T _{park})} \sim Normal(\mu_i, \sigma)
+({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})} \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = {\alpha_{Park, tod[i]} + \beta {densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS}
-\\
-\alpha_j \sim Normal(\bar\alpha, sd)
+\mu_i = {\bar\alpha + \alpha_{Park[i]} + \alpha_{tod[i]} + \beta {densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS}
 \\
 \bar\alpha \sim Normal(0, 0.5)
 \\
-\beta \sim Normal(0, 0.5)
+\alpha_{Park} ~\sim Normal(0, \sigma_{Park})
 \\
-sd \sim HalfNormal(0, 0.2)
+\alpha_{tod} ~\sim Normal(0, \sigma_{tod})
+\\
+\beta_{densL} \sim Normal(0, 0.5)
+\\
+\beta_{sizeL} \sim Normal(0, 0.5)
+\\
+\beta_{richnessL} \sim Normal(0, 0.5)
+\\
+\beta_{densS} \sim Normal(0, 0.5)
+\\
+\beta_{sizeS} \sim Normal(0, 0.5)
+\\
+\sigma_{Park}\sim HalfNormal(0, 0.2)
+\\
+\sigma_{tod}\sim HalfNormal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 </span></p>
@@ -3169,88 +2861,6 @@ sd \sim HalfNormal(0, 0.2)
 <li><p>tod = time of day (daytime or nighttime)</p></li>
 <li><p>Park = park where measurements were taken</p></li>
 </ul>
-</section>
-<section id="stan-code-6" class="level3">
-<h3 class="anchored" data-anchor-id="stan-code-6">Stan code:</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>// generated with brms 2.20.4
-functions {
-}
-data {
-  int&lt;lower=1&gt; N;  // total number of observations
-  vector[N] Y;  // response variable
-  int&lt;lower=1&gt; K;  // number of population-level effects
-  matrix[N, K] X;  // population-level design matrix
-  int&lt;lower=1&gt; Kc;  // number of population-level effects after centering
-  // data for group-level effects of ID 1
-  int&lt;lower=1&gt; N_1;  // number of grouping levels
-  int&lt;lower=1&gt; M_1;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_1;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_1_1;
-  // data for group-level effects of ID 2
-  int&lt;lower=1&gt; N_2;  // number of grouping levels
-  int&lt;lower=1&gt; M_2;  // number of coefficients per level
-  array[N] int&lt;lower=1&gt; J_2;  // grouping indicator per observation
-  // group-level predictor values
-  vector[N] Z_2_1;
-  int prior_only;  // should the likelihood be ignored?
-}
-transformed data {
-  matrix[N, Kc] Xc;  // centered version of X without an intercept
-  vector[Kc] means_X;  // column means of X before centering
-  for (i in 2:K) {
-    means_X[i - 1] = mean(X[, i]);
-    Xc[, i - 1] = X[, i] - means_X[i - 1];
-  }
-}
-parameters {
-  vector[Kc] b;  // regression coefficients
-  real Intercept;  // temporary intercept for centered predictors
-  real&lt;lower=0&gt; sigma;  // dispersion parameter
-  vector&lt;lower=0&gt;[M_1] sd_1;  // group-level standard deviations
-  array[M_1] vector[N_1] z_1;  // standardized group-level effects
-  vector&lt;lower=0&gt;[M_2] sd_2;  // group-level standard deviations
-  array[M_2] vector[N_2] z_2;  // standardized group-level effects
-}
-transformed parameters {
-  vector[N_1] r_1_1;  // actual group-level effects
-  vector[N_2] r_2_1;  // actual group-level effects
-  real lprior = 0;  // prior contributions to the log posterior
-  r_1_1 = (sd_1[1] * (z_1[1]));
-  r_2_1 = (sd_2[1] * (z_2[1]));
-  lprior += normal_lpdf(b | 0, 0.5);
-  lprior += normal_lpdf(Intercept | 0, 0.5);
-  lprior += exponential_lpdf(sigma | 1);
-  lprior += normal_lpdf(sd_1 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-  lprior += normal_lpdf(sd_2 | 0, 0.2)
-    - 1 * normal_lccdf(0 | 0, 0.2);
-}
-model {
-  // likelihood including constants
-  if (!prior_only) {
-    // initialize linear predictor term
-    vector[N] mu = rep_vector(0.0, N);
-    mu += Intercept;
-    for (n in 1:N) {
-      // add more terms to the linear predictor
-      mu[n] += r_1_1[J_1[n]] * Z_1_1[n] + r_2_1[J_2[n]] * Z_2_1[n];
-    }
-    target += normal_id_glm_lpdf(Y | Xc, mu, b, sigma);
-  }
-  // priors including constants
-  target += lprior;
-  target += std_normal_lpdf(z_1[1]);
-  target += std_normal_lpdf(z_2[1]);
-}
-generated quantities {
-  // actual population-level intercept
-  real b_Intercept = Intercept - dot_product(means_X, b);
-}</code></pre>
-</div>
-</div>
 </section>
 </section>
 

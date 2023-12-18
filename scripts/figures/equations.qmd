@@ -1,5 +1,5 @@
 ---
-title: "Supplementary Figure S3 - Model Equations"
+title: "Supplementary Figure S3"
 format: 
   html:
     toc: true
@@ -15,22 +15,38 @@ knitr:
 source('R/packages.R')
 ```
 
+## Model Equations
+Below are the math stats notations, as well as the `brms` notations, for all models run in our paper. Importantly, we denote the relative cooling effect as: 
+
+$$
+({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})}
+$$
+
+It is important to note that in this notation, $T^{park}_i$, indicates the temperature averaged across all sensors and times for that date (split into daytime or nighttime). Similarly, $T^{control}_i$ indicates the average temperature for the control sensor, averaged across all times for that date (split into daytime or nighttime). $\overline{(T ^{control} - T^{park})}$ indicates the average of all temperature differences, taken across dates and sites.
+
+
 ## Total Effect of Past Land-Use on Cooling Effect
 
 ### Model equation:
 
 $$
-(\overline{T _{control[i]}} - \overline{T _{park[i]}}) - \overline{(T _{control} - T _{park})} \sim Normal(\mu_i, \sigma) 
+({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})} \sim Normal(\mu_i, \sigma) 
 \\
-\mu_i = {\alpha_{Park, tod[i]} + \beta _{PastLandUse} *PastLandUse + \beta _{age} *Age}
-\\
-\alpha_j \sim Normal(\bar\alpha, sd)
+\mu_i = {\bar\alpha + \alpha_{Park[i]} + \alpha_{tod[i]} + \beta _{PastLandUse} *PastLandUse + \beta _{age} *Age}
 \\
 \bar\alpha \sim Normal(0, 0.5)
 \\
-\beta \sim Normal(0, 0.5)
+\alpha_{Park} ~\sim Normal(0, \sigma_{Park})
 \\
-sd \sim HalfNormal(0, 0.2)
+\alpha_{tod} ~\sim Normal(0, \sigma_{tod})
+\\
+\beta_{PastLandUse} \sim Normal(0, 0.5)
+\\
+\beta_{Age} \sim Normal(0, 0.5)
+\\
+\sigma_{Park}\sim HalfNormal(0, 0.2)
+\\
+\sigma_{tod}\sim HalfNormal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 $$
@@ -53,11 +69,6 @@ Where:
 
 -   Park = park where measurements were taken
 
-### Stan code:
-
-```{r, eval = T, echo = F}
-tar_read(model_5_brms_stancode)
-```
 
 ## Direct Effect of Past Land-Use on Forest Composition
 
@@ -66,13 +77,13 @@ tar_read(model_5_brms_stancode)
 $$
 log(DensL_i) \sim Normal(\alpha, \sigma)
 \\
-\mu_i = \alpha_{PastLandUse[i]}
-\\
-\alpha_j \sim Normal(\bar\alpha, sd)
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
 \\
 \bar\alpha\sim Normal(-1.5 ,2)
 \\
-sd \sim HalfNormal(0, 0.2)
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 $$
@@ -89,17 +100,21 @@ Where:
 
 -   PastLandUse = past land use category
 
-### Stan code:
-
-```{r, eval = T, echo = F}
-tar_read(model_2_L_brms_stancode)
-```
-
 ### Model equation
 
-\$\$
-
-\$\$
+$$
+log(DensS_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(-1 ,5)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+$$
 
 ### brms syntax:
 
@@ -113,17 +128,21 @@ Where:
 
 -   PastLandUse = past land use category
 
-### Stan code:
-
-```{r, eval = T, echo = F}
-tar_read(model_2_S_brms_stancode)
-```
-
 ### Model equation
 
-\$\$
-
-\$\$
+$$
+log(SizeL_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(2.5 , 1)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+$$
 
 ### brms syntax:
 
@@ -137,17 +156,22 @@ Where:
 
 -   PastLandUse = past land use category
 
-### Stan code:
-
-```{r, eval = T, echo = F}
-tar_read(model_3_L_brms_stancode)
-```
 
 ### Model equation
 
-\$\$
-
-\$\$
+$$
+log(SizeS_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(1, 0.5)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+$$
 
 ### brms syntax:
 
@@ -161,17 +185,21 @@ Where:
 
 -   PastLandUse = past land use category
 
-### Stan code:
-
-```{r, eval = T, echo = F}
-tar_read(model_3_S_brms_stancode)
-```
-
 ### Model equation
 
-\$\$
-
-\$\$
+$$
+log(RichnessL_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\\
+\bar\alpha\sim Normal(2, 1)
+\\
+\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
+\\
+\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+$$
 
 ### brms syntax:
 
@@ -185,11 +213,6 @@ Where:
 
 -   PastLandUse = past land use category
 
-### Stan code:
-
-```{r, eval = T, echo = F}
-tar_read(model_4_L_brms_stancode)
-```
 
 ## Direct Effect of Forest Composition on Cooling Effect
 
@@ -197,22 +220,33 @@ tar_read(model_4_L_brms_stancode)
 
 ::: {style="overflow-x:auto;overflow-y:hidden;"}
 $$
-(\overline{T _{control[i]}} - \overline{T _{park[i]}}) - \overline{(T _{control} - T _{park})} \sim Normal(\mu_i, \sigma)
+({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})} \sim Normal(\mu_i, \sigma) 
 \\
-\mu_i = {\alpha_{Park, tod[i]} + \beta {densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS}
-\\
-\alpha_j \sim Normal(\bar\alpha, sd)
+\mu_i = {\bar\alpha + \alpha_{Park[i]} + \alpha_{tod[i]} + \beta {densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS}
 \\
 \bar\alpha \sim Normal(0, 0.5)
 \\
-\beta \sim Normal(0, 0.5)
+\alpha_{Park} ~\sim Normal(0, \sigma_{Park})
 \\
-sd \sim HalfNormal(0, 0.2)
+\alpha_{tod} ~\sim Normal(0, \sigma_{tod})
+\\
+\beta_{densL} \sim Normal(0, 0.5)
+\\
+\beta_{sizeL} \sim Normal(0, 0.5)
+\\
+\beta_{richnessL} \sim Normal(0, 0.5)
+\\
+\beta_{densS} \sim Normal(0, 0.5)
+\\
+\beta_{sizeS} \sim Normal(0, 0.5)
+\\
+\sigma_{Park}\sim HalfNormal(0, 0.2)
+\\
+\sigma_{tod}\sim HalfNormal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 $$
 :::
-
 ### brms syntax:
 
 ```{r, eval = T, echo = F}
@@ -237,8 +271,4 @@ Where:
 
 -   Park = park where measurements were taken
 
-### Stan code:
 
-```{r, eval = T, echo = F}
-tar_read(model_1_brms_stancode)
-```
