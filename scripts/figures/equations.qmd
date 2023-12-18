@@ -1,22 +1,244 @@
-# Model 1
+---
+title: "Supplementary Figure S3 - Model Equations"
+format: 
+  html:
+    toc: true
+    html-math-method: katex
+    self-contained-math: true
+    self-contained: true
+knitr:
+  opts_knit:
+    root.dir: "C:/Users/I_RICHMO/Documents/Repositories/park-legacies"
+---
 
-Brms:
-
-```{r, eval = F, echo = T}
-formula = cooling ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
-
-family = gaussian(),
-
-prior = c( 
-          prior(normal(0, 0.5), class = "b"),
-          prior(normal(0, 0.5), class = "Intercept"),
-          prior(normal(0, 0.2), class = "sd"),
-          prior(exponential(1), class = "sigma")
-        )
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+source('R/packages.R')
 ```
 
-Math stats:
+## Total Effect of Past Land-Use on Cooling Effect
+
+### Model equation:
 
 $$
-(\overline{\Delta T _{control}} - \overline{\Delta T _{park}}) - \overline{(\Delta T _{control} - \Delta T _{park})} = \beta_0 + \beta _{densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS
+(\overline{T _{control[i]}} - \overline{T _{park[i]}}) - \overline{(T _{control} - T _{park})} \sim Normal(\mu_i, \sigma) 
+\\
+\mu_i = {\alpha_{Park, tod[i]} + \beta _{PastLandUse} *PastLandUse + \beta _{age} *Age}
+\\
+\alpha_j \sim Normal(\bar\alpha, sd)
+\\
+\bar\alpha \sim Normal(0, 0.5)
+\\
+\beta \sim Normal(0, 0.5)
+\\
+sd \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
 $$
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_5_brms_formula)
+```
+
+Where:
+
+-   cooling_s = relative cooling effect (scaled)
+
+-   PastLandUse = past land use category
+
+-   Age_s = age of park (scaled)
+
+-   tod = time of day (daytime or nighttime)
+
+-   Park = park where measurements were taken
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_5_brms_stancode)
+```
+
+## Direct Effect of Past Land-Use on Forest Composition
+
+### Model equation
+
+$$
+log(DensL_i) \sim Normal(\alpha, \sigma)
+\\
+\mu_i = \alpha_{PastLandUse[i]}
+\\
+\alpha_j \sim Normal(\bar\alpha, sd)
+\\
+\bar\alpha\sim Normal(-1.5 ,2)
+\\
+sd \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+$$
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_2_L_brms_formula)
+```
+
+Where:
+
+-   Dens_L_log = density of large trees (logged)
+
+-   PastLandUse = past land use category
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_2_L_brms_stancode)
+```
+
+### Model equation
+
+\$\$
+
+\$\$
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_2_S_brms_formula)
+```
+
+Where:
+
+-   Dens_S_log = density of small trees (logged)
+
+-   PastLandUse = past land use category
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_2_S_brms_stancode)
+```
+
+### Model equation
+
+\$\$
+
+\$\$
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_3_L_brms_formula)
+```
+
+Where:
+
+-   DBH_med_L_log = size of large trees (logged)
+
+-   PastLandUse = past land use category
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_3_L_brms_stancode)
+```
+
+### Model equation
+
+\$\$
+
+\$\$
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_3_S_brms_formula)
+```
+
+Where:
+
+-   DBH_med_L_log = size of small trees (logged)
+
+-   PastLandUse = past land use category
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_3_S_brms_stancode)
+```
+
+### Model equation
+
+\$\$
+
+\$\$
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_4_L_brms_formula)
+```
+
+Where:
+
+-   SR_L_log = species richness of large trees (logged)
+
+-   PastLandUse = past land use category
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_4_L_brms_stancode)
+```
+
+## Direct Effect of Forest Composition on Cooling Effect
+
+### Model equation
+
+::: {style="overflow-x:auto;overflow-y:hidden;"}
+$$
+(\overline{T _{control[i]}} - \overline{T _{park[i]}}) - \overline{(T _{control} - T _{park})} \sim Normal(\mu_i, \sigma)
+\\
+\mu_i = {\alpha_{Park, tod[i]} + \beta {densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS}
+\\
+\alpha_j \sim Normal(\bar\alpha, sd)
+\\
+\bar\alpha \sim Normal(0, 0.5)
+\\
+\beta \sim Normal(0, 0.5)
+\\
+sd \sim HalfNormal(0, 0.2)
+\\
+\sigma \sim Exponential(1)
+$$
+:::
+
+### brms syntax:
+
+```{r, eval = T, echo = F}
+tar_read(model_1_brms_formula)
+```
+
+Where:
+
+-   cooling_s = relative cooling effect (scaled)
+
+-   Dens_L_s = large tree density (scaled)
+
+-   DBH_med_L_s = large tree size (scaled)
+
+-   SR_L_s = large tree species richness (scaled)
+
+-   Dens_S_s = small tree density (scaled)
+
+-   DBH_med_S_s = small tree size (scaled)
+
+-   tod = time of day (daytime or nighttime)
+
+-   Park = park where measurements were taken
+
+### Stan code:
+
+```{r, eval = T, echo = F}
+tar_read(model_1_brms_stancode)
+```
