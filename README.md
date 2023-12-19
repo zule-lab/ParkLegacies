@@ -1,5 +1,10 @@
 # Cooling effect provided by urban parks minimally affected by historical legacies
 
+
+
+[![DOI](https://zenodo.org/badge/490309243.svg)](https://zenodo.org/doi/10.5281/zenodo.10406627)
+
+
 ## Authors
 [Isabella C. Richmond](https://github.com/icrichmond/), Michael A. Paulauskas, Erica Padvaiskas, Laura Carolina Gonzalez Sinisterra, [Kayleigh Hutt-Taylor](https://ca.linkedin.com/in/kayleigh-hutt-taylor-a85981101?trk=public_post_feed-actor-name), [Alec L. Robitaille](https://robitalec.ca/), [Carly D. Ziter](https://www.carlyziter.com/)
 
