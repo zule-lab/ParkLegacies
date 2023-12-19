@@ -9,4 +9,4 @@ Cities are temporally dynamic ecosystems that are developed and redeveloped over
 ## Repository Use
 This repository is built on a `{targets}` workflow. To run all analyses done for the paper, download and open the project, [install `{targets}`](https://books.ropensci.org/targets/), and run `targets::tar_make()`. NOTE: to run the entire workflow may take ~ 15 hours. 
 
-To access data only, raw data can be found in the `input/` folder.
+To access data only, raw data can be found in the `input/` folder. The only exception is the Québec census data, which is downloaded in the census-prep.R script.
