@@ -1,5 +1,5 @@
 ---
-title: "Supplementary Figure S3"
+title: "Title: Cooling effect provided by urban parks minimally affected by historical legacies"
 format: 
   html:
     toc: true
@@ -15,15 +15,22 @@ knitr:
 source('R/packages.R')
 ```
 
+Authors: Isabella C. Richmond^1^\*, Michael A. Paulauskas^1^, Erica Padvaiskas^1^, Laura Carolina Gonzalez Sinisterra^2^, Kayleigh Hutt-Taylor^1^, Alec L. Robitaille^3^, Carly D. Ziter^1^
+
+1 Department of Biology, Concordia University, Montreal Canada, H4B 1R6\
+2 Department of Biology, Universidad del Valle, Cali Columbia, 760042 3 Department of Biology, Memorial University of Newfoundland, St John's Canada, A1C 5S7
+
+\* isabella.richmond\@mail.concordia.ca, 438-439-8064
+
 ## Model Equations
-Below are the math stats notations, as well as the `brms` notations, for all models run in our paper. Importantly, we denote the relative cooling effect as: 
+
+Below are the math stats notations, as well as the `brms` notations, for all models run in our paper. Importantly, we denote the relative cooling effect as:
 
 $$
 ({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})}
 $$
 
 It is important to note that in this notation, $T^{park}_i$, indicates the temperature averaged across all sensors and times for that date (split into daytime or nighttime). Similarly, $T^{control}_i$ indicates the average temperature for the control sensor, averaged across all times for that date (split into daytime or nighttime). $\overline{(T ^{control} - T^{park})}$ indicates the average of all temperature differences, taken across dates and sites.
-
 
 ## Total Effect of Past Land-Use on Cooling Effect
 
@@ -68,7 +75,6 @@ Where:
 -   tod = time of day (daytime or nighttime)
 
 -   Park = park where measurements were taken
-
 
 ## Direct Effect of Past Land-Use on Forest Composition
 
@@ -156,7 +162,6 @@ Where:
 
 -   PastLandUse = past land use category
 
-
 ### Model equation
 
 $$
@@ -213,7 +218,6 @@ Where:
 
 -   PastLandUse = past land use category
 
-
 ## Direct Effect of Forest Composition on Cooling Effect
 
 ### Model equation
@@ -247,6 +251,7 @@ $$
 \sigma \sim Exponential(1)
 $$
 :::
+
 ### brms syntax:
 
 ```{r, eval = T, echo = F}
@@ -270,5 +275,3 @@ Where:
 -   tod = time of day (daytime or nighttime)
 
 -   Park = park where measurements were taken
-
-

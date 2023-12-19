@@ -1,5 +1,5 @@
 ---
-title: "Supplementary Figure SY"
+title: "Title: Cooling effect provided by urban parks minimally affected by historical legacies"
 format:
   pdf:
     fig-width: 12
@@ -8,6 +8,13 @@ knitr:
   opts_knit:
     root.dir: "C:/Users/I_RICHMO/Documents/Repositories/park-legacies"
 ---
+
+Authors: Isabella C. Richmond^1^\*, Michael A. Paulauskas^1^, Erica Padvaiskas^1^, Laura Carolina Gonzalez Sinisterra^2^, Kayleigh Hutt-Taylor^1^, Alec L. Robitaille^3^, Carly D. Ziter^1^
+
+1 Department of Biology, Concordia University, Montreal Canada, H4B 1R6\
+2 Department of Biology, Universidad del Valle, Cali Columbia, 760042 3 Department of Biology, Memorial University of Newfoundland, St John's Canada, A1C 5S7
+
+\* isabella.richmond\@mail.concordia.ca, 438-439-8064
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
 source('R/packages.R')
@@ -28,8 +35,6 @@ findname <- function(xunsc){
   )
 }
 ```
-
-Figure SY. Reproduction of Figure 5 from the manuscript, with datapoints added and jittered.
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
   # calculate unscaled cooling and add to temp indices
@@ -125,3 +130,5 @@ Figure SY. Reproduction of Figure 5 from the manuscript, with datapoints added a
     p4 + figlist[[5]] + guide_area() + 
     plot_layout(guides ='collect')
 ```
+
+Figure S6. Visualization of the predicted relationships between forest composition and relative cooling effect, calculated while holding all other variables in the model constant and maintaining time of day as a random effect. Predicted draws were calculated 1,000 times, and then extracted and plotted. Coloured lines indicate mean predicted relationship, with grey credible intervals at 0.50, 0.8, and 0.95. Top 3 panels show the relationships between cooling and forest composition of large trees (trees with a diameter at breast height (DBH) of \>= 5 cm). Bottom two panels show the relationships between cooling and forest composition of small trees (trees with DBH \< 5 cm). Points represent raw data points, coloured by time of day.

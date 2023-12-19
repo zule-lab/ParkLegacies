@@ -28,6 +28,11 @@ target_manuscript_figures <- c(
   tar_render(
     tree_temp_direct_jitter,
     'graphics/tree_temp_direct_jitter.qmd'
+  ),
+  
+  tar_render(
+    model_equations,
+    'scripts/figures/equations.qmd'
   )
   
   

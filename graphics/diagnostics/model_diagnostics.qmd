@@ -1,5 +1,5 @@
 ---
-title: "Model Diagnostic Plots"
+title: "Title: Cooling effect provided by urban parks minimally affected by historical legacies"
 format:
   pdf:
     fig-width: 12
@@ -8,6 +8,13 @@ knitr:
   opts_knit:
     root.dir: "C:/Users/I_RICHMO/Documents/Repositories/park-legacies"
 ---
+
+Authors: Isabella C. Richmond^1^\*, Michael A. Paulauskas^1^, Erica Padvaiskas^1^, Laura Carolina Gonzalez Sinisterra^2^, Kayleigh Hutt-Taylor^1^, Alec L. Robitaille^3^, Carly D. Ziter^1^
+
+1 Department of Biology, Concordia University, Montreal Canada, H4B 1R6\
+2 Department of Biology, Universidad del Valle, Cali Columbia, 760042 3 Department of Biology, Memorial University of Newfoundland, St John's Canada, A1C 5S7
+
+\* isabella.richmond\@mail.concordia.ca, 438-439-8064
 
 ```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
 source('R/packages.R')
@@ -33,11 +40,11 @@ plot_model <- function(model){
   }
 ```
 
+## Model Diagnostic Plots
 
-These model diagnostic plots assess whether the chains of our models are converged and well mixed, and if the model is well specified and has an adequate fit. 
+These model diagnostic plots assess whether the chains of our models are converged and well mixed, and if the model is well specified and has an adequate fit.
 
-The first plot of the series shows trace plots for each of our parameters, where we want to see stationary and well-mixed chains. The second plot shows an autocorrelation plot by chain and parameter. We want our autocorrelation to quickly drop to zero with increasing lag. Thirdly, the Gelman plot indicates if the chains converge, where we want the value to decrease by the end of runtime. Finally, we have the posterior predictive check where we want the black line to be within/close to the blue lines, to indicate that our model is adequately generative. 
-
+The first plot of the series shows trace plots for each of our parameters, where we want to see stationary and well-mixed chains. The second plot shows an autocorrelation plot by chain and parameter. We want our autocorrelation to quickly drop to zero with increasing lag. Thirdly, the Gelman plot indicates if the chains converge, where we want the value to decrease by the end of runtime. Finally, we have the posterior predictive check where we want the black line to be within/close to the blue lines, to indicate that our model is adequately generative.
 
 ## Model 1: Total Effect of Past Land-Use on Temperature
 
@@ -46,42 +53,40 @@ mod <- model_list['model_5']
 plot_model(mod[[1]])
 ```
 
-## Model 2a: Direct Effect of Past Land-Use on Large Tree (>= 5 cm DBH) Density
+## Model 2a: Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Density
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 mod <- model_list['model_2_L']
 plot_model(mod[[1]])
 ```
 
-
-## Model 2b: Direct Effect of Past Land-Use on Small Tree (< 5 cm DBH) Density
+## Model 2b: Direct Effect of Past Land-Use on Small Tree (\< 5 cm DBH) Density
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 mod <- model_list['model_2_S']
 plot_model(mod[[1]])
 ```
 
-## Model 3a: Direct Effect of Past Land-Use on Large Tree (>= 5 cm DBH) Density
+## Model 3a: Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Density
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 mod <- model_list['model_3_L']
 plot_model(mod[[1]])
 ```
 
-## Model 3b: Direct Effect of Past Land-Use on Small Tree (< 5 cm DBH) Density
+## Model 3b: Direct Effect of Past Land-Use on Small Tree (\< 5 cm DBH) Density
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 mod <- model_list['model_3_S']
 plot_model(mod[[1]])
 ```
 
-## Model 4: Direct Effect of Past Land-Use on Large Tree (>= 5 cm DBH) Species Richness
+## Model 4: Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Species Richness
 
 ```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 mod <- model_list['model_4_L']
 plot_model(mod[[1]])
 ```
-
 
 ## Model 5: Direct Effect of Forest Composition on Temperature
 
