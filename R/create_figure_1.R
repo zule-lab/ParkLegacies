@@ -24,20 +24,23 @@ create_figure_1 <- function(){
     tidy_dagitty() %>%
     mutate(status = case_when(name == "cooling" ~ 'outcome',
                               name == "past_land_use" ~ 'exposure',
+                              name == "tree_size" ~ 'exposure',
+                              name == "tree_diversity" ~ 'exposure',
+                              name == "tree_density" ~ 'exposure',
                               .default = 'NA'))
   
   
   i <- ggplot(dagified, aes(x = x, y = y, xend = xend, yend = yend)) +
     theme_dag() + 
-    geom_dag_point(aes(color = status)) +
+    geom_dag_point(aes(color = status), size = 25) +
     geom_dag_label_repel(aes(label = label, fill = status),
-                         color = "white", fontface = "bold") +
-    geom_dag_edges() + 
+                         color = "white", fontface = "bold", size = 10) +
+    geom_dag_edges(edge_width = 1.5) + 
     scale_fill_manual(values = c('darkseagreen', 'grey', 'lightskyblue')) + 
     scale_colour_manual(values = c('darkseagreen', 'grey', 'lightskyblue')) + 
     theme(legend.position = 'none')
   
   
-  ggsave('graphics/figure_1.png', plot = i, width = 15, height = 8, units = "in")
+  ggsave('graphics/figure_1.png', plot = i, width = 15, height = 12, units = "in")
   
 }

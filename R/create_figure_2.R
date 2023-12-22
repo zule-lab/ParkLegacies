@@ -74,7 +74,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   
   angrignon <- ggplot() + 
     geom_sf(data = ang, aes(fill = PastLandUse)) + 
-    geom_sf(data = ang_pts, aes(shape = canopy)) + 
+    geom_sf(data = ang_pts, aes(shape = canopy), size = 2) + 
     geom_sf(fill = '#99acc3', data = mpols) +
     coord_sf(xlim = c(bba['xmin'], bba['xmax']),
              ylim = c(bba['ymin'], bba['ymax'])) +
