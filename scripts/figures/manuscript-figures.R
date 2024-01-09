@@ -31,6 +31,11 @@ target_manuscript_figures <- c(
   ),
   
   tar_render(
+    buckthorn_proportions,
+    'graphics/buckthorn_proportions.qmd'
+  ),
+  
+  tar_render(
     model_equations,
     'scripts/figures/equations.qmd'
   )
