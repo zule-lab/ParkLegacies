@@ -9,13 +9,13 @@ create_figure_1 <- function(){
     tree_density ~ past_land_use,
     soil ~ past_land_use,
     labels = c(
-      "cooling" = "Cooling\n Benefit",
-      "tree_size" = "Tree\n Size",
-      "tree_diversity" = "Tree\n Diversity",
-      "tree_density" = "Tree\n Density",
+      "cooling" = "Cooling",
+      "tree_size" = "Tree Size",
+      "tree_diversity" = "Tree Diversity",
+      "tree_density" = "Tree Density",
       "soil" = "Soil",
       "age" = "Age", 
-      "past_land_use" = "Past Land\n Use"
+      "past_land_use" = "Past Land Use"
     ),
     exposure = 'past_land_use',
     outcome = 'cooling',
@@ -29,13 +29,15 @@ create_figure_1 <- function(){
                               name == "tree_density" ~ 'exposure',
                               .default = 'NA'))
   
+  dagified <- shorten_dag_arrows(dagified, proportion = 0.2)
+  
   
   i <- ggplot(dagified, aes(x = x, y = y, xend = xend, yend = yend)) +
     theme_dag() + 
     geom_dag_point(aes(color = status), size = 25) +
     geom_dag_label_repel(aes(label = label, fill = status),
-                         color = "white", fontface = "bold", size = 10) +
-    geom_dag_edges(edge_width = 1.5) + 
+                         color = "white", fontface = "bold", size = 10, nudge_x = -1) +
+    geom_dag_edges(aes(x = xstart, y = ystart), edge_width = 1.5) + 
     scale_fill_manual(values = c('darkseagreen', 'grey', 'lightskyblue')) + 
     scale_colour_manual(values = c('darkseagreen', 'grey', 'lightskyblue')) + 
     theme(legend.position = 'none')
@@ -43,4 +45,15 @@ create_figure_1 <- function(){
   
   ggsave('graphics/figure_1.png', plot = i, width = 15, height = 12, units = "in")
   
+}
+
+
+shorten_dag_arrows <- function(tidy_dag, proportion){
+  # Update underlying ggdag object
+  tidy_dag$data <- dplyr::mutate(tidy_dag$data, 
+                                 xend = (1-proportion/2)*(xend - x) + x, 
+                                 yend = (1-proportion/2)*(yend - y) + y,
+                                 xstart = (1-proportion/2)*(x - xend) + xend,
+                                 ystart = (1-proportion/2)*(y-yend) + yend)
+  return(tidy_dag)
 }
