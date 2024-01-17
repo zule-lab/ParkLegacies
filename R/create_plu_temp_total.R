@@ -1,7 +1,8 @@
 create_plu_temp_total <- function(model_list, temp_indices){
   
   # extract relevant model from list
-  model_5 <- model_list[[7]]
+  model_5 <- model_list[['model_5']]
+  
   
   # plot
   t <- model_5 %>%
@@ -9,18 +10,17 @@ create_plu_temp_total <- function(model_list, temp_indices){
                             Age_s = 0,
                             tod = c('day', 'night')),
                 re_formula = ~ (1 | tod)) %>%
-    ggplot(aes(x = .epred, fill = PastLandUse, color = tod)) +
-    stat_halfeye() +
-    scale_color_manual(values = c("#CFA35E", "#45A291"), labels = c('Day', 'Night')) + 
-    scale_fill_manual(values = c( "#c2d6a4", "#669d62","#1e3d14"), breaks = c('Industrial', 'Agricultural', 'Forested')) + 
+    ggplot(aes(x = .epred, fill = tod)) +
+    stat_halfeye(alpha = 0.7) +
+    scale_fill_manual(values = c("#CFA35E", "#45A291"), labels = c('Day', 'Night')) + 
     theme_classic() + 
-    theme(strip.background = element_blank(),
-          strip.text.y = element_blank(), 
-          legend.position = "top") +
+    theme(legend.position = "top",
+          strip.text.y = element_text(angle = 0)) +
     labs( y = "",
          color = "", 
          fill = "") + 
-    facet_grid(rows = vars(factor(PastLandUse, levels=c('Industrial', 'Agricultural', 'Forested'))))
+    facet_wrap(~ PastLandUse, ncol = 1)
+    #facet_grid(rows = vars(factor(PastLandUse, levels=c('Industrial', 'Agricultural', 'Forested'))))
   
   # get axis breaks 
   atx <- c(as.numeric(na.omit(layer_scales(t)$x$break_positions())))
