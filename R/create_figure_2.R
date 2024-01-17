@@ -74,11 +74,11 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   
   angrignon <- ggplot() + 
     geom_sf(data = ang, aes(fill = PastLandUse)) + 
-    geom_sf(data = ang_pts, aes(shape = canopy), size = 2) + 
     geom_sf(fill = '#99acc3', data = mpols) +
+    geom_sf(data = ang_pts, aes(shape = canopy), color = "black", size = 3.5) + 
     coord_sf(xlim = c(bba['xmin'], bba['xmax']),
              ylim = c(bba['ymin'], bba['ymax'])) +
-    scale_fill_manual(values = c("#669d62", "#1e3d14")) + 
+    scale_fill_manual(values = c("#669d62", "#1e3d14")) +
     scale_shape_manual(values = c(2, 4, 16)) + 
     labs(fill = "", shape = "") +
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
@@ -89,6 +89,8 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
           plot.background = element_rect(fill = NA, colour = NA),
           legend.position = 'top')
     
+  
+  
   
 # All ---------------------------------------------------------------------
   
@@ -108,3 +110,6 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   ggsave('graphics/figure_2.png', full, width = 12, height = 14, units = 'in', dpi = 450)
   
 }
+
+
+
