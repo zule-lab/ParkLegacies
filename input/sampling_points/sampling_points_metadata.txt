@@ -1,0 +1,24 @@
+This file accompanies the datasets found in input/sampling_points, which describe the sampling points used in the 2022 field season.
+
+dataset: gps_sppts.gpkg 
+NOTE: this dataset was extracted from the lab Garmin GPS using the script "gps.R" found in this folder. 
+This dataset is the coordinates of sampling points from summer 2022 recorded on the Garmin GPS.
+Name = name of sampling plot 
+geom = point coordinates (crs = WGS 84)
+
+dataset: MP_points.kml
+This dataset is the coordinates of sampling points from summer 2022 recorded on Google My Maps when the GPS was not available in the field.
+Name: name of sampling point 
+geometry: point coordinates (crs = WGS 84)
+
+dataset: temp_sensors_controls.csv
+This dataset is the coordinates of temperature sensor locations for control points from summer 2023, recorded on Google My Maps.
+WKT: coordinates (crs = WGS 84) 
+name: site name
+description: any notes made on Google My Maps 
+
+dataset: temp_sensors_parks.csv
+This dataset is the coordinates of temperature sensor locations at selected sampling points from summer 2023, recorded on Google My Maps.
+WKT: coordinates (crs = WGS 84) 
+name: sampling point name
+description: any notes made on Google My Maps 

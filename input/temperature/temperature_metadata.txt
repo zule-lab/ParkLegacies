@@ -1,0 +1,10 @@
+All the datasets in this folder are from an individual temperature sensor, collected in the summer of 2023. File names indicate the location and date-times that the sensor was collecting data.
+
+name format: location_startday_startmonth_startyear_at_start-time_to_endday_endmonth_endyear_end-time
+
+There is one exception, there is one dataset that was given to us by a colleague to fill missing data. This dataset is denoted using a _Lingshan at the end of the file name.
+
+Within each dataset the format is the same: 
+Index: sequential observation number 
+Date-Time: date and time of observation (EST)
+Temperature (C): temperature recorded in degrees Celsius

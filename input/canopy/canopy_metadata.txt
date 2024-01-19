@@ -1,0 +1,9 @@
+These datasets were downloaded from CMM (https://observatoire.cmm.qc.ca/produits/donnees-georeferencees/#indice_canopee), where there are details on methodology and data collection
+
+dataset: 660_IndiceCanopee_2019.tif
+Raster covering the extent of the island of Montreal with a resolution of 1m x 1 m for 2019. CRS +proj=tmerc +lat_0=0 +lon_0=-73.5 +k=0.9999 +x_0=304800 +y_0=0 +datum=NAD83 +units=m +no_defs 
+values: values of pixel indicate canopy, vegetation, concrete, building, or water 
+
+dataset: 660_IndiceCanopee_2021.tif
+Raster covering the extent of the island of Montreal with a resolution of 1m x 1 m for 2021. CRS +proj=tmerc +lat_0=0 +lon_0=-73.5 +k=0.9999 +x_0=304800 +y_0=0 +datum=NAD83 +units=m +no_defs 
+values: values of pixel indicate canopy, vegetation, concrete, building, or water 

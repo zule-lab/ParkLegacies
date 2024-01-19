@@ -1,0 +1,25 @@
+Any data within subfolders has according metadata within the same subfolder. 
+
+This data and metadata accompanies Cooling effect provided by urban parks minimally affected by historical legacies, Richmond et al. (In prep).
+
+dataset: studyparks.csv
+This dataset lists all parks used in our study. 
+ParkOfficial: Official name as listed in City of Montreal documents or on Open Street Map
+Name: Unofficial park name occasionally used throughout documents
+ObjectID: placeholder column (not meaningful)
+Established: Year that the park was established (or closest year as per historical documents)
+PastLandUse: Land use type immediately prior to park establishment
+
+dataset: trees_openrefine.csv
+This dataset lists all trees measured during the 2022 field season. Spelling and typos were addressed using OpenRefine.
+Park: park name
+PlotID: plot ID (ParkCode-CanopyCode)
+Date: date of sampling
+Observers: people working on sampling for that plot, initials
+TreeNumber: nth tree for that plot 
+CommonName: common name of tree (if tree is dead, Dead is used here. If tree is unknown, Unknown is used here)
+Genus: scientific genus name of tree 
+Species: scientific species name of tree (if not sure, sp. is written)
+DBH: diameter at breast height (cm), if tree has a DBH < 5 cm, categories of 1-3 and 3-5 are used to classify instead of measuring
+Overstory/Understory: categorical variable assigned to each tree, determining if they are an overstory or understory tree 
+Comments: any comments made in the field for a specific tree

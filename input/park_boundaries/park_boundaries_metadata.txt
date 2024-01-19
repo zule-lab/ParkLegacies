@@ -1,0 +1,54 @@
+These datasets outline the historical boundaries of each land-use type for the parks in our study. 
+
+dataset: mon_park_raw.zip
+Dataset downloaded from Montreal open data of all city parks on the island: https://donnees.montreal.ca/dataset/grands-parcs-parcs-d-arrondissements-et-espaces-publics
+OBJECTID (Entier): Identifiant unique du polygone (ou de l’enregistrement)
+Type (Texte): Préfixe du nom
+Lien (Texte): Article liant le préfixe au nom
+Nom (Texte): Nom du parc ou de l'espace public
+NUM_INDEX (Texte): Identifiant unique du parc ou de l'espace public
+SUPERFICIE (Décimal): Superficie du polygone en hectares
+PROPRIETE (Texte): Propriété du parc ou de l'espace public extraite de la couche de données du Cadastre du Québec
+GESTION (Texte): Gestionnaire du parc (unité administrative de la Ville de Montréal ou Institution)
+COMPETENCE (Texte): Organisme responsable de la compétence juridique du parc ou de l'espace public
+TYPO1 (Texte): Premier niveau de typologie: classification selon la propriété et le gestionnaire
+TYPO2 (Texte): Deuxième niveau de typologie: classification selon les caractéristiques et particularités physiques
+
+
+
+dataset: mon_historical_ind_boundaries.zip
+Dataset downloaded from Montreal open data of historical quarries and landfills across the island: https://donnees.montreal.ca/dataset/anciennes-carrieres-depots-surface
+DONNÉES POLYGONES (LIMITES)
+Id_Carriere (Texte variable) : Identifiant unique
+Type (Texte variable) : Indication sur le type (Dépôt de surface ou Ancienne carrière)
+Localisation_precision (Texte variable) : Précision sur le type de localisation (ponctuel et localisation indéterminé ou surfacique et délimitation approximative)
+Superficie (Numérique) : Superficie approximative dans les cas où la délimitation approximative est connue (non ponctuel)
+
+DONNÉES DES DOCUMENTS D'ARCHIVES LIÉS
+Id_Carriere (Texte variable) : Identifiant unique de la carrière (* plusieurs documents peuvent être disponibles pour une même carrière)
+Nom (Texte variable) : Identifiant textuel
+url (Texte variable) : Lien vers le document d'archive associé (PDF)
+description (Texte variable) : description du document disponible document d'archive associé (PDF)
+
+
+
+dataset: mon_historical_ag_boundaries.gpkg
+This dataset was hand-drawn in QGIS using historical documents and satellite imagery, to outline the boundaries within our study parks of agricultural land.
+Name: park name
+PastLandUse: historical land use (agricultural)
+geometry: polygon borders (crs = WGS 84)
+
+
+dataset: mon_historical_for_boundaries.gpkg
+This dataset was hand-drawn in QGIS using historical documents and satellite imagery, to outline the boundaries within our study parks of forested land.
+Name: park name
+PastLandUse: historical land use (forested)
+geometry: polygon borders (crs = WGS 84)
+
+
+
+dataset: mon_historical_mix_boundaries.gpkg
+This dataset was hand-drawn in QGIS using historical documents and satellite imagery, to outline the boundaries of multiple different land-use types for parks that have multiple histories.
+Name: park name
+PastLandUse: historical land use
+geometry: polygon borders (crs = WGS 84)
