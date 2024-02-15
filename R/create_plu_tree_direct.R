@@ -31,11 +31,8 @@ make_plot <- function(model, label){
     stat_halfeye() + 
     theme_classic() + 
     theme(legend.position = 'none',
-          plot.title = element_text(hjust = 0.5, size = 16, face = 'bold',
-                                    color = "black"),
-          axis.text = element_text(size = 16),
-          legend.text = element_text(size = 16),
-          axis.title = element_text(size = 16)) +
+          plot.title = element_text(hjust = 0.5, size = 14, face = 'bold',
+                                    color = "black")) +
     labs(y = "", x = label)  
     
     

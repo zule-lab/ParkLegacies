@@ -9,25 +9,17 @@ create_plu_temp_total <- function(model_list, temp_indices){
     epred_draws(expand_grid(PastLandUse = c('Agricultural', 'Forested', 'Industrial'),
                             Age_s = 0,
                             tod = c('day', 'night')),
-                re_formula = ~ (1 | tod)) 
-  
-  plu <- c("Agricole", "Forestier", "Industriel")
-  names(plu) <- c("Agricultural", "Forested", "Industrial")
-  
-  t <- t %>% ggplot(aes(x = .epred, fill = tod)) +
+                re_formula = ~ (1 | tod)) %>%
+    ggplot(aes(x = .epred, fill = tod)) +
     stat_halfeye(alpha = 0.7) +
-    scale_fill_manual(values = c("#CFA35E", "#45A291"), labels = c('Jour', 'Nuit')) + 
+    scale_fill_manual(values = c("#CFA35E", "#45A291"), labels = c('Day', 'Night')) + 
     theme_classic() + 
     theme(legend.position = "top",
-          strip.text.y = element_text(angle = 0),
-          axis.text = element_text(size = 16),
-          legend.text = element_text(size = 16),
-          axis.title = element_text(size = 16),
-          strip.text = element_text(size = 16)) +
+          strip.text.y = element_text(angle = 0)) +
     labs( y = "",
          color = "", 
          fill = "") + 
-    facet_wrap(~ PastLandUse, ncol = 1, labeller = labeller(PastLandUse = plu))
+    facet_wrap(~ PastLandUse, ncol = 1)
     #facet_grid(rows = vars(factor(PastLandUse, levels=c('Industrial', 'Agricultural', 'Forested'))))
   
   # get axis breaks 
@@ -35,7 +27,7 @@ create_plu_temp_total <- function(model_list, temp_indices){
   
   # unscale x axis 
   f <- t + 
-    scale_x_continuous(name = "Effet Relative de Refroidissement (\u00B0C)", 
+    scale_x_continuous(name = "Relative Cooling Effect (\u00B0C)", 
                      breaks = atx,
                      labels = round(atx * sd(temp_indices$cooling) + mean(temp_indices$cooling), 1))
   
