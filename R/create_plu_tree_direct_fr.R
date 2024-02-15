@@ -2,21 +2,19 @@ create_plu_tree_direct <- function(model_list){
   
   tree_mods <- model_list[c('model_2_L', 'model_2_S', 'model_3_L', 'model_3_S', 'model_4_L')]
   
-  names(tree_mods) <- c('Densité moyenne (arbres / mètre carré)', 'Mean Density (trees / square meter)', 'Median Size (DBH cm)', "Taille médiane de l'arbre (DBH cm)", 'Richesse moyenne des espèces')
+  names(tree_mods) <- c('Densité moyenne (arbres / mètre carré)', 'Mean Density (trees / square meter)', 'Median Size (DBH cm)', "Taille médiane de l'arbre (DPH cm)", 'Richesse moyenne des espèces')
   
-  mod2l <- make_plot(tree_mods[[1]], names(tree_mods[1])) + ggtitle('Grands Arbres (>= 5 cm DBH)')
+  mod2l <- make_plot(tree_mods[[1]], names(tree_mods[1])) + ggtitle('Grands arbres (>= 5 cm DHP)')
   mod2s <- make_plot(tree_mods[[2]], names(tree_mods[2])) 
   mod3l <- make_plot(tree_mods[[3]], names(tree_mods[3]))
-  mod3s <- make_plot(tree_mods[[4]], names(tree_mods[4])) + ggtitle('Petits Arbres (< 5 cm DBH)') 
+  mod3s <- make_plot(tree_mods[[4]], names(tree_mods[4])) + ggtitle('Petits arbres (< 5 cm DHP)') 
   mod4l <- make_plot(tree_mods[[5]], names(tree_mods[5]))
   
   
   p <- mod2l + mod4l + mod3s
   
   
-  p <- mod2l + mod3l + mod4l + mod2s + mod3s + guide_area() + plot_layout(guides = "collect")
-  
-  ggsave('graphics/plu_tree_direct.png', p, width = 12, height = 10, units = 'in')
+  ggsave('graphics/plu_tree_direct.png', p, width = 16, height = 10, units = 'in')
   
   return(p)
 }

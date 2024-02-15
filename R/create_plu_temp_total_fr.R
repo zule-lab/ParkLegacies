@@ -35,7 +35,7 @@ create_plu_temp_total <- function(model_list, temp_indices){
   
   # unscale x axis 
   f <- t + 
-    scale_x_continuous(name = "Effet Relative de Refroidissement (\u00B0C)", 
+    scale_x_continuous(name = "Effet relatif de refroidissement (\u00B0C)", 
                      breaks = atx,
                      labels = round(atx * sd(temp_indices$cooling) + mean(temp_indices$cooling), 1))
   
