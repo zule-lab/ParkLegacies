@@ -39,7 +39,7 @@ create_plu_temp_total <- function(model_list, temp_indices){
                      breaks = atx,
                      labels = round(atx * sd(temp_indices$cooling) + mean(temp_indices$cooling), 1))
   
-  ggsave('graphics/plu_temp_total.png', f, width = 12, height = 10, units = 'in')
+  ggsave('graphics/plu_temp_total_fr.png', f, width = 12, height = 10, units = 'in')
   
   return(f)
   

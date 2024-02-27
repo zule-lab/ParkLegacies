@@ -1,4 +1,4 @@
-create_figure_2 <- function(full_study_parks, field_sp_pts){
+create_figure_2_fr <- function(full_study_parks, field_sp_pts){
   
   
   # Montreal boundary files -------------------------------------------------
@@ -109,7 +109,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
     
     theme_void() 
   
-  ggsave('graphics/figure_2_pres.png', full, width = 12, height = 14, units = 'in', dpi = 450)
+  ggsave('graphics/figure_2_fr.png', full, width = 12, height = 14, units = 'in', dpi = 450)
   
 }
 
