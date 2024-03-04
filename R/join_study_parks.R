@@ -42,9 +42,11 @@ join_study_parks <- function(raw_study_parks, city_parks){
   ## Combine all parks
   gpo <- raw_study_parks %>% 
     rename(Nom = ParkOfficial) %>% 
-    inner_join(., city_parks_trans, by = c("Nom", "OBJECTID"))
-  gpo <- gpo[, c(1:5, 15)]
-  gpo <- rename(gpo, ParkOfficial = Nom)
+    inner_join(., city_parks_trans, by = c("Nom")) %>% 
+    filter(OBJECTID.y == 2154 | OBJECTID.y == 2204 | OBJECTID.y == 2139) %>% 
+    select(c(Nom, Name, OBJECTID.y, Established, PastLandUse,  geometry)) %>% 
+    rename(OBJECTID = OBJECTID.y,
+           ParkOfficial = Nom)
 
   mp <- raw_study_parks %>% 
     rename(Nom = ParkOfficial) %>% 
@@ -53,7 +55,7 @@ join_study_parks <- function(raw_study_parks, city_parks){
   mp <- st_as_sf(mp) %>%
     filter(NUM_INDEX != '2448-000' | NUM_INDEX != '2484-000' | NUM_INDEX != '0822-000' | 
              NUM_INDEX != '0046-000' | NUM_INDEX != '0084-000' | NUM_INDEX != '1225-000' | 
-             NUM_INDEX != '2018-000') %>% # remove extra polygons
+             NUM_INDEX != '2018-000' | NUM_INDEX != '9542-000'| NUM_INDEX != '0391-000') %>% # remove extra polygons
     rename(ParkOfficial = Nom,
            OBJECTID = OBJECTID.x) %>%
     select(c(ParkOfficial, Name, OBJECTID, Established, PastLandUse, geometry))
