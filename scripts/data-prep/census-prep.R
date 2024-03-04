@@ -4,7 +4,7 @@ target_census_prep <- c(
   tar_target(
     da_raw, 
     download_shp("https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lda_000b21a_e.zip",
-                 "input/daw_raw/")
+                 "input/da_raw/")
   ),
   
   # download census data
