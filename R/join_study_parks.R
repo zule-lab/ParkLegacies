@@ -8,7 +8,7 @@ join_study_parks <- function(raw_study_parks, city_parks){
   
   ##  Get outline of island of Montreal
   # download island boundary in bbox
-  mtl <- opq(bbox) %>%
+  mtl <- opq(bbox, timeout = 100) %>%
     add_osm_feature(key = 'place', value = 'island') %>%
     osmdata_sf()
   # grab multipolygons (large islands)
@@ -21,7 +21,7 @@ join_study_parks <- function(raw_study_parks, city_parks){
   
   ## Download park polygons from osm
   # download island boundary in bbox
-  parks <- opq(bbox) %>%
+  parks <- opq(bbox, timeout = 100) %>%
     add_osm_feature(key = 'leisure', value = 'park') %>%
     osmdata_sf()
   # grab multipolygons (large parks)
