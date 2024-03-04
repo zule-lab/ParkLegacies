@@ -2,9 +2,11 @@ download_shp <- function(url, dest){
   
   temp <- tempfile()
   
-  download.file(url, dest, mode = "wb")
+  download.file(url, temp, mode = "wb")
   
-  shp <- st_read(file.path("/vsizip", dest))
+  unzip(temp, exdir = dest)
+  
+  shp <- st_read(dest)
   
   return(shp)
   
