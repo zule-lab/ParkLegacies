@@ -29,4 +29,6 @@ tar_source('scripts')
 
 # Targets: all ------------------------------------------------------------
 # Automatically grab all the "park" lists above
-lapply(grep('target', ls(), value = TRUE), get)
+#lapply(grep('target', ls(), value = TRUE), get)
+
+c(target_models, target_manuscript_figures, target_park_prep, target_park_sampling, target_redo_canopy, target_temp_prep, target_tree_prep)
