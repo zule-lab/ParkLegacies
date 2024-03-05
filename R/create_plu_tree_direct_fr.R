@@ -22,9 +22,6 @@ create_plu_tree_direct_fr <- function(model_list){
   return(p)
 }
 
-mod2l
-ggsave('graphics/test.png', mod2l)
-
 
 make_plot <- function(model, label){
   
