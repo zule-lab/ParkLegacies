@@ -1,4 +1,4 @@
-targets_models <- c(
+target_models <- c(
 
 # Modelling -----------------------------------------------------------
 
