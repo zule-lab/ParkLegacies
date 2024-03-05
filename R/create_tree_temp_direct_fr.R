@@ -46,8 +46,7 @@ create_tree_temp_direct_fr <- function(model_list, temp_indices){
       #geom_jitter(aes(y = cooling, color = as.factor(tod)), width = .1, height = 0, alpha = 0.7) +
       stat_lineribbon(aes(x = get(x), y = .epred, color = factor(tod)), data = epred) +
       scale_fill_brewer(palette = "Greys") +
-      scale_color_manual(values = c("#CFA35E","#45A291"), labels = c("Jour", "Nuit")) +
-      theme_classic()
+      scale_color_manual(values = c("#CFA35E","#45A291"), labels = c("Jour", "Nuit"))
     
     
     # extract plot breaks on x and y axes
@@ -91,9 +90,13 @@ create_tree_temp_direct_fr <- function(model_list, temp_indices){
   p4 <- figlist[[4]] + ggtitle('Petits arbres (< 5 cm DHP)')
   
   # patchwork a list of figures 
+  theme_transparent <- theme_minimal() +
+    theme(plot.background = element_rect(fill = "transparent",colour = NA))
+  
   w <- p1 + figlist[[2]] + figlist[[3]] + 
     p4 + figlist[[5]] + guide_area() + 
-    plot_layout(guides ='collect')
+    plot_layout(guides ='collect') & 
+    theme_transparent
   
   ggsave('graphics/tree_temp_direct_fr.png', w, width = 14, height = 12, units = c('in'))
   
