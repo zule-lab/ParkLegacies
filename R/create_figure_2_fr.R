@@ -49,6 +49,7 @@ create_figure_2_fr <- function(full_study_parks, field_sp_pts){
              ylim = c(bbi['ymin'], bbi['ymax'])) +
     scale_colour_manual(values = c("#c2d6a4", "#669d62", "#1e3d14"), labels = c('Industriel', 'Agricole', 'Forestier')) + 
     labs(colour = "") + 
+    theme_minimal() + 
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
           panel.grid = element_line(color = '#73776F', linewidth = 0.2),
@@ -82,6 +83,7 @@ create_figure_2_fr <- function(full_study_parks, field_sp_pts){
     scale_fill_manual(values = c("#669d62", "#1e3d14"), labels = c('Agricole', 'Forestier')) +
     scale_shape_manual(values = c(2, 4, 16)) + 
     labs(fill = "", shape = "") +
+    theme_minimal() +
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
           panel.grid = element_line(color = '#73776F', linewidth = 0.2),

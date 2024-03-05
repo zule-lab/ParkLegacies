@@ -11,14 +11,19 @@ create_plu_tree_direct_fr <- function(model_list){
   mod4l <- make_plot(tree_mods[[5]], names(tree_mods[5]))
   
   
-  p <- mod2l + mod3l + mod4l + mod2s + mod3s + guide_area() + plot_layout(guides = "collect")
+  theme_transparent <- theme_minimal() +
+    theme(plot.background = element_rect(fill = "transparent",colour = NA))
+  
+  p <- mod2l + mod3l + mod4l + mod2s + mod3s + guide_area() + plot_layout(guides = "collect") & theme_transparent
   
   
-  ggsave('graphics/plu_tree_direct_fr.png', p, width = 16, height = 10, units = 'in')
+  ggsave('graphics/plu_tree_direct_fr.png', p, width = 16, height = 10, units = 'in', bg = "transparent")
   
   return(p)
 }
 
+mod2l
+ggsave('graphics/test.png', mod2l)
 
 
 make_plot <- function(model, label){
@@ -30,7 +35,6 @@ make_plot <- function(model, label){
     ggplot(aes(y = condition, x = condition_mean, fill = condition)) +
     scale_fill_manual(values = c( "#1e3d14", "#669d62", "#c2d6a4")) +  
     stat_halfeye() + 
-    theme_classic() + 
     theme(legend.position = 'none',
           plot.title = element_text(hjust = 0.5, size = 16, face = 'bold',
                                     color = "black"),

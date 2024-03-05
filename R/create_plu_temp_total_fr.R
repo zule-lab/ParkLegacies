@@ -17,7 +17,7 @@ create_plu_temp_total <- function(model_list, temp_indices){
   t <- t %>% ggplot(aes(x = .epred, fill = tod)) +
     stat_halfeye(alpha = 0.7) +
     scale_fill_manual(values = c("#CFA35E", "#45A291"), labels = c('Jour', 'Nuit')) + 
-    theme_classic() + 
+    theme_minimal() + 
     theme(legend.position = "top",
           strip.text.y = element_text(angle = 0),
           axis.text = element_text(size = 16),
