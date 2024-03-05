@@ -9,7 +9,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   
   ## Montreal
   # Download island boundary in bbox
-  mtl <- opq(bb) %>%
+  mtl <- opq(bb, timeout = 100) %>%
     add_osm_feature(key = 'place', value = 'island') %>%
     osmdata_sf()
   # Grab multipolygons (large islands)
@@ -21,7 +21,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
   allpolys <- st_as_sf(st_union(polys, multipolys))
   
   ## Water
-  water <- opq(bb) %>%
+  water <- opq(bb, timeout = 100) %>%
     add_osm_feature(key = 'natural', value = 'water') %>%
     osmdata_sf()
   mpols <- water$osm_multipolygons
