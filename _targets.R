@@ -26,7 +26,6 @@ restore()
 # Scripts -----------------------------------------------------------------
 tar_source('scripts')
 
-# test
 
 # Targets: all ------------------------------------------------------------
 # Automatically grab all the "park" lists above
