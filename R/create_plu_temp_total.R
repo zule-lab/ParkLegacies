@@ -15,7 +15,11 @@ create_plu_temp_total <- function(model_list, temp_indices){
     scale_fill_manual(values = c("#CFA35E", "#45A291"), labels = c('Day', 'Night')) + 
     theme_classic() + 
     theme(legend.position = "top",
-          strip.text.y = element_text(angle = 0)) +
+          strip.text.y = element_text(angle = 0),
+          axis.text = element_text(size = 16),
+          legend.text = element_text(size = 16),
+          axis.title = element_text(size = 16),
+          strip.text = element_text(size = 16)) +
     labs( y = "",
          color = "", 
          fill = "") + 
