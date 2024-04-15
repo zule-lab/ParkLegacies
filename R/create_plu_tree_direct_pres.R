@@ -13,7 +13,7 @@ create_plu_tree_direct <- function(model_list){
   
   p <- mod2l + mod4l + mod3s + plot_layout(guides = "collect")
   
-  ggsave('graphics/plu_tree_direct_pres.png', p, width = 12, height = 10, units = 'in')
+  ggsave('graphics/plu_tree_direct_pres.png', p, width = 16, height = 10, units = 'in')
   
   return(p)
 }
