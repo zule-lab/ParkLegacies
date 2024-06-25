@@ -1,5 +1,5 @@
 ---
-title: "Title: Cooling effect provided by urban parks minimally affected by historical legacies"
+title: "Title: Cooling benefits and forest structure similar across parks with varied land use histories"
 format:
   pdf:
     fig-width: 12
