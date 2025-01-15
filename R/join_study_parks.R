@@ -1,49 +1,17 @@
 join_study_parks <- function(raw_study_parks, city_parks){
   
-  # set bbox of Montreal
-  bbox <- c(xmin = -74.0788,
-    ymin = 45.3414,
-    xmax = -73.3894,
-    ymax = 45.7224)
-  
-  ##  Get outline of island of Montreal
-  # download island boundary in bbox
-  mtl <- opq(bbox, timeout = 100) %>%
-    add_osm_feature(key = 'place', value = 'island') %>%
-    osmdata_sf()
-  # grab multipolygons (large islands)
-  outline_multipolys <- mtl$osm_multipolygons
-  # grab polygons (small islands)
-  outline_polys <- mtl$osm_polygons
-  outline_polys <- st_cast(outline_polys, "MULTIPOLYGON")
-  # combine geometries and cast as sf
-  outline_allpolys <- st_as_sf(st_union(outline_polys, outline_multipolys))
-  
-  ## Download park polygons from osm
-  # download island boundary in bbox
-  parks <- opq(bbox, timeout = 100) %>%
-    add_osm_feature(key = 'leisure', value = 'park') %>%
-    osmdata_sf()
-  # grab multipolygons (large parks)
-  mpolys <- parks$osm_multipolygons
-  mpolys <- st_make_valid(st_cast(mpolys, "POLYGON"))
-  # grab polygons (small parks)
-  polys <- parks$osm_polygons
-  allpolys <- st_union(st_make_valid(polys), st_make_valid(mpolys))
-  # clip parks to Montreal island boundary
-  wi <- st_within(allpolys, outline_allpolys)
-  subwi <- vapply(wi, function(x) length(x) >= 1, TRUE)
-  keepp <- allpolys[subwi, ]
-  
   
   ## Transform municipal polygons to match osm
   city_parks_trans <- st_transform(city_parks, 4326)
   
   ## Combine all parks
+  # select individual polygons from the Grand Parc de l'Ouest
   gpo <- raw_study_parks %>% 
     rename(Nom = ParkOfficial) %>% 
     inner_join(., city_parks_trans, by = c("Nom")) %>% 
-    filter(OBJECTID.y == 2154 | OBJECTID.y == 2204 | OBJECTID.y == 2139) %>% 
+    filter(OBJECTID.y == 5628 & Name == "Cap Saint-Jacques" | 
+             OBJECTID.y == 5678 & Name == "Ile-Bizard" | 
+             OBJECTID.y == 5613 & Name == "L'Anse-À-L'Orme") %>% 
     select(c(Nom, Name, OBJECTID.y, Established, PastLandUse,  geometry)) %>% 
     rename(OBJECTID = OBJECTID.y,
            ParkOfficial = Nom)
@@ -52,15 +20,16 @@ join_study_parks <- function(raw_study_parks, city_parks){
     rename(Nom = ParkOfficial) %>% 
     dplyr::filter(Nom != "Grand parc de l'Ouest") %>% 
     left_join(., city_parks_trans, by = "Nom")
-  mp <- st_as_sf(mp) %>%
-    filter(NUM_INDEX != '2448-000' | NUM_INDEX != '2484-000' | NUM_INDEX != '0822-000' | 
-             NUM_INDEX != '0046-000' | NUM_INDEX != '0084-000' | NUM_INDEX != '1225-000' | 
-             NUM_INDEX != '2018-000' | NUM_INDEX != '9542-000'| NUM_INDEX != '0391-000') %>% # remove extra polygons
+  
+  mp_f <- st_as_sf(mp) %>% 
+    filter(NUM_INDEX != '2448-000' & NUM_INDEX != '2484-000' & NUM_INDEX != '0822-000' & NUM_INDEX != '1225-000' & 
+             NUM_INDEX != '2018-000' & NUM_INDEX != '0391-000' & 
+             NUM_INDEX != '0956-000' ) %>% # remove extra polygons
     rename(ParkOfficial = Nom,
            OBJECTID = OBJECTID.x) %>%
     select(c(ParkOfficial, Name, OBJECTID, Established, PastLandUse, geometry))
 
-  studyparks <- st_as_sf(rbind(gpo, mp))
+   studyparks <- st_as_sf(rbind(gpo, mp_f))
   
   studyparksu <- studyparks %>% 
     group_by(Name) %>%
