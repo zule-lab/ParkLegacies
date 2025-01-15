@@ -46,6 +46,7 @@ suppressPackageStartupMessages({
   library(osmdata)
   
   library(qs)
+  library(qs2)
   library(bit64)
   
   library(brms)
@@ -103,5 +104,4 @@ conflicts_prefer(renv::autoload,
                  janitor::fisher.test,
                  rmarkdown::run,
                  xfun::attr,
-                 xfun::isFALSE,
                  .quiet = T) #
