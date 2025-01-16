@@ -1,4 +1,4 @@
-tree_temp_direct_jitter <- function(){
+tree_temp_direct_jitter_func <- function(){
   
   mod <- tar_read(model_1_brms_sample)
   tar_load(temp_indices)
