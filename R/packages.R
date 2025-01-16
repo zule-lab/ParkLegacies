@@ -53,6 +53,7 @@ suppressPackageStartupMessages({
   library(cmdstanr)
   library(tidybayes)
   library(bayesplot)
+  library(modelr)
   
 })
 
