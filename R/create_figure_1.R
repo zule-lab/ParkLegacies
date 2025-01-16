@@ -4,26 +4,34 @@ create_figure_1 <- function(){
     cooling ~ tree_size,
     cooling ~ tree_diversity,
     cooling ~ tree_density,
-    tree_size ~ soil + age,
-    tree_diversity ~ soil + age,
-    tree_density ~ past_land_use,
-    soil ~ past_land_use,
+    tree_density ~ plu,
+    tree_diversity ~ age + species_comp,
+    tree_size ~ age + carbon + nitrogen + metals + tree_diversity, 
+    species_comp ~ carbon + nitrogen + metals, 
+    carbon ~ plu, 
+    nitrogen ~ plu, 
+    metals ~ plu,
     labels = c(
-      "cooling" = "Cooling",
+      "cooling" = "Temperature",
       "tree_size" = "Tree Size",
       "tree_diversity" = "Tree Diversity",
       "tree_density" = "Tree Density",
-      "soil" = "Soil",
-      "age" = "Age", 
-      "past_land_use" = "Past Land Use"
+      "age" = "Stand Age", 
+      "plu" = "Past Land Use",
+      "carbon" = "Carbon", 
+      "nitrogen" = "Nitrogen", 
+      "metals" = "Heavy Metals",
+      "species_comp" = "Species \nComposition"
     ),
-    exposure = 'past_land_use',
+    exposure = 'plu',
     outcome = 'cooling',
-    coords = list(x = c(cooling = 0, tree_density = -1, tree_size = 0, tree_diversity = 1, age = 1, soil = 0, past_land_use = 0),
-                  y = c(cooling = 3, tree_density = 2, tree_size = 2, tree_diversity = 2, age = 1, soil = 1, past_land_use = 0))) %>%
+    coords = list(x = c(cooling = 0, tree_density = -1, tree_size = 0, tree_diversity = 1, age = 0.5, 
+                        nitrogen = -0.5, species_comp = 0.5, metals = 1.25, carbon = 0, plu = 0),
+                  y = c(cooling = 3, tree_density = 1.5, tree_size = 2, tree_diversity = 2.5, age = 2, 
+                        nitrogen = 1, species_comp = 1, metals = 1.5, carbon = 0.5, plu = 0))) %>%
     tidy_dagitty() %>%
     mutate(status = case_when(name == "cooling" ~ 'outcome',
-                              name == "past_land_use" ~ 'exposure',
+                              name == "plu" ~ 'exposure',
                               name == "tree_size" ~ 'exposure',
                               name == "tree_diversity" ~ 'exposure',
                               name == "tree_density" ~ 'exposure',
@@ -38,12 +46,12 @@ create_figure_1 <- function(){
     geom_dag_label_repel(aes(label = label, fill = status),
                          color = "white", fontface = "bold", size = 10, nudge_x = -1) +
     geom_dag_edges(aes(x = xstart, y = ystart), edge_width = 1.5) + 
-    scale_fill_manual(values = c('darkseagreen', 'grey', 'lightskyblue')) + 
-    scale_colour_manual(values = c('darkseagreen', 'grey', 'lightskyblue')) + 
+    scale_fill_manual(values = c('grey', 'grey', 'grey')) + 
+    scale_colour_manual(values = c('grey', 'grey', 'grey')) + 
     theme(legend.position = 'none')
   
   
-  ggsave('graphics/figure_1.png', plot = i, width = 15, height = 12, units = "in")
+  ggsave('graphics/figure_1.png', plot = i, width = 15, height = 15, units = "in")
   
 }
 
