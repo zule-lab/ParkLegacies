@@ -5,7 +5,7 @@ target_models <- c(
   # Model 1: direct effect of tree variables on cooling and how those effects vary by past land use type 
   zar_brms(
     model_1,
-    formula = cooling_s ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
+    formula = cooling_s ~ 1 + BasalArea_L_s + DBH_med_L_s + SR_L_s +  BasalArea_S_s + DBH_med_S_s + (1 | tod) + (1 | Park),
     family = gaussian(),
     prior = c( 
           prior(normal(0, 0.5), class = "b"),
@@ -24,7 +24,9 @@ target_models <- c(
              DBH_med_L_s = scale(DBH_med_L), 
              Dens_L_s = scale(Dens_L),
              Dens_S_s = scale(Dens_S),
-             DBH_med_S_s = scale(DBH_med_S)),
+             DBH_med_S_s = scale(DBH_med_S),
+             BasalArea_S_s = scale(BasalArea_S), 
+             BasalArea_L_s = scale(BasalArea_L)),
     chains = 4,
     #control = list(adapt_delta = 0.9),
     iter = 1000,
@@ -34,17 +36,17 @@ target_models <- c(
   # Model 2-4: total effect of past land use type on tree variables 
   zar_brms(
     model_2_L,
-    formula = Dens_L_log ~ 1 + (1| PastLandUse),
+    formula = BasalArea_L_s ~ 1 + PastLandUse,
     data = temp_indices %>% 
       ungroup() %>%
-      select(c(Park, Dens_L, PastLandUse)) %>% 
+      select(c(Park, BasalArea_L, PastLandUse)) %>% 
       mutate(PastLandUse = as.factor(PastLandUse),
-             Dens_L_log = log(Dens_L)) %>% 
+             BasalArea_L_s = scale(BasalArea_L)) %>% 
       distinct(),
     family = gaussian(),
     prior = c(
       prior(normal(-1.5, 2), class = "Intercept"),
-      prior(normal(0, 0.2), class = "sd"),
+      prior(normal(0, 0.5), class = "b"),
       prior(exponential(1), class = "sigma")
     ),
     backend = 'cmdstanr',
@@ -55,17 +57,17 @@ target_models <- c(
 
   zar_brms(
     model_2_S,
-    formula = Dens_S_log ~ 1 + (1 | PastLandUse),
+    formula = BasalArea_S_s ~ 1 + PastLandUse,
     data = temp_indices %>% 
       ungroup() %>%
-      select(c(Park, Dens_S, PastLandUse)) %>% 
+      select(c(Park, BasalArea_S, PastLandUse)) %>% 
       mutate(PastLandUse = as.factor(PastLandUse),
-             Dens_S_log = log(Dens_S)) %>% 
+             BasalArea_S_s = scale(BasalArea_S)) %>% 
       distinct(),
     family = gaussian(),
     prior = c(
       prior(normal(-1, 5), class = "Intercept"),
-      prior(normal(0, 0.2), class = "sd"),
+      prior(normal(0, 0.5), class = "b"),
       prior(exponential(1), class = "sigma")
     ),
     backend = 'cmdstanr',
@@ -76,17 +78,17 @@ target_models <- c(
 
   zar_brms(
     model_3_L,
-    formula = DBH_med_L_log ~ 1 + (1 | PastLandUse),
+    formula = DBH_med_L_s ~ 1 + PastLandUse,
     data = temp_indices %>% 
       ungroup() %>%
       select(c(Park, DBH_med_L, PastLandUse)) %>% 
       mutate(PastLandUse = as.factor(PastLandUse),
-             DBH_med_L_log = log(DBH_med_L)) %>% 
+             DBH_med_L_s = scale(DBH_med_L)) %>% 
       distinct(),
     family = gaussian(),
     prior = c(
       prior(normal(2.5, 1), class = "Intercept"),
-      prior(normal(0, 0.2), class = "sd"),
+      prior(normal(0, 0.5), class = "b"),
       prior(exponential(1), class = "sigma")
     ),
     backend = 'cmdstanr',
@@ -97,17 +99,17 @@ target_models <- c(
 
   zar_brms(
     model_3_S,
-    formula = DBH_med_S_log ~ 1 + (1 | PastLandUse),
+    formula = DBH_med_S_s ~ 1 +  PastLandUse,
     data = temp_indices %>% 
       ungroup() %>%
       select(c(Park, DBH_med_S, PastLandUse)) %>% 
       mutate(PastLandUse = as.factor(PastLandUse),
-             DBH_med_S_log = log(DBH_med_S)) %>% 
+             DBH_med_S_s = scale (DBH_med_S)) %>% 
       distinct(),
     family = gaussian(),
     prior = c(
       prior(normal(1, 0.5), class = "Intercept"),
-      prior(normal(0, 0.2), class = "sd"),
+      prior(normal(0, 0.5), class = "b"),
       prior(exponential(1), class = "sigma")
     ),
     backend = 'cmdstanr',
@@ -118,17 +120,17 @@ target_models <- c(
 
   zar_brms(
     model_4_L,
-    formula = SR_L_log ~ 1 + (1 | PastLandUse),
+    formula = SR_L_s ~ 1 +  PastLandUse,
     data = temp_indices %>% 
       ungroup() %>%
       select(c(Park, SR_L, PastLandUse)) %>% 
       mutate(PastLandUse = as.factor(PastLandUse),
-             SR_L_log = log(SR_L)) %>% 
+             SR_L_s = scale(SR_L)) %>% 
       distinct(),
     family = gaussian(),
     prior = c(
       prior(normal(2, 1), class = "Intercept"),
-      prior(normal(0, 0.2), class = "sd"),
+      prior(normal(0, 0.5), class = "b"),
       prior(exponential(1), class = "sigma")
     ),
     backend = 'cmdstanr',
