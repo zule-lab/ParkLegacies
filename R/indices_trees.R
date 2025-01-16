@@ -11,10 +11,12 @@ indices_trees <- function(trees_clean, full_study_parks){
   # only going to use plots Jul 18 and later for diversity 
   small_nondiv <- trees_clean %>% 
     filter(Date < '2022-07-18' & DBHCalc < 5) %>%
-    mutate(Area = 800) %>% 
+    mutate(Area = 800,
+           Basal_m = (pi*DBHCalc^2)/40000 ) %>% 
     group_by(Park, PastLandUse) %>% 
     reframe(Park = trimws(Park),
             Abundance_S = n(),
+            BasalArea_S = (sum(Basal_m)/0.08), # units are m2/ha
             DBH_med_S = median(DBHCalc),
             DBH_sd_S = sd(DBHCalc),
             Dens_S = Abundance_S/Area) %>%
@@ -26,10 +28,12 @@ indices_trees <- function(trees_clean, full_study_parks){
   # temporary fix to iNEXT issues 
   small_mini <- trees_clean %>% 
     filter(Date >= '2022-07-18' & DBHCalc < 5) %>% 
-    mutate(Area = 50) %>% 
+    mutate(Area = 50,
+           Basal_m = (pi*DBHCalc^2)/40000 ) %>% 
     group_by(Park, PastLandUse) %>% 
     reframe(Park = trimws(Park),
             Abundance_S = n(),
+            BasalArea_S = (sum(Basal_m)/0.005), # units are m2/ha
             DBH_med_S = median(DBHCalc),
             DBH_sd_S = sd(DBHCalc),
             Dens_S = Abundance_S/Area) %>% 
@@ -60,9 +64,11 @@ calculate_div <- function(trees_clean, desDBH, suffix, area) {
   
   abundance <- trees_clean %>%
     filter(eval(rlang::parse_expr(desDBH))) %>%
+    mutate(Basal_m = (pi*DBHCalc^2)/40000 ) %>% 
     group_by(Park, PastLandUse) %>% 
     reframe(Park = trimws(Park),
             Abundance_L = n(),
+            BasalArea_L = (sum(Basal_m)/0.08), # units are m2/ha
             DBH_med_L = median(DBHCalc),
             DBH_sd_L = sd(DBHCalc)) %>%
     unique()
