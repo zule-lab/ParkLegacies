@@ -51,11 +51,12 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
     labs(colour = "") + 
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
-          panel.grid = element_line(color = '#73776F', linewidth = 0.2),
+          panel.grid = element_blank(),
           axis.text = element_text(size = 11, color = 'black'),
           axis.title = element_blank(), 
           plot.background = element_rect(fill = NA, colour = NA),
-          legend.position = 'top')
+          legend.position = 'top') + 
+    annotation_scale(location = 'br', style = 'ticks')
 
   
 # Single park plot --------------------------------------------------------
@@ -68,6 +69,7 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
     mutate(canopy = case_when(str_detect(PlotID, 'HIGH') ~ 'High',
                               str_detect(PlotID, 'MED') ~ 'Medium',
                               str_detect(PlotID, 'LOW') ~ 'Low')) 
+  
   ang_pts$canopy <- factor(ang_pts$canopy, levels = c('Low', 'Medium', 'High'))
   
   bba <- st_bbox(ang)
@@ -83,11 +85,12 @@ create_figure_2 <- function(full_study_parks, field_sp_pts){
     labs(fill = "", shape = "") +
     theme(panel.border = element_rect(linewidth = 1, fill = NA),
           panel.background = element_rect(fill = '#ddc48d'),
-          panel.grid = element_line(color = '#73776F', linewidth = 0.2),
+          panel.grid = element_blank(),
           axis.text = element_text(size = 11, color = 'black'),
           axis.title = element_blank(), 
           plot.background = element_rect(fill = NA, colour = NA),
-          legend.position = 'top')
+          legend.position = 'top') + 
+    annotation_scale(location = 'br', style = 'ticks')
     
   
   
