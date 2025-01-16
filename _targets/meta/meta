@@ -10,7 +10,6 @@ create_temp_direct|function|57be32056704bc75|||||||||||||||
 create_tree_direct|function|831adb1fd3603a65|||||||||||||||
 download_parks|function|2a681eeec5c1a386|||||||||||||||
 estimateD|function|82f07f076a6faf30|||||||||||||||
-field_cc|stem|a38a22b39e5ac23b|68739252b87ea3d4|91ee9cda41b80385|-556063864||t19899.6638238239s|03fa23dad53fe152|15306|qs|local|vector|||13.73||
 gen_model|stem|a9c4f5cee21c1800|2fbb7cd51ee25fd0|7c2de62cee5b9da3|-902132923||t19661.8342667288s||41614084|qs|local|vector|||0.12||Duplicated grouplevel effects are not allowed.Occured for effect Intercept of group group.
 generative_data|stem|6574e2be4e90e4bf|c2c7954fe6e8b64d|a481f1d01b3617c0|-1350468460||t19654.8510293593s|93d2eec6e254386c|15490|qs|local|vector|||0.01||
 generative_diagnostics|stem|f2ff1acba728fa08|4610723f37c2a218|123116e2d3555651|1186119018||t19661.834389673s||62|qs|local|vector|||0.05||error in evaluating the argument x in selecting a method for function plot object gen_model not found
@@ -24,9 +23,6 @@ invSize.Ind|function|ed609867bb7dcc27|||||||||||||||
 invSize.Sam|function|c3aa097761dfcdf5|||||||||||||||
 max_day_model|stem|6f9931ffac572919|ea54dc99a0fa9901|8f90f643146951b3|1812231181||t19661.8692060408s|2dcd18024a1c7ac3|41592352|qs|local|vector|||3001.22||
 model_1|stem|1237738265712637|df5661de8596d6ed|a24e00f524dad975|161038644||t19685.7661382391s|3d122e6077579bc0|41563438|qs|local|vector|||1759.8||
-model_1_brms_data|stem|918d30f6a975949d|9dfaeecde892ba16|9dfc90a3c455844f|1057445094||t19899.7703120867s|e398dbd586f67b4a|436804|qs|local|vector|||0.004||
-model_1_brms_sample|stem|a6406c610500b19e|ae84093fa47c1f53|81a4539fda0f4cd4|470895165||t19899.7728805968s|d4b01073681bce77|655090|qs|local|vector|||39.108|Rows containing NAs were excluded from the model.|
-model_1_brms_sample_prior|stem|d87e87cebfe75935|59cd105d0ddc77ea|81a4539fda0f4cd4|950964270||t19899.7724278205s|29ad26d83290392e|665899|qs|local|vector|||19.596|Rows containing NAs were excluded from the model.|
 model_1_brms_stancode|stem|f3f4fb37b5cfbf69|35c0990a857f66bd|81a4539fda0f4cd4|249622625||t19899.7728822171s|bb09704b2370887b|1046|qs|local|vector|||0.135|Rows containing NAs were excluded from the model.|
 model_2_brms_data|stem|1bdc71e5d196cdc8|f3923c57cb59bd51|ec9885d4d4eb79a8|104188733||t19685.799087475s|26e7dde9f963df46|394144|qs|local|vector|||0.08||
 model_2_brms_formula|stem|a9cf15ed70db0f04|492b9b66e8da1888|6c1ea57557f7d01d|1758830105||t19685.6651286658s|bd9cdb2e6c3ecc89|253|qs|local|vector|||0||
@@ -34,13 +30,7 @@ model_2_brms_prior|stem|250f0059eb3f149b|e06c27b6fd9c88a1|719a36be97c2cb94|-9655
 model_2_brms_sample|stem|9e3f7a5169b68dab|1d7381b803b34820|9948003eec84ee29|-1182774860||t19688.9522851594s|907185ff6c1e2553|41258380|qs|local|vector|||1734.01||
 model_2_brms_sample_prior|stem|181e99e2e15de5c1|11d9e02801e69ee0|99351cb50ebcd15d|-1644085646||t19688.9321612179s|78df6dbb1ce7030b|41289081|qs|local|vector|||1728.33||
 model_2_brms_stancode|stem|c851ab16b7448080|9ea8b1ac7c585c9e|6ad8bbad58a78bac|-864318707||t19688.9321631736s|e39b36b147b4228c|794|qs|local|vector|||0.09||
-model_2_L_brms_data|stem|4e9ed5c5bc00b8c7|f99b92106cd0c318|9dfc90a3c455844f|448207065||t19899.7703117395s|9d80559eff4ff2d6|1035|qs|local|vector|||0.004||
-model_2_L_brms_sample|stem|afd874d769fe27a2|c3556e3468b1a7ef|e22d4569c728bec0|-1609981121||t19899.7717949522s|a74b4f435f005ebb|171121|qs|local|vector|||17.376||
-model_2_L_brms_sample_prior|stem|2bb48fa50901d77e|741c7f090c819a7e|e22d4569c728bec0|321620874||t19899.7715925223s|3e8545fadaae8ca9|173962|qs|local|vector|||17.392||
 model_2_L_brms_stancode|stem|654db957fcc5a591|43399b4cb1b190e4|e22d4569c728bec0|-550542969||t19899.7715937954s|c8da580d4ab439ea|802|qs|local|vector|||0.1||
-model_2_S_brms_data|stem|d9f9f9f214db0f08|4bdf63f924b131df|9dfc90a3c455844f|1000775251||t19899.7703118552s|a0f06ba485bff0e4|1090|qs|local|vector|||0.004||
-model_2_S_brms_sample|stem|bbe654f875262e76|53079acbea04f89d|3a12e059e982fc10|-1300534134||t19899.772199812s|5983c7b892494ac3|170109|qs|local|vector|||17.16|Rows containing NAs were excluded from the model.|
-model_2_S_brms_sample_prior|stem|5fef1c9236d8d893|c003673721d80341|3a12e059e982fc10|270294367||t19899.7720010858s|f29b0689691cec0e|174185|qs|local|vector|||17.795|Rows containing NAs were excluded from the model.|
 model_2_S_brms_stancode|stem|1df899429b481d8c|69e3f73cdd37d9cd|3a12e059e982fc10|230928211||t19899.7722008536s|30058dcf7ba5aaed|798|qs|local|vector|||0.083|Rows containing NAs were excluded from the model.|
 model_3_brms_data|stem|1bdc71e5d196cdc8|f3923c57cb59bd51|ec9885d4d4eb79a8|1136332733||t19685.7990859686s|26e7dde9f963df46|394144|qs|local|vector|||0.08||
 model_3_brms_formula|stem|55462125788cf2d9|ce8cb3819a117d65|cfb14446ac5071d7|-650772985||t19681.8109830119s|a0e78b2d8c9ef097|260|qs|local|vector|||0||
@@ -48,13 +38,7 @@ model_3_brms_prior|stem|250f0059eb3f149b|e06c27b6fd9c88a1|719a36be97c2cb94|64173
 model_3_brms_sample|stem|7fad5fe6505cdb80|a190d14bd7d1687a|306734247088677e|1647644411||t19688.9120983874s|e803be6c613bd8c8|41266245|qs|local|vector|||1732||
 model_3_brms_sample_prior|stem|1f02a964dffca460|f3f01c7c42d36b56|8251f012f1271d42|-1381423260||t19688.7641482134s|6201d2b7213234cd|41286648|qs|local|vector|||1729.34||
 model_3_brms_stancode|stem|c851ab16b7448080|ff6bd067050ef326|420d72d0054e10bf|-1240430900||t19688.9121004032s|e39b36b147b4228c|794|qs|local|vector|||0.09||
-model_3_L_brms_data|stem|c86a466e2a201ae7|457db6c87eb1430c|9dfc90a3c455844f|-2142602060||t19899.7703123182s|2098477052a4f98b|906|qs|local|vector|||0.004||
-model_3_L_brms_sample|stem|b93dc2cc2d97c3ed|ce19b2e765b68e45|93889a3b62d47cc2|-1663426271||t19899.7737021218s|ff5c591698c09f04|170557|qs|local|vector|||17.713||
-model_3_L_brms_sample_prior|stem|d55a0e3bd79faeb6|aa49765972c0f426|93889a3b62d47cc2|1120153888||t19899.7734969142s|0504c489838c5be2|173769|qs|local|vector|||17.536||
 model_3_L_brms_stancode|stem|12dd43dfc25cf701|273aa203bf3a39d5|93889a3b62d47cc2|831079918||t19899.7737032792s|e2f51e1bcbe8c4b0|799|qs|local|vector|||0.085||
-model_3_S_brms_data|stem|185bcf58fe3320d1|42f0a47126429fca|9dfc90a3c455844f|1958383883||t19899.7703112765s|06404c5c64f60b63|922|qs|local|vector|||0.005||
-model_3_S_brms_sample|stem|3b78f5f2827661bf|f2484d22b174ce8c|9c747dae3140e7d2|-151631494||t19899.7705307203s|a7e65a461924536f|173149|qs|local|vector|||18.861|Rows containing NAs were excluded from the model.|
-model_3_S_brms_sample_prior|stem|6845c2c1205d1b74|8ef7ff9487e00fa2|9c747dae3140e7d2|-1857300701||t19899.7707325715s|fa75a0981c8b7b84|173605|qs|local|vector|||17.432|Rows containing NAs were excluded from the model.|
 model_3_S_brms_stancode|stem|5fda321fa6259731|86a1ac2413b91f0e|9c747dae3140e7d2|99133504||t19899.7707336131s|d57738d6411fcd8b|796|qs|local|vector|||0.081|Rows containing NAs were excluded from the model.|
 model_4_brms_data|stem|1bdc71e5d196cdc8|f3923c57cb59bd51|ec9885d4d4eb79a8|534462529||t19685.7990845477s|26e7dde9f963df46|394144|qs|local|vector|||0.08||
 model_4_brms_formula|stem|25e4dcc3edfbddf2|5f87f235f2e1b853|1e382e34aaf6476a|1205927883||t19681.8109828548s|bf1a1ce7cd804ab5|251|qs|local|vector|||0||
@@ -62,13 +46,7 @@ model_4_brms_prior|stem|250f0059eb3f149b|e06c27b6fd9c88a1|719a36be97c2cb94|15931
 model_4_brms_sample|stem|e1f273aa74c61bd2|99924a029d9cb8e5|898b3ebbf3b27867|-1579099449||t19688.723997855s|315d15a305c076f1|41271132|qs|local|vector|||1737.41||
 model_4_brms_sample_prior|stem|218d05786b9363e6|92a8b380423b8806|a453ccaefc9109b9|924418985||t19688.7440732179s|124fe3afd5c6d501|41284923|qs|local|vector|||1729.82||
 model_4_brms_stancode|stem|c851ab16b7448080|1282c3885dc53842|88725dc2a4886224|350486200||t19688.7440751178s|e39b36b147b4228c|794|qs|local|vector|||0.09||
-model_4_L_brms_data|stem|fc352e32c35c9d00|414339c80e01c34e|9dfc90a3c455844f|1182144728||t19899.7703122024s|46d99e55c387943d|1044|qs|local|vector|||0.004||
-model_4_L_brms_sample|stem|95688e5ae4f35a0e|c206db71c2d33774|1eff0047a8e895b4|-2040791065||t19899.7732926324s|51217a3fcf2f0205|172125|qs|local|vector|||17.933||
-model_4_L_brms_sample_prior|stem|2e59dd81bcc67709|31c9a4be911a5fb0|1eff0047a8e895b4|-2140071992||t19899.7730849942s|5ab214588f14c3ce|173664|qs|local|vector|||17.508||
 model_4_L_brms_stancode|stem|6c66a74756de4125|dceb518b7345249f|1eff0047a8e895b4|-1396798173||t19899.7732939056s|303824524f4bfcf3|795|qs|local|vector|||0.106||
-model_5_brms_data|stem|e7f877320a02bbea|7a8e754f449e46de|9dfc90a3c455844f|296580154||t19899.7703116237s|19e3a8abb3abaffc|432649|qs|local|vector|||0.016||
-model_5_brms_sample|stem|6f841fd67430ded1|9c2e7c88c360b196|b12c9dc17a79dce2|1845469924||t19899.7713897452s|8e233c359aba653c|622547|qs|local|vector|||36.481||
-model_5_brms_sample_prior|stem|8494adf78743bf1b|7c19210dc4f19cce|b12c9dc17a79dce2|-2145848912||t19899.7709672929s|4eb5be77369e5993|634564|qs|local|vector|||20.188||
 model_5_brms_stancode|stem|f3f4fb37b5cfbf69|1cbedc52373cb8eb|b12c9dc17a79dce2|1637327801||t19899.7713911341s|bb09704b2370887b|1046|qs|local|vector|||0.122||
 model_data|stem|6dd71d12008128c1|fc50e61201ff2c3d|0339aa59abde50f0|-495503059||t19643.7247286888s|de1c6d017cb4e8a8|38|qs|local|vector|||0||
 model_diag_plots|stem|11ac2026c8c2c590|88b37092a7903b9a|7c4e25043f819aee|2106221397||t19705.6529034275s|21c64f85d8c4a821|70|qs|local|vector|||22.48|The facets argument of facet_grid is deprecated as of ggplot2 2.2.0.ℹ Please use the rows argument instead.ℹ The deprecated feature was likely used in the bayesplot package.  Please report the issue at httpsgithub.comstandevbayesplotissues.. as.mcmc.brmsfit is deprecated and will eventually be removed.. as.mcmc.brmsfit is deprecated and will eventually be removed.. as.mcmc.brmsfit is deprecated and will eventually be removed.. as.mcmc.brmsfit is deprecated and will eventually be removed.. as.mcmc.brmsfit is deprecated and will eventually be removed.. as.mcmc.brmsfit is deprecated and will eventually be removed.. as.mcmc.brmsfit is deprecated and will eventually be removed.|
@@ -118,8 +96,6 @@ model_diag_plots_dd588a51|branch|f2ff1acba728fa08|88b37092a7903b9a|40232e51f43ad
 model_diag_plots_e8c3c9cb|branch|f2ff1acba728fa08|88b37092a7903b9a|7dc3013a80b5f81e|2030851117||t19704.9926938315s|e0224cf10db1a05d|62|qs|local|list|model_diag_plots||1.93|as.mcmc.brmsfit is deprecated and will eventually be removed.|
 model_diag_plots_ed1c64a3|branch|f2ff1acba728fa08|88b37092a7903b9a|585c13da530fde1c|-1752794734||t19682.8563958988s|e0224cf10db1a05d|62|qs|local|list|model_diag_plots||5.19|as.mcmc.brmsfit is deprecated and will eventually be removed.|
 model_diag_plots_f1afc968|branch|f2ff1acba728fa08|88b37092a7903b9a|b916cffdf23bd341|1179156876||t19697.0292317902s|e0224cf10db1a05d|62|qs|local|list|model_diag_plots||2.24|1m22mThe facets argument of facet_grid is deprecated as of ggplot2 2.2.0.36mℹ39m Please use the rows argument instead.36mℹ39m The deprecated feature was likely used in the 34mbayesplot39m package.  Please report the issue at 3m34mhttpsgithub.comstandevbayesplotissues39m23m.. as.mcmc.brmsfit is deprecated and will eventually be removed.|
-model_diagnostics|stem|57de28c9bb2808ea|aafa2d72d91311e2|21445cdbf001ab06|1068795827|graphics/diagnostics/model_diagnostics.html*graphics/diagnostics/model_diagnostics.qmd|t19899.7762926226s|de136cb5c9ff3557|7528706|file|local|vector|||25.674||
-model_list|stem|88957d2d17aa1e73|e543394e7a9b836f|5d72a13b950c29be|1900002282||t19899.7758251473s|83822a222b4526a3|2094324|qs|local|vector|||0||
 model_prior|stem|bba3eb6b1d564d7f|cacb1ae247e662b9|e70317e2e533e33d|-1420164522||t19654.9203340009s|1e16f45127240811|41628719|qs|local|vector|||2988.55||
 model_prior_plots|pattern|e76c0d0a5d94a511|725325982806409a||83528034||||124|qs|local|list||model_prior_plots_8ae16bf6*model_prior_plots_f2b2e3c8|5.1||
 model_prior_plots_03e9a246|branch|f2ff1acba728fa08|725325982806409a|8896fa4da93d85bb|1583138388||t19698.0022973912s|e0224cf10db1a05d|62|qs|local|list|model_prior_plots||4.13|1m22mReturning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.36mℹ39m Please use reframe instead.36mℹ39m When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.36mℹ39m The deprecated feature was likely used in the 34mdplyr39m package.  Please report the issue at 3m34mhttpsgithub.comtidyversedplyrissues39m23m.|
@@ -192,8 +168,6 @@ prior_model_5_brms_prior|stem|e489675db3ecd70b|5a9eab7f4811bb97|719a36be97c2cb94
 prior_model_5_brms_sample|stem|940c3b69755c2c29|4b57657cb322a83d|42659ee5d2521430|70803965||t19675.9969561851s|5e62dba515dd2a7d|41352735|qs|local|vector|||1104.71||
 prior_model_5_brms_sample_prior|stem|24a69ad957593507|d9ac9f2b2f256739|256290fdd2d32cf4|-1912317492||t19675.9841164009s|5ddadea15508746a|41375054|qs|local|vector|||1094.94||
 prior_model_5_brms_stancode|stem|0c290197ca81bee4|b6566e21bc4306ad|7746e9e65d5a987b|-168775335||t19675.984118312s|d424e5a95029413a|957|qs|local|vector|||0.12||
-prior_model_list|stem|f820baf380425603|6b034c5dce321120|bddfda895309f380|2145697798||t19899.7758249158s|be93330aecdca875|2127968|qs|local|vector|||0||
-prior_predictive|stem|e5697732f7894677|b3dcf2255908f890|3bbfe3a292e6e274|1246233840|graphics/diagnostics/prior_predictive.html*graphics/diagnostics/prior_predictive.qmd|t19899.7759835958s|ab73ef924c9d7a64|2276264|file|local|vector|||13.722||
 prior_range|stem|0590eceb1306594d|0733a21c12f13899|7d8f0f5616ee8d9e|-1040103176||t19661.8343003575s|155764445407e1ce|40095|qs|local|vector|||2.64||
 raw_study_parks|stem|1763d3a730b2fedb|743518ad42469220|0511e2449163e619|-192563372||t19450.7451853427s|c89ce475c7699453|785|qs|local|vector|||0||
 real_data|stem|ea28b8edb1c358e8|fc50e61201ff2c3d|98be55c9334ec586|1100421748||t19661.8343902151s|5a4846f4ab2ad63d|35926|qs|local|vector|||0||
@@ -217,7 +191,6 @@ target_historical_boundaries|object|28353dd014084d7c|||||||||||||||
 target_park_soil_sampling|object|5eeccf361aa52ccf|||||||||||||||
 target_temp_sp_pts|object|885117aa103dd5ca|||||||||||||||
 targets_models|object|41161b15d91b1460|||||||||||||||
-temp_clean|stem|d3954e06e7737260|25a913472cac6fb1|2d152c82b7a337e5|-1468226069||t19899.7694880153s|1213b04c690ff3a4|1486517|qs|local|vector|||2.992|Detected an unexpected manytomany relationship between x and y.ℹ Row 63877 of x matches multiple rows in y.ℹ Row 200 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
 temp_dfs_01a13159|branch|4eb4f7b353c0e5ed|f86d15cf4eecfbff|0ab1cf32e289d553|-852949293||t19787.8914347272s|f6996606a5191ec6|46326|qs|local|vector|temp_dfs||0.007||
 temp_dfs_01c5bfdc|branch|3cb861706516030c|f86d15cf4eecfbff|acdd941d06262a3e|-211411395||t19787.8914439864s|99c67de1ff4a7ad5|44541|qs|local|vector|temp_dfs||0.007||
 temp_dfs_03094dc1|branch|7bec14eefc816052|f86d15cf4eecfbff|fd8c5a0e731d1d66|-1729347798||t19787.8914341485s|304e46f5408433a3|45950|qs|local|vector|temp_dfs||0.008||
@@ -518,32 +491,19 @@ temp_files_fb5977c2|branch|a0364e49b596dc73|a1a74eb84ca59fc6|ef46db3751d8e999|55
 temp_files_fc532510|branch|cbd18dfa7d3e3990|a1a74eb84ca59fc6|c459a8fac43072fe|837456673|input/temperature/CON_PaP1CG_01_June_2023_at_00-00_to_15_August_2023_at_13-45.csv|t19584.6232638889s|b6bc9e49c86aca38|322644|file|local|vector|temp_files||0||
 temp_files_fcd377b1|branch|60ae9e32d3e8e60d|a1a74eb84ca59fc6|ef46db3751d8e999|-1108881500|input/temperature/IND11-MED06_01_June_2023_at_00-00_to_15_August_2023_at_14-00.csv|t19787.8716480917s|d2e9082c67f4fe58|315584|file|local|vector|temp_files||0||
 temp_files_ff9a706d|branch|9df19525c9991042|a1a74eb84ca59fc6|ef46db3751d8e999|417980761|input/temperature/IND11-HIGH03_01_June_2023_at_00-00_to_15_August_2023_at_13-15.csv|t19787.8716480917s|f7eeeb974e857460|315523|file|local|vector|temp_files||0||
-temp_indices|stem|b10e6839c3be4aff|a52e3d47198b7727|6b332af86e4e05d7|371066702||t19899.7703111608s|3d8c8718ece0d0b8|417419|qs|local|vector|||7.549|Detected an unexpected manytomany relationship between x and y.ℹ Row 123 of x matches multiple rows in y.ℹ Row 4 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
 temp_raw|stem|0dcb926a6969b5d8|ebe66c36a0382f20|4dc17b137ba7bf11|-482409809||t19636.7758379495s|36e11dfea4ac5718|3494869|qs|local|vector|||0.17||
 tree_direct|stem|0d7bd1349f7ea4ef|0cdc46b5f0ee417f|3c40c348ffec59ad|-1358275100||t19698.9521541762s|b2c2d69496a0fbf4|63|qs|local|vector|||1.41||
 tree_temp_direct|stem|501813663ea5c248|15c9e4f890f9f12b|d05504706c1932d3|105902061||t19899.7895078375s|0f29f5baa4d6bb52|398593696|qs|local|vector|||185.77|Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.ℹ The deprecated feature was likely used in the dplyr package.  Please report the issue at httpsgithub.comtidyversedplyrissues.|
-trees_clean|stem|d3041d7b15d2080f|15fc1f915eaa8bec|d627f963b668bd63|-1673972502||t19899.6667051776s|58b5a54bed4b5141|140967|qs|local|vector|||71.504|There were 3 warnings in mutate.The first warning wasℹ In argument V1  .Primitiveas.doubleV1.Caused by warning NAs introduced by coercionℹ Run dplyrlast_dplyr_warnings to see the 2 remaining warnings.. funs was deprecated in dplyr 0.8.0.ℹ Please use a list of either functions or lambdas Simple named list listmean  mean, median  median Auto named with tibblelst tibblelstmean, median Using lambdas list mean., trim  .2,  median., na.rm  TRUE. Detected an unexpected manytomany relationship between x and y.ℹ Row 820 of x matches multiple rows in y.ℹ Row 232 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
-trees_indices|stem|a3eab4784ac05fd5|a74aa396ee565c36|8a12bae52ea20359|1466824949||t19899.7696609314s|add31efaf3afef54|87415|qs|local|vector|||14.935||
 worm_pts|stem|6805c99e68e785ee|bbe9340d42b4cfa7|6cfaaedb46819dce|-775966866||t19899.6655769417s|556c1a83733ba3b6|32950|qs|local|vector|||9.179|coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of this warning. coordinate ranges not computed along great circles install package lwgeom to get rid of th|
 worm_pts_geom|stem||016839eaf5c589da|a74125c7dc7c4943|1592192426||t19450.7445534227s||0|qs|local|vector|||0||object sp_pts_buff not found
-model_3_S_brms_formula|stem|f4eada5b061c7d83|332f42acfaa188f2|2c530c1562a7fbd1|-201937757||t20103.7021036275s|s340b|340|qs|local|vector|||0.003||
-model_3_S_brms_prior|stem|3662d47c75b7af56|1f460da404ef4b53|2c530c1562a7fbd1|-1216941706||t20103.7021037432s|s312b|312|qs|local|vector|||0.005||
-model_2_L_brms_formula|stem|db426b8c0a70e51b|e24de04e3c5cde69|2c530c1562a7fbd1|562904509||t20103.7021037432s|s332b|332|qs|local|vector|||0.002||
-model_2_L_brms_prior|stem|237d48e1c8460ff5|c465dfeeccf513db|2c530c1562a7fbd1|2115702507||t20103.702103859s|s318b|318|qs|local|vector|||0.005||
 for_bound_file|stem|9e17083a6956b18d|02662cd70f57fcc2|2c530c1562a7fbd1|2016252207|input/park_boundaries/mon_historical_for_boundaries.gpkg|t19787.8716473972s|s102400b|102400|file|local|vector|||0||
-model_4_L_brms_prior|stem|e2810d72654c2d49|8b8f8a941bd0bf5b|2c530c1562a7fbd1|-583909407||t20103.7021039747s|s316b|316|qs|local|vector|||0.005||
-model_3_L_brms_formula|stem|3cc122255310e3aa|1d35928519adc272|2c530c1562a7fbd1|-184715706||t20103.7021039747s|s340b|340|qs|local|vector|||0.002||
 ag_bound_file|stem|73b48c904fdc80bd|bcc46bd543c31aa6|2c530c1562a7fbd1|-477245825|input/park_boundaries/mon_historical_ag_boundaries.gpkg|t19787.8716473972s|s98304b|98304|file|local|vector|||0.001||
 cc_2019_file|stem|bc66c2a082af3c97|fe5bf2b3b14d7795|2c530c1562a7fbd1|1256445039|input/canopy/660_IndiceCanopee_2019.tif|t19787.8716456611s|s44833759b|44833759|file|local|vector|||0.001||
 sensor_pts_file|stem|8fbe60b9b59f9c29|e726cb1ec4763c3d|2c530c1562a7fbd1|-37214380|input/sampling_points/temp_sensors_parks.csv|t19787.8716473972s|s4610b|4610|file|local|vector|||0||
 sensor_con_pts_file|stem|30e2cbcda22eadcc|81e161b31cdb52fc|2c530c1562a7fbd1|-2088179858|input/sampling_points/temp_sensors_controls.csv|t19787.8716473972s|s790b|790|file|local|vector|||0||
 study_parks_file_file|stem|a80fbbe8d8a783a5|b35c178113f381b6|2c530c1562a7fbd1|-1050778575|input/studyparks.csv|t19787.8716473972s|s1460b|1460|file|local|vector|||0||
-model_1_brms_formula|stem|b2ae64df973dde4e|e11abf4f65eb6e58|2c530c1562a7fbd1|-431696459||t20103.7021051321s|s387b|387|qs|local|vector|||0.001||
-model_2_S_brms_formula|stem|d5b7161d6c929d55|697d0a6f07878162|2c530c1562a7fbd1|-1743404571||t20103.7021052479s|s334b|334|qs|local|vector|||0.001||
-model_4_L_brms_formula|stem|88322ac1c96b436b|f819ba5f6582a9a9|2c530c1562a7fbd1|207916140||t20103.7021052479s|s333b|333|qs|local|vector|||0.001||
 model_5_brms_formula|stem|aa496630aa7b71c0|2a764e4ce97e5f45|2c530c1562a7fbd1|-2029902122||t20103.7021053636s|s367b|367|qs|local|vector|||0.001||
 ind_bound|stem|b80b119147e6e29f|b85ae6973692b76e|e63e3d5281361b94|-790491884||t20103.7021308263s|s243837b|243837|qs|local|vector|||2.201||
-model_2_S_brms_prior|stem|c955cba4bebe59a5|6f3c8737e225c004|2c530c1562a7fbd1|1883300805||t20103.702130942s|s319b|319|qs|local|vector|||0.005||
 mix_bound_file|stem|cec6f3bad488e149|1a85fd9e5b403eab|2c530c1562a7fbd1|876906498|input/park_boundaries/mon_historical_mix_boundaries.gpkg|t19787.8716473972s|s200704b|200704|file|local|vector|||0||
 trees_raw_file|stem|df0abdc403d580d5|865b5cffce3eef84|2c530c1562a7fbd1|-1530929380|input/trees_openrefine.csv|t19787.8716482074s|s1086581b|1086581|file|local|vector|||0.001||
 model_1_brms_prior|stem|de3ea562d9dd84ed|5c3ad34a216f999b|2c530c1562a7fbd1|-1027135638||t20103.7021311735s|s315b|315|qs|local|vector|||0.007||
@@ -551,7 +511,6 @@ model_5_brms_prior|stem|de3ea562d9dd84ed|5c3ad34a216f999b|2c530c1562a7fbd1|33655
 census_raw|stem|d3f5a00718f1800f|bebeba1a0b598fb0|3045dc7b8be5fd0e|846691203||t20103.7067895709s|s155393293b|155393293|qs|local|vector|||385.375||
 da_raw|stem|af5baf60bfaf4986|71a2e7c8bc249e82|e63e3d5281361b94|-615398109||t20103.7071783398s|s227263193b|227263193|qs|local|vector|||30.334||
 field_sp_pts|stem|3f206a86ec903515|81f082826e11a279|b8235e385c12d946|-1074334584||t20103.7072109783s|s6154b|6154|qs|local|vector|||2.074||
-model_3_L_brms_prior|stem|6c97450ea352d29f|d84ba6608ff4c272|2c530c1562a7fbd1|-1576708543||t20103.7072112098s|s315b|315|qs|local|vector|||0.004||
 city_parks|stem|0f4fac5058dc6481|48f36a53fcc0e7de|e63e3d5281361b94|-1648256476||t20103.7072454687s|s1825989b|1825989|qs|local|vector|||2.925||
 cc_2021_file|stem|055af0a14616c6e6|103c50b85a341261|2c530c1562a7fbd1|266630189|input/canopy/660_IndiceCanopee_2021.tif|t19787.8716472815s|s46247932b|46247932|file|local|vector|||0||
 temp_files_f4416d2f2e1f7826|branch|39ab36eb5402adad|c3af1e081e91aa90|2c530c1562a7fbd1|-738042876|input/temperature/AGR1-HIGH01_01_June_2023_at_00-00_to_15_August_2023_at_14-15.csv|t19787.8716473972s|s315850b|315850|file|local|vector|temp_files||0||
@@ -771,41 +730,82 @@ temp_dfs|pattern|55491424d1000417|63714256061cc322||1228725787||||3812163|qs|loc
 offic_study_parks|stem|8a64723e59a7c0c4|45532ab22daa17c2|49c720cec8154dcd|1414232168||t20103.77236502s|s106215b|106215|qs|local|vector|||0.438|Detected an unexpected manytomany relationship between x and y.ℹ Row 2 of x matches multiple rows in y.ℹ Row 321 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
 full_study_parks|stem|a80f1cc5704ed476|272bf22f997fdbc9|fe2c375b17101e2d|-459218015||t20103.7723882837s|s103431b|103431|qs|local|vector|||2.001|attribute variables are assumed to be spatially constant throughout all geometries. Returning more or less than 1 row per summarise group was deprecated indplyr 1.1.0.ℹ Please use reframe instead.ℹ When switching from summarise to reframe, remember that reframe  always returns an ungrouped data frame and adjust accordingly.|
 sp_pts|stem|e5aa2031a11fcbf7|f86073cc8d91fe0b|25bd16829e01a331|-939407753||t20103.824779711s|s13550b|13550|qs|local|vector|||4401.07|attribute variables are assumed to be spatially constant throughout all geometries. attribute variables are assumed to be spatially constant throughout all geometries. st_centroid assumes attributes are constant over geometries|
-temp_files_files|stem|34499283de09587f|ffe5cf272a079708|2c530c1562a7fbd1|-791626884||t20104.6492095857s|s912b|912|rds|local|vector||temp_files_files_86eef601ec7e0d2e*temp_files_files_ec147c4a389a0448*temp_files_files_65abac0edc1a5b49*temp_files_files_b09a6a80dd0d24e3*temp_files_files_25e8691bf7ac2db3*temp_files_files_55360296f3f48185*temp_files_files_ebd571e2a337ddbe*temp_files_files_d7be778445e57759*temp_files_files_9057e5825954bf5e*temp_files_files_eed2cb19011cf120*temp_files_files_5e084c01e78d1f30*temp_files_files_5b95e6db2b0b25a6*temp_files_files_72f6b20e33756a08*temp_files_files_d578cac627ec6828*temp_files_files_f5aa170e242b58b7*temp_files_files_4eb67324fd99a6e5*temp_files_files_7b15b90c53a07bfa*temp_files_files_1c7bece70f991ee4*temp_files_files_6c1e4b7241cadf54*temp_files_files_b1a843bf806fd3ff*temp_files_files_d833116e4e360b94*temp_files_files_1f542e27d4f9a262*temp_files_files_dd6267d408f766ce*temp_files_files_00222ecb2bb3c309*temp_files_files_3e1b68934d91e035*temp_files_files_7b7ebbe8af0895df*temp_files_files_9de2e7df1e9b780e*temp_files_files_9a01d54041db472d*temp_files_files_f4055cdf4d54b698*temp_files_files_3427c6186c6b7a3a*temp_files_files_f788f368994956ca*temp_files_files_9c853eccead02873*temp_files_files_261c08ca9a0279a0*temp_files_files_3513d7ffcfbfe091*temp_files_files_d9adf8122701dbbb*temp_files_files_f1ff635d5e4a11a7*temp_files_files_d415bd213b59cbf8*temp_files_files_167d455d0d460018*temp_files_files_2ca5761dee5d6a66*temp_files_files_512371abe2383af1*temp_files_files_000ee355d408f36d*temp_files_files_4f25c33f27af3eab*temp_files_files_0de11f57855c1e38*temp_files_files_3810fcd5e8d2e823*temp_files_files_9f99f05cd203e722*temp_files_files_00ec70884dd4f3c8*temp_files_files_88051de63b96099d*temp_files_files_c09abb6d02d7c4ab*temp_files_files_53949eda217ebfac*temp_files_files_b3875c4c208577aa*temp_files_files_ef3766ade8a4c3c7*temp_files_files_23cdfcd2b23b0dd4*temp_files_files_d11c18488b67ad42*temp_files_files_9e2d12771ea69796*temp_files_files_eb1d277335c8af39*temp_files_files_739188b686d8b79e*temp_files_files_2f13351e220b8b69*temp_files_files_745b522776639729*temp_files_files_44094f2c324061ef*temp_files_files_05c85b8a068c1101*temp_files_files_c1bd644d80c7f056*temp_files_files_2213d39be20bd469*temp_files_files_4f24a885068a6061*temp_files_files_638b2ca016b7db55*temp_files_files_2f2a3f6cf3e95026*temp_files_files_edd1549010a23747*temp_files_files_9a6c259b94d679a3*temp_files_files_94cd35ff664a5451*temp_files_files_58e05409ed9c3dc8*temp_files_files_773573430d99b51b*temp_files_files_bdb77bda2d16e1c9*temp_files_files_71f6409f36e6344a*temp_files_files_09b5a3784f8b9ad8*temp_files_files_9876cc3f158c07e0*temp_files_files_7536e36d9032ee99*temp_files_files_1e06d32613370a30*temp_files_files_baed56b6cfdd392e*temp_files_files_67df2160b53dfe0d*temp_files_files_e058f7593e7aad4d*temp_files_files_544bd3952bbb78fc*temp_files_files_41f7026a5365b254*temp_files_files_90fae4b23b5747ca*temp_files_files_830b5d6313eaa7e8*temp_files_files_09415c7894b79ae6*temp_files_files_cfe2dc414176de7c*temp_files_files_d9f479ae3dd7978a*temp_files_files_13a1e7cd374df913*temp_files_files_e66954f884bc2894*temp_files_files_2f36add634b6877d*temp_files_files_2be592e3c01187b7*temp_files_files_6238d42d7e428f98*temp_files_files_95b7620e634c593f*temp_files_files_0c12b96f039be446*temp_files_files_d106fc70fc43fa3a*temp_files_files_4eda112d54f21d9d*temp_files_files_f6f61a11bed973f6*temp_files_files_10034e8f5ba22e69*temp_files_files_ef9c157d4a8d0d19*temp_files_files_5f83478ceb117f02*temp_files_files_9339c7a7f7fb95ff|0||
 figure_1|stem|0f6dbfbf885e65d8|89f26b3a6f0df8e2|3e7f21e5a2ae4290|-247678157||t20104.6578376649s|s97b|97|qs|local|vector|||1.188||
+tree_temp_direct_jitter|function|bba5cc1ae4cc696c|||||||||||||||
+figure_2|stem|09b37031e8b39812|1c7edbfd72e145bd|8803ac3770b9aa72|-356367554||t20104.6773477497s|s97b|97|qs|local|vector|||40.942|attribute variables are assumed to be spatially constant throughout all geometries. st_centroid assumes attributes are constant over geometries|
+field_cc|stem|5d46d9e4fe8f31a3|c64bc10d7e69ae1b|5b3cbc19b2d069ed|-556063864||t20104.6822354563s|s13923b|13923|qs|local|vector|||14.027||
+trees_clean|stem|2286af1129ac7c44|0a9e08c75c3bd094|1cdabb319fafecea|-1673972502||t20104.6830234154s|s132367b|132367|qs|local|vector|||68.052|There were 3 warnings in mutate.The first warning wasℹ In argument V1  .Primitiveas.doubleV1.Caused by warning NAs introduced by coercionℹ Run dplyrlast_dplyr_warnings to see the 2 remaining warnings.. funs was deprecated in dplyr 0.8.0.ℹ Please use a list of either functions or lambdas Simple named list listmean  mean, median  median Auto named with tibblelst tibblelstmean, median Using lambdas list mean., trim  .2,  median., na.rm  TRUE. Detected an unexpected manytomany relationship between x and y.ℹ Row 820 of x matches multiple rows in y.ℹ Row 232 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
+temp_clean|stem|8bbfe6d58f4e34d2|9039dd5f8d2e7517|227156f59a590efd|-1468226069||t20104.6830682069s|s984076b|984076|qs|local|vector|||3.142|Detected an unexpected manytomany relationship between x and y.ℹ Row 63877 of x matches multiple rows in y.ℹ Row 200 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
+model_1_brms_formula|stem|9a8d211e53cb2924|91ada1eed9a7c2f8|2c530c1562a7fbd1|-431696459||t20104.7446363106s|s392b|392|qs|local|vector|||0.002||
+trees_indices|stem|83b6c0a0a884f6c1|0849d5ff6414e792|435a120b899510c4|1466824949||t20104.7652164223s|s103538b|103538|qs|local|vector|||14.713||
+temp_indices|stem|6b49114dcd6be777|dc2f3fb2fe01eb29|a7b3469eb903dd49|371066702||t20104.7653014914s|s297958b|297958|qs|local|vector|||6.926|Detected an unexpected manytomany relationship between x and y.ℹ Row 123 of x matches multiple rows in y.ℹ Row 4 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
+model_5_brms_data|stem|27910200eba72840|d8be71ca4a59da4e|db72e919ee568e25|296580154||t20104.7653017229s|s339837b|339837|qs|local|vector|||0.004||
+model_3_S_brms_data|stem|2273793000656833|463f701545e6be6a|db72e919ee568e25|1958383883||t20104.7653017229s|s1076b|1076|qs|local|vector|||0.003||
+model_2_S_brms_data|stem|620c581bfb588b0a|a7b2cb1cb3cc777c|db72e919ee568e25|1000775251||t20104.7653018386s|s1326b|1326|qs|local|vector|||0.003||
+model_4_L_brms_data|stem|8932d3f09ba91044|3014111fcb615b3b|db72e919ee568e25|1182144728||t20104.7653018386s|s1290b|1290|qs|local|vector|||0.003||
+model_2_L_brms_data|stem|8eee0eab4b7a059f|124e13db658f6845|db72e919ee568e25|448207065||t20104.7653019543s|s1303b|1303|qs|local|vector|||0.003||
+model_1_brms_data|stem|826c6cd3aca4f562|e29120a6a43629ec|db72e919ee568e25|1057445094||t20104.7653021858s|s341877b|341877|qs|local|vector|||0.005||
+model_3_L_brms_data|stem|63f214d806821235|2328bc0cf25434fe|db72e919ee568e25|-2142602060||t20104.7653023016s|s1138b|1138|qs|local|vector|||0.003||
+model_5_brms_sample_prior|stem|99baf82fcf704bbb|522f5e2d5bb78245|695af0ed165d5f2b|-2145848912||t20104.7654763749s|s625534b|625534|qs|local|vector|||15.032||
+model_1_brms_sample_prior|stem|963b43e8c7a23e7c|468be14dfb6702c2|3d02987baa6d0c02|950964270||t20104.7667135218s|s638399b|638399|qs|local|vector|||14.204|Rows containing NAs were excluded from the model.|
+model_3_S_brms_formula|stem|ed822ee5665e0543|d8b4696ae85d60b9|2c530c1562a7fbd1|-201937757||t20104.7835707606s|s318b|318|qs|local|vector|||0.004||
+model_3_S_brms_prior|stem|19832e496451dc0a|db7ecfe76d19c040|2c530c1562a7fbd1|-1216941706||t20104.7835708763s|s307b|307|qs|local|vector|||0.005||
+model_4_L_brms_prior|stem|71d3542097c17a02|3de8f0a5492a6b0e|2c530c1562a7fbd1|-583909407||t20104.7835709921s|s316b|316|qs|local|vector|||0.005||
+model_3_L_brms_formula|stem|373707dc980a529a|84f07f4a51437e6a|2c530c1562a7fbd1|-184715706||t20104.7835709921s|s318b|318|qs|local|vector|||0.001||
+model_2_L_brms_prior|stem|aa444fcb98acac43|db9cf0081e282735|2c530c1562a7fbd1|2115702507||t20104.7835711078s|s318b|318|qs|local|vector|||0.005||
+model_2_S_brms_formula|stem|95702704a691ca9a|412c7aa7e875234a|2c530c1562a7fbd1|-1743404571||t20104.7835712236s|s316b|316|qs|local|vector|||0.001||
+model_2_S_brms_prior|stem|803607f50dddc0a8|955088112870e403|2c530c1562a7fbd1|1883300805||t20104.7835713393s|s315b|315|qs|local|vector|||0.005||
+model_3_L_brms_prior|stem|5c18595d394881be|830d755c729da99b|2c530c1562a7fbd1|-1576708543||t20104.7835715708s|s312b|312|qs|local|vector|||0.008||
+model_2_L_brms_formula|stem|2cd39a580a53450b|e56aed3ad39256d5|2c530c1562a7fbd1|562904509||t20104.7835715708s|s315b|315|qs|local|vector|||0.002||
+model_4_L_brms_formula|stem|2a06f50726c47112|da5422d7d81ff5b4|2c530c1562a7fbd1|207916140||t20104.7835716865s|s313b|313|qs|local|vector|||0.001||
+model_3_S_brms_sample|stem|c8a98297d650b7c6|5da8acb9135fc95c|95b288d50fdeffed|-151631494||t20104.7836954117s|s154970b|154970|qs|local|vector|||10.507|Rows containing NAs were excluded from the model.|
+model_5_brms_sample|stem|59a7467bef994eb5|77454a8abc3aaff2|695af0ed165d5f2b|1845469924||t20104.7840945952s|s601825b|601825|qs|local|vector|||34.118||
+model_1_brms_sample|stem|42e9cd75853fe04c|82c45ec92c5f19e1|3d02987baa6d0c02|470895165||t20104.7843400775s|s604372b|604372|qs|local|vector|||21.167|Rows containing NAs were excluded from the model.|
+model_4_L_brms_sample|stem|d2eea00e1d229f12|b4cd893ec00c56f7|5dca69f28a62f0ea|-2040791065||t20104.7844484091s|s154820b|154820|qs|local|vector|||9.353||
+model_2_S_brms_sample|stem|e3cbc6290c247db7|80a927b8b674327b|a50a127c1ed16adc|-1300534134||t20104.7845584768s|s154868b|154868|qs|local|vector|||9.506|Rows containing NAs were excluded from the model.|
+model_2_L_brms_sample|stem|05b0f3de5a085148|ef1c60635c16ba62|df8ab080e3e4d011|-1609981121||t20104.7846695861s|s155143b|155143|qs|local|vector|||9.586||
+model_3_L_brms_sample|stem|183789ef351d7e84|ef581b6a222ceed5|b556868aa981323d|-1663426271||t20104.7847798853s|s155230b|155230|qs|local|vector|||9.523||
+model_list|stem|ae109f7dd9aa508b|f627fa67fe10242c|85d4030a4a521f49|1900002282||t20104.7847802325s|s1867680b|1867680|qs|local|vector|||0||
+model_diagnostics|stem|bdc4f06ae1e176d1|cecb19ae77279f35|d9ccb55a691a1407|1068795827|graphics/diagnostics/model_diagnostics.html*graphics/diagnostics/model_diagnostics.qmd|t20104.7850401821s|s3417709b|3417709|file|local|vector|||22.507||
+model_3_S_brms_sample_prior|stem|2aa86c3ab096110d|d3da30d3281663e1|95b288d50fdeffed|-1857300701||t20104.7942914298s|s158144b|158144|qs|local|vector|||10.185|Rows containing NAs were excluded from the model.|
+model_2_S_brms_sample_prior|stem|ff3f7bd3ae55391b|456aee1f1069da49|a50a127c1ed16adc|270294367||t20104.794400919s|s156924b|156924|qs|local|vector|||9.445|Rows containing NAs were excluded from the model.|
+model_4_L_brms_sample_prior|stem|1b1bc764b1dbfe8a|bf7c40732399d0c6|5dca69f28a62f0ea|-2140071992||t20104.7945104082s|s157004b|157004|qs|local|vector|||9.453||
+model_2_L_brms_sample_prior|stem|0feb7b954989ba5e|f17209f836e3f89e|df8ab080e3e4d011|321620874||t20104.7946242956s|s157636b|157636|qs|local|vector|||9.826||
+model_3_L_brms_sample_prior|stem|e8e4f2147742b9b4|854ebbb4ba69871c|b556868aa981323d|1120153888||t20104.7947362154s|s156300b|156300|qs|local|vector|||9.664||
+prior_model_list|stem|e9bd3af1164bf858|b5b4f50ceb4c4343|bccddbbf88d13dbc|2145697798||t20104.7947365626s|s1982514b|1982514|qs|local|vector|||0||
 shorten_dag_arrows|function|e41a33c671b42296
 create_figure_2|function|49414d4468e65ba9
 make_plot|function|084ec66aac48db3e
-target_park_prep|object|ffd04facf08f0c29
-.Random.seed|object|03f7d9703d3cd312
-target_redo_canopy|object|e397d4c91d5abd3c
+target_park_prep|object|96f025ec9f22a42b
+.Random.seed|object|0c92d982d2104062
+target_redo_canopy|object|245c434d95aea5e0
 calc_tod|function|4dc1e6067da0e96a
 findname|function|b9066011c1e2640c
-target_park_sampling|object|100f9ec884172482
+target_park_sampling|object|0bda40873450282d
 list_sp_pts|function|b556558fdc09158b
 sp_pts_field|function|fab1fe2a4bed10bb
 worm_samples|function|e0d4d59c9310ef41
-target_temp_prep|object|22602648165ac86e
+target_temp_prep|object|86ec7cad0968b1b4
 create_plu_temp_total|function|d1d7ecf4995c6b39
 data_socioec|function|7afb0ae15e429fe1
 download_csv|function|a07cf01c591fd97b
 soil_cores|function|f210818dacd9bbd2
+tree_temp_direct_jitter_func|function|bba5cc1ae4cc696c
 replace_string|function|da5c7972c1c1d1e0
-target_census_prep|object|70cba0c9ed643624
+target_census_prep|object|4f08118ab2cac2dc
 pts_sp|function|6e75cb965d6a8ed1
 create_figure_2_fr|function|5050e2bd673133d3
 data_model|function|cf479d81d1d9858c
 clean_temp|function|c37e06d46c337706
 join_study_parks|function|ec20276b669b96b4
-targets_socioeconomics|object|3f8e7a19e2d6ce35
+targets_socioeconomics|object|9875b6a8852180b6
 join_all_bounds|function|a5780099abd01252
-target_models|object|81ac45a1bcd2c5ec
+target_models|object|44213f7a666e1f71
 download_shp|function|9a973701a8c190cd
-calculate_div|function|67efe11d469025d5
+calculate_div|function|82dfa01fd2616a77
 canopy_cover|function|2e65e81b9ceb801e
-target_manuscript_figures|object|9f31492e2e7259d8
-tree_temp_direct_jitter|function|bba5cc1ae4cc696c
-target_tree_prep|object|f4e541a6fa2a0f9c
+target_manuscript_figures|object|0a149de7fbfeb7d7
+target_tree_prep|object|8a6a083212211219
 clean_census_da|function|7fd0a86cb12a6290
 data_generative|function|5e71b16b6eb1940c
 create_figure_1|function|e24b17f5463c62d1
@@ -817,5 +817,6 @@ create_tree_temp_direct|function|e3045b7bce82fcd6
 sp_pts_temp|function|bfa44f580c1e5f5c
 clean_trees|function|dfa739daec13980d
 sample_points|function|e26f051d39fb149e
-indices_trees|function|e2f03a19df37d9f9
-figure_2|stem|09b37031e8b39812|1c7edbfd72e145bd|8803ac3770b9aa72|-356367554||t20104.6773477497s|s97b|97|qs|local|vector|||40.942|attribute variables are assumed to be spatially constant throughout all geometries. st_centroid assumes attributes are constant over geometries|
+indices_trees|function|72305655f4c1d5fd
+temp_files_files|stem|34499283de09587f|ffe5cf272a079708|2c530c1562a7fbd1|-791626884||t20104.8041364291s|s912b|912|rds|local|vector||temp_files_files_86eef601ec7e0d2e*temp_files_files_ec147c4a389a0448*temp_files_files_65abac0edc1a5b49*temp_files_files_b09a6a80dd0d24e3*temp_files_files_25e8691bf7ac2db3*temp_files_files_55360296f3f48185*temp_files_files_ebd571e2a337ddbe*temp_files_files_d7be778445e57759*temp_files_files_9057e5825954bf5e*temp_files_files_eed2cb19011cf120*temp_files_files_5e084c01e78d1f30*temp_files_files_5b95e6db2b0b25a6*temp_files_files_72f6b20e33756a08*temp_files_files_d578cac627ec6828*temp_files_files_f5aa170e242b58b7*temp_files_files_4eb67324fd99a6e5*temp_files_files_7b15b90c53a07bfa*temp_files_files_1c7bece70f991ee4*temp_files_files_6c1e4b7241cadf54*temp_files_files_b1a843bf806fd3ff*temp_files_files_d833116e4e360b94*temp_files_files_1f542e27d4f9a262*temp_files_files_dd6267d408f766ce*temp_files_files_00222ecb2bb3c309*temp_files_files_3e1b68934d91e035*temp_files_files_7b7ebbe8af0895df*temp_files_files_9de2e7df1e9b780e*temp_files_files_9a01d54041db472d*temp_files_files_f4055cdf4d54b698*temp_files_files_3427c6186c6b7a3a*temp_files_files_f788f368994956ca*temp_files_files_9c853eccead02873*temp_files_files_261c08ca9a0279a0*temp_files_files_3513d7ffcfbfe091*temp_files_files_d9adf8122701dbbb*temp_files_files_f1ff635d5e4a11a7*temp_files_files_d415bd213b59cbf8*temp_files_files_167d455d0d460018*temp_files_files_2ca5761dee5d6a66*temp_files_files_512371abe2383af1*temp_files_files_000ee355d408f36d*temp_files_files_4f25c33f27af3eab*temp_files_files_0de11f57855c1e38*temp_files_files_3810fcd5e8d2e823*temp_files_files_9f99f05cd203e722*temp_files_files_00ec70884dd4f3c8*temp_files_files_88051de63b96099d*temp_files_files_c09abb6d02d7c4ab*temp_files_files_53949eda217ebfac*temp_files_files_b3875c4c208577aa*temp_files_files_ef3766ade8a4c3c7*temp_files_files_23cdfcd2b23b0dd4*temp_files_files_d11c18488b67ad42*temp_files_files_9e2d12771ea69796*temp_files_files_eb1d277335c8af39*temp_files_files_739188b686d8b79e*temp_files_files_2f13351e220b8b69*temp_files_files_745b522776639729*temp_files_files_44094f2c324061ef*temp_files_files_05c85b8a068c1101*temp_files_files_c1bd644d80c7f056*temp_files_files_2213d39be20bd469*temp_files_files_4f24a885068a6061*temp_files_files_638b2ca016b7db55*temp_files_files_2f2a3f6cf3e95026*temp_files_files_edd1549010a23747*temp_files_files_9a6c259b94d679a3*temp_files_files_94cd35ff664a5451*temp_files_files_58e05409ed9c3dc8*temp_files_files_773573430d99b51b*temp_files_files_bdb77bda2d16e1c9*temp_files_files_71f6409f36e6344a*temp_files_files_09b5a3784f8b9ad8*temp_files_files_9876cc3f158c07e0*temp_files_files_7536e36d9032ee99*temp_files_files_1e06d32613370a30*temp_files_files_baed56b6cfdd392e*temp_files_files_67df2160b53dfe0d*temp_files_files_e058f7593e7aad4d*temp_files_files_544bd3952bbb78fc*temp_files_files_41f7026a5365b254*temp_files_files_90fae4b23b5747ca*temp_files_files_830b5d6313eaa7e8*temp_files_files_09415c7894b79ae6*temp_files_files_cfe2dc414176de7c*temp_files_files_d9f479ae3dd7978a*temp_files_files_13a1e7cd374df913*temp_files_files_e66954f884bc2894*temp_files_files_2f36add634b6877d*temp_files_files_2be592e3c01187b7*temp_files_files_6238d42d7e428f98*temp_files_files_95b7620e634c593f*temp_files_files_0c12b96f039be446*temp_files_files_d106fc70fc43fa3a*temp_files_files_4eda112d54f21d9d*temp_files_files_f6f61a11bed973f6*temp_files_files_10034e8f5ba22e69*temp_files_files_ef9c157d4a8d0d19*temp_files_files_5f83478ceb117f02*temp_files_files_9339c7a7f7fb95ff|0.001||
+prior_predictive|stem|ea268a1ec459a4e6|44ed97fde4dcc402|9d64268774e4d759|1246233840|graphics/diagnostics/prior_predictive.html*graphics/diagnostics/prior_predictive.qmd|t20104.8042831863s|s2924874b|2924874|file|local|vector|||12.515||
