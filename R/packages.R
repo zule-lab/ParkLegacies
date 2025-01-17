@@ -54,6 +54,7 @@ suppressPackageStartupMessages({
   library(tidybayes)
   library(bayesplot)
   library(modelr)
+  library(emmeans)
   
 })
 

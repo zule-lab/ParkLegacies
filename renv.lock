@@ -772,6 +772,34 @@
       ],
       "Hash": "27a09ca40266a1066d62ef5402dd51d6"
     },
+    "emmeans": {
+      "Package": "emmeans",
+      "Version": "1.10.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "estimability",
+        "graphics",
+        "methods",
+        "mvtnorm",
+        "numDeriv",
+        "stats",
+        "utils"
+      ],
+      "Hash": "6b0c6fcbdbefe525d2ee713f95880f90"
+    },
+    "estimability": {
+      "Package": "estimability",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stats"
+      ],
+      "Hash": "21ec52af13afbcab1cb317567b639b0a"
+    },
     "evaluate": {
       "Package": "evaluate",
       "Version": "1.0.3",
