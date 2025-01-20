@@ -442,7 +442,7 @@ log(DensL_i) \sim Normal(\alpha, \sigma)
 </div>
 <div id="brms-syntax-1" class="section level3">
 <h3>brms syntax:</h3>
-<pre><code>## Dens_L_log ~ 1 + (1 | PastLandUse)</code></pre>
+<pre><code>## BasalArea_L_s ~ 1 + PastLandUse</code></pre>
 <p>Where:</p>
 <ul>
 <li><p>Dens_L_log = density of large trees (logged)</p></li>
@@ -467,7 +467,7 @@ log(DensS_i) \sim Normal(\alpha, \sigma)
 </div>
 <div id="brms-syntax-2" class="section level3">
 <h3>brms syntax:</h3>
-<pre><code>## Dens_S_log ~ 1 + (1 | PastLandUse)</code></pre>
+<pre><code>## BasalArea_S_s ~ 1 + PastLandUse</code></pre>
 <p>Where:</p>
 <ul>
 <li><p>Dens_S_log = density of small trees (logged)</p></li>
@@ -492,7 +492,7 @@ log(SizeL_i) \sim Normal(\alpha, \sigma)
 </div>
 <div id="brms-syntax-3" class="section level3">
 <h3>brms syntax:</h3>
-<pre><code>## DBH_med_L_log ~ 1 + (1 | PastLandUse)</code></pre>
+<pre><code>## DBH_med_L_s ~ 1 + PastLandUse</code></pre>
 <p>Where:</p>
 <ul>
 <li><p>DBH_med_L_log = size of large trees (logged)</p></li>
@@ -517,7 +517,7 @@ log(SizeS_i) \sim Normal(\alpha, \sigma)
 </div>
 <div id="brms-syntax-4" class="section level3">
 <h3>brms syntax:</h3>
-<pre><code>## DBH_med_S_log ~ 1 + (1 | PastLandUse)</code></pre>
+<pre><code>## DBH_med_S_s ~ 1 + PastLandUse</code></pre>
 <p>Where:</p>
 <ul>
 <li><p>DBH_med_L_log = size of small trees (logged)</p></li>
@@ -542,7 +542,7 @@ log(RichnessL_i) \sim Normal(\alpha, \sigma)
 </div>
 <div id="brms-syntax-5" class="section level3">
 <h3>brms syntax:</h3>
-<pre><code>## SR_L_log ~ 1 + (1 | PastLandUse)</code></pre>
+<pre><code>## SR_L_s ~ 1 + PastLandUse</code></pre>
 <p>Where:</p>
 <ul>
 <li><p>SR_L_log = species richness of large trees (logged)</p></li>
@@ -589,7 +589,7 @@ log(RichnessL_i) \sim Normal(\alpha, \sigma)
 </div>
 <div id="brms-syntax-6" class="section level3">
 <h3>brms syntax:</h3>
-<pre><code>## cooling_s ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s + Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park)</code></pre>
+<pre><code>## cooling_s ~ 1 + BasalArea_L_s + DBH_med_L_s + SR_L_s + BasalArea_S_s + DBH_med_S_s + (1 | tod) + (1 | Park)</code></pre>
 <p>Where:</p>
 <ul>
 <li><p>cooling_s = relative cooling effect (scaled)</p></li>
