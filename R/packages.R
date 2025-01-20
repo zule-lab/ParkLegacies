@@ -33,6 +33,7 @@ suppressPackageStartupMessages({
   
   library(xfun)
   library(janitor)
+  library(units)
   
   library(knitr)
   library(rmarkdown)
