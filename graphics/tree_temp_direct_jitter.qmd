@@ -23,7 +23,6 @@ source('R/packages.R')
 mod <- tar_read(model_1_brms_sample)
 tar_load(temp_indices)
 
-
 findname <- function(xunsc){
   switch(
     xunsc,
@@ -46,6 +45,8 @@ findname <- function(xunsc){
            cooling_s = scale(cooling),
            SR_L_s = scale(SR_L), 
            DBH_med_L_s = scale(DBH_med_L), 
+           BasalArea_L_s = scale(BasalArea_L),
+           BasalArea_S_s = scale(BasalArea_S),
            Dens_L_s = scale(Dens_L),
            Dens_S_s = scale(Dens_S),
            DBH_med_S_s = scale(DBH_med_S))
@@ -74,6 +75,7 @@ findname <- function(xunsc){
     epred <- mod %>% 
       epred_draws(df, 
                   re_formula = ~ (1 | tod))
+    
     
     # plot slopes
     p <- ggplot(data = temp_indices, aes(x = get(x))) +
