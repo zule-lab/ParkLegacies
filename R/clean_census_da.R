@@ -9,9 +9,10 @@ clean_census_da <- function(parks, da, census){
     st_buffer(1000) %>%
     st_intersection(da) %>% 
     mutate(DAUID = as.integer(DAUID),
-           areaint = (st_area(geom))/1000000) # area of the DA that intersects w the buffer (sq km)
+           areaint = st_area(geom)) %>% 
+    st_set_geometry(NULL)
 
-  
+  units(parks_da$areaint) <- make_units(km^2) # area of the DA that intersects w the buffer (sq km)
 
 # census ------------------------------------------------------------------
   
@@ -73,9 +74,7 @@ clean_census_da <- function(parks, da, census){
     rename(totedu = "2014") %>%
     rename(edubac = "2024")
   
-  census_da_sf <- st_as_sf(census_da_r, sf_column_name = c("geom"), crs = st_crs(parks_da))
-  
-  census_da_na <- census_da_sf %>% 
+  census_da_na <- census_da_r %>% 
     drop_na(Name)  %>%
     filter(area > 0) %>%
     mutate(da = as.factor(DAUID)) %>%
@@ -102,7 +101,7 @@ clean_census_da <- function(parks, da, census){
     # divide the intersected area/total area of DA and multiply the population by that 
     # can then use this population as weight for weighted means
     mutate(popwithin = (as.numeric(areaint)/as.numeric(area))*as.numeric(totpop)) %>% 
-    select(c("Name","PastLandUse","da","geom","totpop", "popwithin", "popdens", "area", "areaint", "sidehop","aptfivp","semhoup","rowhoup","aptdupp","aptbuip","otsihop","mvdwelp",
+    select(c("Name","PastLandUse","da","totpop", "popwithin", "popdens", "area", "areaint", "sidehop","aptfivp","semhoup","rowhoup","aptdupp","aptbuip","otsihop","mvdwelp",
              "medinc", "lowinc", "recimmp", "indigp", "visminp", "edubacp"))
   
   # population weighted mean
@@ -110,7 +109,6 @@ clean_census_da <- function(parks, da, census){
     group_by(Name, PastLandUse) %>%   
     summarize(DAcount = n(),
               totarea = sum(areaint),
-              geometry = st_union(geom),
               popdens = weighted.mean(as.numeric(popdens), as.numeric(popwithin), na.rm = T),
               sidehop = weighted.mean(as.numeric(sidehop), as.numeric(popwithin), na.rm = T),
               aptfivp = weighted.mean(as.numeric(aptfivp), as.numeric(popwithin), na.rm = T),
