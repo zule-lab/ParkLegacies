@@ -50,7 +50,7 @@ indices_temp <- function(temp_clean, sensor_pts, sensor_con_pts, trees_indices){
   
   cooling <- temp_diff %>% 
     rowwise() %>% 
-    mutate(cooling = (mean_con - mean) - mean(temp_diff$mean_con - temp_diff$mean))
+    mutate(cooling = mean_con - mean)
 
 }
 
