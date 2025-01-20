@@ -12,8 +12,8 @@ create_tree_temp_direct <- function(model_list, temp_indices){
            cooling_s = scale(cooling),
            SR_L_s = scale(SR_L), 
            DBH_med_L_s = scale(DBH_med_L), 
-           Dens_L_s = scale(Dens_L),
-           Dens_S_s = scale(Dens_S),
+           BasalArea_L_s = scale(BasalArea_L),
+           BasalArea_S_s = scale(BasalArea_S),
            DBH_med_S_s = scale(DBH_med_S))
   
   # how to sequence data
@@ -107,7 +107,7 @@ create_tree_temp_direct <- function(model_list, temp_indices){
 findname <- function(xunsc){
   switch(
     xunsc,
-    Dens_L = "Mean Density(trees / square meter)",
+    Dens_L = "Mean Density (sq m / ha)",
     DBH_med_L = "Median Size (DBH cm)",
     SR_L = "Mean Species Richness (# species)",
     Dens_S = "Mean Tree Density (trees / square meter)",
