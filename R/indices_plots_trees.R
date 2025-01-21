@@ -11,7 +11,7 @@ indices_plots_trees <- function(trees_clean, field_sp_pts, full_study_parks){
   trees_clean$Date <- as.Date(trees_clean$Date, "%m/%d/%Y")
   
   # Large Trees -------------------------------------------------------------
-  large_div <- calculate_div(trees_clean, 'DBHCalc >= 5', "L", 800)
+  large_div <- calculate_div_plots(trees_clean, 'DBHCalc >= 5', "L", 800)
   
   
   # Small Trees -------------------------------------------------------------
@@ -85,7 +85,7 @@ indices_plots_trees <- function(trees_clean, field_sp_pts, full_study_parks){
 }
 
 
-calculate_div <- function(trees_clean, desDBH, suffix, area) {
+calculate_div_plots <- function(trees_clean, desDBH, suffix, area) {
   
   abundance <- trees_clean %>%
     filter(eval(rlang::parse_expr(desDBH))) %>% 
