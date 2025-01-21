@@ -188,6 +188,11 @@ target_models <- c(
   tar_render(
     model_diagnostics,
     'graphics/diagnostics/model_diagnostics.qmd'
+  ),
+
+  tar_target(
+    socioec_data,
+    data_socioec(census)
   )
   
   
