@@ -25,6 +25,22 @@ target_manuscript_figures <- c(
     create_tree_temp_direct(model_list, temp_indices)
   ),
   
+  
+  tar_target(
+    plu_temp_total_plots,
+    create_plu_temp_total_plots(model_list_plots, temp_plots)
+  ),
+  
+  tar_target(
+    plu_tree_direct_plots,
+    create_plu_tree_direct_plots(model_list_plots, temp_plots)
+  ),
+  
+  tar_target(
+    tree_temp_direct_plots,
+    create_tree_temp_direct_plots(model_list_plots, temp_plots)
+  ),
+  
   tar_render(
     tree_temp_direct_jitter,
     'graphics/tree_temp_direct_jitter.qmd'
