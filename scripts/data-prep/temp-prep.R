@@ -37,6 +37,12 @@ target_temp_prep <- c(
   tar_target(
     temp_plots, 
     indices_temp_plots(temp_clean, sensor_pts, sensor_con_pts, trees_plots)
+  ),
+  
+  # sensitivity analysis for control replacements 
+  tar_render(
+    con_sensitivity,
+    'graphics/diagnostics/sensitivity.qmd'
   )
   
 )
