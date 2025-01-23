@@ -22,201 +22,141 @@ Authors: Isabella C. Richmond^1^\*, Michael A. Paulauskas^1^, Erica Padvaiskas^1
 
 \* isabella.richmond\@mail.concordia.ca, 438-439-8064
 
-## Model Equations
+## Model Equations - Figure S4
 
-Below are the math stats notations, as well as the `brms` notations, for all models run in our paper. Importantly, we denote the relative cooling effect as:
+Below are the math stats notations for all models run in our paper. 
 
-$$
-({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})}
-$$
-
-It is important to note that in this notation, $T^{park}_i$, indicates the temperature averaged across all sensors and times for that date (split into daytime or nighttime). Similarly, $T^{control}_i$ indicates the average temperature for the control sensor, averaged across all times for that date (split into daytime or nighttime). $\overline{(T ^{control} - T^{park})}$ indicates the average of all temperature differences, taken across dates and sites.
 
 ## Total Effect of Past Land-Use on Cooling Effect
 
-### Model equation:
 
 $$
-({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})} \sim Normal(\mu_i, \sigma) 
+Cooling_i \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = {\bar\alpha + \alpha_{Park[i]} + \alpha_{tod[i]} + \beta _{PastLandUse} *PastLandUse + \beta _{age} *Age}
+\mu_i \sim \alpha_{Park[i]} + \alpha_{Plot[i]} + \gamma_{PLU[i]} + \gamma_{tod[i]} + \beta_{PLU}tod + \beta_{PLU[i]} + \beta_{tod[i]} + \beta_{age}age_i
 \\
-\bar\alpha \sim Normal(0, 0.5)
+\alpha_{Park[j]} \sim Normal(\bar{\alpha}, \sigma_{\alpha_{Park}})
 \\
-\alpha_{Park} ~\sim Normal(0, \sigma_{Park})
+\alpha_{Plot[j]} \sim Normal(0, \sigma_{\alpha_{Plot}})
 \\
-\alpha_{tod} ~\sim Normal(0, \sigma_{tod})
+\gamma_j \sim Normal(0, 0.5)
 \\
-\beta_{PastLandUse} \sim Normal(0, 0.5)
+\beta_j \sim Normal(0, 0.5)
 \\
-\beta_{Age} \sim Normal(0, 0.5)
+\bar{\alpha} \sim Normal(0, 0.5)
 \\
-\sigma_{Park}\sim HalfNormal(0, 0.2)
+\sigma_{\alpha_{Park}} \sim Half-Normal(0, 0.2)
 \\
-\sigma_{tod}\sim HalfNormal(0, 0.2)
+\sigma_{\alpha_{Plot}} \sim Half-Normal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 $$
-
-### brms syntax:
-
-```{r, eval = T, echo = F}
-tar_read(model_5_brms_formula)
-```
-
-Where:
-
--   cooling_s = relative cooling effect (scaled)
-
--   PastLandUse = past land use category
-
--   Age_s = age of park (scaled)
-
--   tod = time of day (daytime or nighttime)
-
--   Park = park where measurements were taken
+-   $\alpha$ and $\gamma$ both represent intercepts, $\alpha$ is used for random effects and $\gamma$ for fixed interaction effecst 
+-   $Cooling_i$ is the centered and scaled cooling effect in each plot in degrees Celsuis
+-   $Park_i$ is the park that each plot is in 
+-   $Plot_i$ is the plot that each measurement is in 
+-   $PLU_i$ is the past land use category that each measurement is in (i.e., agricultural, forested, industrial)
+-   $tod_i$ is the time of day category that each measurement is in (i.e., daytime, nighttime)
+-   $age_i$ is the centered and scaled age of the park that each measurement is in 
 
 ## Direct Effect of Past Land-Use on Forest Composition
 
-### Model equation
+### Large Tree Density
 
 $$
-log(DensL_i) \sim Normal(\alpha, \sigma)
+DensL_i \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]}
 \\
-\bar\alpha\sim Normal(-1.5 ,2)
+\alpha\sim Normal(0, 0.5)
 \\
-\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
-\\
-\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\beta_j \sim Normal(0, 0.5)
 \\
 \sigma \sim Exponential(1)
 $$
 
-### brms syntax:
-
-```{r, eval = T, echo = F}
-tar_read(model_2_L_brms_formula)
-```
-
 Where:
 
--   Dens_L_log = density of large trees (logged)
+-   $DensL_i$ is the centered and scaled basal area of large trees in each plot
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept. 
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
 
--   PastLandUse = past land use category
-
-### Model equation
+### Small Tree Density
 
 $$
-log(DensS_i) \sim Normal(\alpha, \sigma)
+log(DensS_i) \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]}
 \\
-\bar\alpha\sim Normal(-1 ,5)
+\alpha\sim Normal(0, 0.5)
 \\
-\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
-\\
-\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\beta_j \sim Normal(0, 0.5)
 \\
 \sigma \sim Exponential(1)
 $$
 
-### brms syntax:
+-   $log(DensS_i)$ is the centered and scaled density of small trees in each plot. Logged for model fit.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept. 
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
 
-```{r, eval = T, echo = F}
-tar_read(model_2_S_brms_formula)
-```
 
-Where:
-
--   Dens_S_log = density of small trees (logged)
-
--   PastLandUse = past land use category
-
-### Model equation
+### Large Tree Size
 
 $$
-log(SizeL_i) \sim Normal(\alpha, \sigma)
+SizeL_i \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]}
 \\
-\bar\alpha\sim Normal(2.5 , 1)
+\alpha\sim Normal(-1, 0.5)
 \\
-\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
-\\
-\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\beta_j \sim Normal(0, 0.5)
 \\
 \sigma \sim Exponential(1)
 $$
 
-### brms syntax:
+-   $SizeL_i$ is the centered and scaled median size of large trees in each plot.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept. 
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
 
-```{r, eval = T, echo = F}
-tar_read(model_3_L_brms_formula)
-```
 
-Where:
 
--   DBH_med_L_log = size of large trees (logged)
-
--   PastLandUse = past land use category
-
-### Model equation
+### Small Tree Size
 
 $$
-log(SizeS_i) \sim Normal(\alpha, \sigma)
+SizeS_i \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]}
 \\
-\bar\alpha\sim Normal(1, 0.5)
+\alpha\sim Normal(1, 0.5)
 \\
-\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
-\\
-\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\beta_j \sim Normal(0, 0.5)
 \\
 \sigma \sim Exponential(1)
 $$
 
-### brms syntax:
+-   $SizeS_i$ is the centered and scaled median size of small trees in each plot.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept. 
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
 
-```{r, eval = T, echo = F}
-tar_read(model_3_S_brms_formula)
-```
 
-Where:
-
--   DBH_med_L_log = size of small trees (logged)
-
--   PastLandUse = past land use category
-
-### Model equation
+### Large Tree Species Richness
 
 $$
-log(RichnessL_i) \sim Normal(\alpha, \sigma)
+SRL_i \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = \bar\alpha + \alpha_{PastLandUse[i]}
+\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]}
 \\
-\bar\alpha\sim Normal(2, 1)
+\alpha\sim Normal(2, 1)
 \\
-\alpha_{PastLandUse} \sim Normal(0, \sigma_{PastLandUse})
-\\
-\sigma_{PastLandUse} \sim HalfNormal(0, 0.2)
+\beta_j \sim Normal(0, 0.5)
 \\
 \sigma \sim Exponential(1)
 $$
 
-### brms syntax:
+-   $SRL_i$ is the centered and scaled species richness of large trees in each plot.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept. 
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
 
-```{r, eval = T, echo = F}
-tar_read(model_4_L_brms_formula)
-```
-
-Where:
-
--   SR_L_log = species richness of large trees (logged)
-
--   PastLandUse = past land use category
 
 ## Direct Effect of Forest Composition on Cooling Effect
 
@@ -224,54 +164,32 @@ Where:
 
 ::: {style="overflow-x:auto;overflow-y:hidden;"}
 $$
-({T ^{control}_i} - {T ^{park}_i}) - \overline{(T ^{control} - T ^{park})} \sim Normal(\mu_i, \sigma) 
+Cooling_i \sim Normal(\mu_i, \sigma)
 \\
-\mu_i = {\bar\alpha + \alpha_{Park[i]} + \alpha_{tod[i]} + \beta {densL} *densityL + \beta _{sizeL} *sizeL + \beta _{richnessL} *richnessL + \beta _{densS} *densityS + \beta _{sizeS} *sizeS}
+\mu_i \sim \alpha_{Park[i]} + \alpha_{Plot[i]} + \gamma_{tod[i]} + \beta_{tod[i]}DensityL_{i} + \beta_{tod[i]}DensityS_{i} + \beta_{tod[i]}SizeL_{i} + \beta_{tod[i]}SizeS_{i} + \beta_{tod[i]}SRL_{i} + \beta_{DensityL}DensityL_i + \beta_{DensityS}DensityS_i + \beta_{SizeL}SizeL_i + \beta_{SizeS}SizeS_i + \beta_{SRL}SRL_i 
 \\
-\bar\alpha \sim Normal(0, 0.5)
+\alpha_{Park[j]} \sim Normal(\bar{\alpha}, \sigma_{\alpha_{Park}})
 \\
-\alpha_{Park} ~\sim Normal(0, \sigma_{Park})
+\alpha_{Plot[j]} \sim Normal(0, \sigma_{\alpha_{Plot}})
 \\
-\alpha_{tod} ~\sim Normal(0, \sigma_{tod})
+\gamma_j \sim Normal(0, 0.5)
 \\
-\beta_{densL} \sim Normal(0, 0.5)
+\beta_j \sim Normal(0, 0.5)
 \\
-\beta_{sizeL} \sim Normal(0, 0.5)
+\bar{\alpha} \sim Normal(0, 0.5)
 \\
-\beta_{richnessL} \sim Normal(0, 0.5)
+\sigma_{\alpha_{Park}} \sim Half-Normal(0, 0.2)
 \\
-\beta_{densS} \sim Normal(0, 0.5)
-\\
-\beta_{sizeS} \sim Normal(0, 0.5)
-\\
-\sigma_{Park}\sim HalfNormal(0, 0.2)
-\\
-\sigma_{tod}\sim HalfNormal(0, 0.2)
+\sigma_{\alpha_{Plot}} \sim Half-Normal(0, 0.2)
 \\
 \sigma \sim Exponential(1)
 $$
+
 :::
-
-### brms syntax:
-
-```{r, eval = T, echo = F}
-tar_read(model_1_brms_formula)
-```
-
-Where:
-
--   cooling_s = relative cooling effect (scaled)
-
--   Dens_L_s = large tree density (scaled)
-
--   DBH_med_L_s = large tree size (scaled)
-
--   SR_L_s = large tree species richness (scaled)
-
--   Dens_S_s = small tree density (scaled)
-
--   DBH_med_S_s = small tree size (scaled)
-
--   tod = time of day (daytime or nighttime)
-
--   Park = park where measurements were taken
+-   $\alpha$ and $\gamma$ both represent intercepts, $\alpha$ is used for random effects and $\gamma$ for fixed interaction effecst 
+-   $Cooling_i$ is the centered and scaled cooling effect in each plot in degrees Celsuis
+-   $Park_i$ is the park that each plot is in 
+-   $Plot_i$ is the plot that each measurement is in 
+-   $PLU_i$ is the past land use category that each measurement is in (i.e., agricultural, forested, industrial)
+-   $tod_i$ is the time of day category that each measurement is in (i.e., daytime, nighttime)
+-   $age_i$ is the centered and scaled age of the park that each measurement is in 

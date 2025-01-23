@@ -109,7 +109,7 @@ plot_prior <- function(mod, xmin, xmax, ylab){
 }
 ```
 
-## Prior Predictive Checks
+## Prior Predictive Checks - Figure S5
 
 Prior predictive checks are used to ensure that the values selected for priors for our models allow a biologically reasonable range of values. For models with fixed effects fit to the model (models 1 and 5), we simulate predictive draws for prior only models and visualize the slope/intercept of the values. We then do a "posterior predictive check" but with the prior only model, to see if the data is captured in the priors. For models with only random effects, we only use the posterior predictive check.
 

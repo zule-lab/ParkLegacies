@@ -55,7 +55,7 @@ plot_model_2 <- function(model){
   }
 ```
 
-## Model Diagnostic Plots
+## Model Diagnostic Plots - Figure S6
 
 These model diagnostic plots assess whether the chains of our models are converged and well mixed, and if the model is well specified and has an adequate fit.
 
