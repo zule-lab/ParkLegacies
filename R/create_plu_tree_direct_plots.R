@@ -4,11 +4,11 @@ create_plu_tree_direct_plots <- function(model_list_plots, temp_plots){
   
   names(tree_mods) <- c('Mean Basal Area (square meter / ha)', 'Mean Basal Area (square meter / ha)', 'Median Tree Size (DBH cm)', 'Median Tree Size (DBH cm)', 'Mean Species Richness (# species)')
   
-  mod2l <- make_plot(tree_mods[[1]], temp_plots, names(tree_mods[1])) + ggtitle('Large Trees (>= 5 cm DBH)')
-  mod2s <- make_plot(tree_mods[[2]], temp_plots, names(tree_mods[2])) + ggtitle('Small Trees (< 5 cm DBH)') 
-  mod3l <- make_plot(tree_mods[[3]], temp_plots, names(tree_mods[3]))
-  mod3s <- make_plot(tree_mods[[4]], temp_plots, names(tree_mods[4]))
-  mod4l <- make_plot(tree_mods[[5]], temp_plots, names(tree_mods[5]))
+  mod2l <- make_plot_plots(tree_mods[[1]], temp_plots, names(tree_mods[1])) + ggtitle('Large Trees (>= 5 cm DBH)')
+  mod2s <- make_plot_plots(tree_mods[[2]], temp_plots, names(tree_mods[2])) + ggtitle('Small Trees (< 5 cm DBH)') 
+  mod3l <- make_plot_plots(tree_mods[[3]], temp_plots, names(tree_mods[3]))
+  mod3s <- make_plot_plots(tree_mods[[4]], temp_plots, names(tree_mods[4]))
+  mod4l <- make_plot_plots(tree_mods[[5]], temp_plots, names(tree_mods[5]))
   
   
   p <- mod2l + mod3l + mod4l + mod2s + mod3s + guide_area() + plot_layout(guides = "collect")
@@ -20,9 +20,10 @@ create_plu_tree_direct_plots <- function(model_list_plots, temp_plots){
 
 
 
-make_plot <- function(model, df, label){
+make_plot_plots <- function(model, df, label){
   
-  response <- colnames(model$data)[1] %>% str_remove("_s")
+  response <- colnames(model$data)[1] %>% 
+    str_replace_all(c("log" = "", "_s" = "", "\\)" = "", "\\(" = ""))
   
   mod_draws <- model %>%
     emmeans(~ PastLandUse,
