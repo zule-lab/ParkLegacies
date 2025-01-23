@@ -56,7 +56,7 @@ target_models_plots <- c(
   
   zar_brms(
     plu_density_S,
-    formula = BasalArea_S_s ~ 1 + PastLandUse,
+    formula = log(BasalArea_S_s) ~ 1 + PastLandUse,
     data = temp_plots %>% 
       ungroup() %>%
       select(c(plot_id, BasalArea_S, PastLandUse)) %>% 
