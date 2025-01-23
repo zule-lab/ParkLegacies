@@ -137,7 +137,7 @@ invisible(capture.output(wrap_plots(figs, nrow = 1, ncol = 1)))
 mod <- prior_model_list['plu_density_S_prior']
 figs <- plot_prior(mod[[1]], -3, 3, "Small Tree Basal Area (m^2/ha)")
 
-invisible(capture.output(wrap_plots(figs, nrow = 1, ncol = 1)))
+invisible(capture.output(wrap_plots(figs[[2]], nrow = 1, ncol = 1)))
 ```
 
 ## Model 3a: Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Size
