@@ -17,7 +17,7 @@ create_tree_temp_direct_plots <- function(model_list_plots, temp_plots){
            DBH_med_S_s = scale(DBH_med_S))
   
   # how to sequence data
-  seq_d <- seq(-3, 3, length.out = 500)
+  seq_d <- seq(-3, 10, length.out = 1000)
   
   # identify numeric variables in model
   numeric <- names(Filter(is.numeric,mod$data[-1]))
@@ -43,7 +43,7 @@ create_tree_temp_direct_plots <- function(model_list_plots, temp_plots){
     
     # plot slopes
     p <- ggplot(data = temp_indices, aes(x = get(x))) +
-      geom_jitter(aes(y = cooling, color = as.factor(tod)), width = .1, height = 0, alpha = 0.7) +
+      geom_jitter(aes(y = cooling_s, color = as.factor(tod)), width = .1, height = 0, alpha = 0.7) +
       stat_lineribbon(aes(x = get(x), y = .epred, color = factor(tod)), data = epred) +
       scale_fill_brewer(palette = "Greys") +
       scale_color_manual(values = c("#CFA35E","#45A291"), labels = c("Day", "Night")) +
