@@ -1120,6 +1120,19 @@
       ],
       "Hash": "5899f1eaa825580172bb56c08266f37c"
     },
+    "gpx": {
+      "Package": "gpx",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "lubridate",
+        "rvest",
+        "xml2"
+      ],
+      "Hash": "e9b225aade0067ea54d9f4229e228baf"
+    },
     "graphlayouts": {
       "Package": "graphlayouts",
       "Version": "1.2.1",
