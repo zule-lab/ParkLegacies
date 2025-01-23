@@ -73,7 +73,7 @@ create_tree_temp_direct_plots <- function(model_list_plots, temp_plots){
     
     # unscale axis labels for interpretation
     p +
-      coord_cartesian(xlim = range(relvar_s, na.rm = TRUE), expand = F) + 
+      coord_cartesian(xlim = range(relvar_s, na.rm = TRUE), expand = T) + 
       scale_x_continuous(breaks = atx,
                          labels = round(atx * sdx + meanx, 1))  +
       scale_y_continuous(name = "Cooling Effect (\u00B0C)", 
