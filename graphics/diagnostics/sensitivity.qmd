@@ -1,0 +1,81 @@
+---
+title: "Title: Cooling benefits and forest structure similar across parks with varied land use histories"
+format:
+  pdf:
+    fig-width: 12
+    fig-height: 14
+knitr:
+  opts_knit:
+    root.dir: "C:/Users/I_RICHMO/Documents/Repositories/park-legacies"
+---
+
+Authors: Isabella C. Richmond^1^\*, Michael A. Paulauskas^1^, Erica Padvaiskas^1^, Laura Carolina Gonzalez Sinisterra^2^, Kayleigh Hutt-Taylor^1^, Alec L. Robitaille^3^, Carly D. Ziter^1^
+
+1 Department of Biology, Concordia University, Montreal Canada, H4B 1R6\
+2 Department of Biology, Universidad del Valle, Cali Columbia, 760042 3 Department of Biology, Memorial University of Newfoundland, St John's Canada, A1C 5S7
+
+\* isabella.richmond\@mail.concordia.ca, 438-439-8064
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+source('R/packages.R')
+source('R/indices_temp.R')
+
+tar_load(temp_clean)
+tar_load(sensor_pts)
+tar_load(sensor_con_pts)
+```
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+# calculate time of day for all temp pts
+  con_tod <- calc_tod(temp_clean, sensor_con_pts)
+  parks_tod <- calc_tod(temp_clean, sensor_pts)
+  
+  # calculate max and mean temps for day and night 
+  con_calc <- con_tod %>%
+    group_by(plot_id, date, tod) %>%
+    summarize(max = max(temperature_c),
+              mean = mean(temperature_c)) %>%
+    rename(con_id = plot_id)
+  
+  parks_calc <- parks_tod %>%
+    group_by(plot_id, Park, date, tod) %>%
+    summarize(max = max(temperature_c),
+              mean = mean(temperature_c))
+  
+  # calculate difference between parks and controls 
+  con_id <- c('CON-AT', 'CON-LAL-LAF-JAR', 'CON-P-M', 'CON-FB-SS', 'CON-MB-SG')
+  
+  temp_diff <- parks_calc %>%
+    filter(Park == "La Fontaine" | Park == "Baldwin" | Park == "Jean-Drapeau" | Park == "Jardin Botanique" | 
+             Park == "Lafond" | Park == "Lalancette" | Park == "Adrien-D.-Archambault") %>% 
+    group_by(Park) %>%
+    expand(con_id) %>%
+    filter(Park != "Adrien-D.-Archambault" | con_id != "CON-FB-SS",
+           Park != "Adrien-D.-Archambault" | con_id != "CON-LAL-LAF-JAR",
+           Park != "Adrien-D.-Archambault" | con_id != "CON-P-M",
+           Park != "La Fontaine" | con_id != "CON-AT",
+           Park != "Baldwin" | con_id != "CON-AT",
+           Park != "Jean-Drapeau" | con_id != "CON-AT",
+           Park != "Jardin Botanique" | con_id != "CON-AT",
+           Park != "Lafond" | con_id != "CON-AT",
+           Park != "Lalancette" | con_id != "CON-AT") %>% 
+    left_join(., parks_calc, by = "Park") %>% 
+    left_join(., con_calc, by = c('con_id', 'date', 'tod'), suffix = c("", "_con"))
+  
+  cooling <- temp_diff %>% 
+    drop_na(con_id) %>%
+    rowwise() %>% 
+    mutate(cooling = mean_con - mean)
+  
+  ggplot(data = cooling, aes(x = cooling, colour = con_id, fill = con_id )) + 
+    stat_density(alpha = 0.5) + 
+    scale_colour_viridis_d() + 
+    scale_fill_viridis_d() + 
+    facet_wrap(~Park) + 
+    theme_classic() + 
+    labs(x = "Cooling Effect (\u00B0C)", y = "Density of Observations", fill = "Control Sensor", colour = "Control Sensor")
+  
+  
+```
+
+Figure S3. Sensitivity analysis showing the cooling effect across all dates for each park where the control sensor was replaced due to missing data. Plots were made with the remaining control sensors closest to the park in question. CON-LAL-LAF-JAR indicates the control sensor that we used from another, similar study.
