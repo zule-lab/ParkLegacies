@@ -1,7 +1,7 @@
-create_tree_temp_direct_plots <- function(model_list_plots, temp_plots){
+create_tree_temp_direct_plots <- function(tree_temp_brms_sample, temp_plots){
   
-  # formula = cooling ~ 1 + Dens_L_s + DBH_med_L_s + SR_L_s +  Dens_S_s + DBH_med_S_s + (1 | tod) + (1 | Park)
-  mod <- model_list_plots[[1]]
+  
+  mod <- tree_temp_brms_sample
   
   # calculate unscaled cooling and add to temp indices
   temp_indices <- temp_plots %>% 
@@ -14,7 +14,8 @@ create_tree_temp_direct_plots <- function(model_list_plots, temp_plots){
            DBH_med_L_s = scale(DBH_med_L), 
            BasalArea_L_s = scale(BasalArea_L),
            BasalArea_S_s = scale(BasalArea_S),
-           DBH_med_S_s = scale(DBH_med_S))
+           DBH_med_S_s = scale(DBH_med_S),
+           Dens_S_s = scale(Dens_S))
   
   # how to sequence data
   seq_d <- seq(-3, 10, length.out = 1000)
@@ -107,10 +108,10 @@ create_tree_temp_direct_plots <- function(model_list_plots, temp_plots){
 findname_plots <- function(xunsc){
   switch(
     xunsc,
-    BasalArea_L = "Tree Density (square meter / ha)",
+    BasalArea_L = "Tree Basal Area (square meter / ha)",
     DBH_med_L = "Median Size (DBH cm)",
     SR_L = "Mean Species Richness (# species)",
-    BasalArea_S = "Tree Density (square meter / ha)",
+    BasalArea_S = "Tree Basal Area (square meter / ha)",
     DBH_med_S = "Median Tree Size (DBH cm)"
   )
 }

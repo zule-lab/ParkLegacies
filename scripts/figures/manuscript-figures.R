@@ -28,7 +28,7 @@ target_manuscript_figures <- c(
   
   tar_target(
     plu_temp_total_plots,
-    create_plu_temp_total_plots(model_list_plots, temp_plots)
+    create_plu_temp_total_plots(plu_temp_brms_sample, temp_plots)
   ),
   
   tar_target(
@@ -38,7 +38,7 @@ target_manuscript_figures <- c(
   
   tar_target(
     tree_temp_direct_plots,
-    create_tree_temp_direct_plots(model_list_plots, temp_plots)
+    create_tree_temp_direct_plots(tree_temp_brms_sample, temp_plots)
   ),
   
   tar_render(

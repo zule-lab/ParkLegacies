@@ -1,8 +1,6 @@
-create_plu_temp_total_plots <- function(model_list_plots, temp_plots){
+create_plu_temp_total_plots <- function(plu_temp_brms_sample, temp_plots){
   
-  # extract relevant model from list
-  model_5 <- model_list_plots[['plu_temp']]
-  
+  model_5 <- plu_temp_brms_sample 
   
   # plot
   t <- model_5 %>%
