@@ -1,0 +1,46 @@
+﻿Park,Park ID,Legacy(ies),Municipality,Borough,Year Established,Sensors deployed,Sensors Retrieved
+Adrien-D-Archambault,IND1,Industrial,Montreal,Verdun,2002,3,3
+Angrignon,"FOR1, AGR1","Forested, Agricultural",Montreal,Le Sud-Ouest,1927,6,5
+Arborétum du Jardin botanique,IND7,Industrial,Montreal,Rosemont-La Petite-Patrie,1936,3,3
+Arthur-Therrien,IND2,Industrial,Montreal,Verdun,~ 1964,3,3
+Baldwin,IND3,Industrial,Montreal,Le Plateau-Mont Royal,1909,3,3
+Benny,AGR7,Agricultural,Montreal,Notre-Dame-de-Grâce,1965,3,0
+Boisé-du-Saint-Sulpice,FOR4,Forested,Montreal,Ahuntsic-Cartierville,1990,3,3
+Bois-de-Liesse,FOR2,Forested,Montreal,Pierrefonds-Roxboro / Saint-Laurent,1987,3,3
+Bois-de-Saraguay,FOR3,Forested,Montreal,Ahuntsic-Cartierville,1987,3,3
+Cap-Saint-Jacques,"FOR5, AGR2","Forested, Agricultural",Montreal,Pierrefonds-Roxboro,1985,6,6
+Centennial Hall,AGR8,Agricultural,Beaconsfield,,1945,3,3
+Coulée-Grou,FOR6,Forested,Montreal,Rivière-des-Prairie-Pointe-aux-Trembles,1988,3,3
+Félix-Leclerc,IND5,Industrial,Montreal,Mercier-Hochelaga-Maisonneuve,1990,3,2
+Frédéric-Back,IND6,Industrial,Montreal,Vileray-Saint Michel-Parc Extension,2016,3,2
+Fritz,AGR9,Agricultural,Baie-d’Urfe,,1979,3,3
+Île-Bizard,"FOR7, AGR3","Forested, Agricultural",Montreal,L'Île-Bizard–Sainte-Geneviève,1991,6,6
+Jean-Drapeau,FOR8,Forested,Montreal,Ville-Marie,1908,3,3
+L'Anse-à-L'Orme,"FOR9, AGR4","Forested, Agricultural",Montreal,Pierrefonds-Roxboro / Saint-Laurent,1987,6,6
+Lafond,IND8,Industrial,Montreal,Rosemont-La Petite-Patrie,1952-1955,3,3
+Lafontaine,AGR5,Agricultural,Montreal,Le Plateau-Mont-Royal,1901,3,1
+Lalancette,IND9,Industrial,Montreal,Mercier-Hochelaga-Maisonneuve,1922,3,1
+Marguerite-Bourgeoys ,AGR6,Agricultural,Montreal,Le Sud-Ouest,1913,3,3
+Père-Marquette,IND11,Industrial,Montreal,Rosemont-La Petite-Patrie,1953,3,3
+Pointe-Aux-Prairies,"IND12, FOR10, AGR11","Industrial, Forested, Agricultural",Montreal,Rivière-des-Prairies-Pointe-aux-Trembles,1992,8,7
+Promenade-Bellerive,IND13,Industrial,Montreal,Mercier-Hochelaga-Maisonneuve,1978,3,2
+Saint-Gabriel,AGR10,Agricultural,Montreal,Le Sud-Ouest,1887,2,1
+Thomas-Chapais,FOR11,Forested,Montreal,Mercier-Hochelaga-Maisonneuve,1960,3,1
+Coulée-Grou + Pointe-Aux-Prairies ,CON-PaP-CG,Control,Montreal,Rivière-des-Prairies-Pointe-aux-Trembles,,1,1
+Promenade-Bellerive,CON-P-B,Control,,,,1,1
+Félix-Leclerc,CON-F-L,Control,,,,1,1
+Frédéric-Back + Boisé-du-Saint-Sulpice,CON-FB-SS,Control,,,,1,1
+Arborétum du Jardin botanique + Lafond + Lalancette,CON-LAL-LAF-JAR,Control,,,,1,1
+Lafontaine + Baldwin + Jean-Drapeau,CON-LAF-BAL,Control,,,,1,0 (supplemented sensor)
+Père-Marquette,CON-P-M,Control,,,,1,1
+Marguerite-Bourgeoys + Saint-Gabriel,CON-MB-SG,Control,,,,1,1
+Adrien-D-Archambault,CON-ADA,Control,,,,1,1
+Arthur-Therrien,CON-AT,Control,,,,1,1
+Angrignon,CON-ANG,Control,,,,1,1
+Benny,CON-BEN,Control,,,,1,1
+Bois-de-Liesse,CON-BDL,Control,,,,1,1
+Bois-de-Saraguay,CON-BDS,Control,,,,1,1
+Île-Bizard,CON-IB,Control,,,,1,1
+Centennial Hall,CON-CENTENNIAL,Control,,,,1,1
+Fritz,CON-Fritz,Control,,,,1,1
+Cap-Saint-Jacques + L'Anse-à-L'Orme,CON-LALO-CSJ,Control,,,,1,1

@@ -1,0 +1,637 @@
+---
+title: "Title: Land-use history causes differences in park nighttime cooling capacity and forest structure"
+author:
+  - name: Isabella C Richmond
+    orcid: 0000-0001-5079-8442
+    email: isabella.richmond@mail.concordia.ca
+    affiliations:
+      - name: Department of Biology, Concordia University
+        address: 7141 Sherbrooke St W
+        city: Montreal
+        state: QC
+        postal-code: H4B 1R6
+  - name: Michael A Paulauskas
+    affiliations:
+      - name: Department of Biology, Concordia University
+        address: 7141 Sherbrooke St W
+        city: Montreal
+        state: QC
+        postal-code: H4B 1R6
+  - name: Erica Padvaiskas
+    affiliations:
+      - name: Department of Biology, Concordia University
+        address: 7141 Sherbrooke St W
+        city: Montreal
+        state: CAN
+        postal-code: H4B 1R6
+  - name: Laura Carolina Gonzàlez Sinisterra
+    affiliations:
+      - name: Department of Biology, Universidad del Valle
+        city: Cali
+        state: Columbia
+        postal-code: 760042
+  - name: Kayleigh Hutt-Taylor
+    affiliations:
+      - name: Department of Biology, Concordia University
+        address: 7141 Sherbrooke St W
+        city: Montreal
+        state: CAN
+        postal-code: H4B 1R6
+  - name: Alec L Robitaille
+    affiliations:
+      - name: Department of Biology, Memorial University of Newfoundland
+        city: St John`s
+        state: CAN
+        postal-code: A1C 5S7 
+format: 
+  pdf:
+    toc: true
+    fig-width: 12
+    fig-height: 12
+---
+
+**\* isabella.richmond\@mail.concordia.ca**
+
+```{r setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+source('R/packages.R')
+
+
+tar_load(trees_clean)
+```
+
+------------------------------------------------------------------------
+
+# Figures
+
+## Figure S1
+
+![](supp-images/Figure_S1.PNG)
+
+Figure S1. Sampling plot configuration. Mini-plot was located in the most representative part of the larger plot, as decided in the field. Mini-Plot Information: due to the nature of the permits we received, most of the “full plot” sampling of trees \< 5 cm was done in typical urban parks (n = 11/14 parks). These parks are characterized by large grassy lawns, with a low density of very large deciduous trees. There are sometimes new plantings which results in small trees, but very few of them. For many of these plots, there were no trees \< 5 cm even when the “full plot” is used. We switched to the mini plot method when we started sampling “nature parks”, where there is a more natural forest ecosystem. In these systems, we could find hundreds of trees \< 5 cm, even within our mini plot. Thus, the full plots are very similar or identical to what the mini plots would look like in the majority of cases, as they either have 0 or 1 trees \< 5 cm.
+
+## Figure S2
+
+![](supp-images/Figure_S2.jpg)
+
+Figure S2. Example sensor setup. Sensor is a CredoSense CSL-T0.5 temperature logger located within a 3-D printed shield and hung with an informational flyer containing the contact information of the lead author. Photo taken by Isabella C Richmond.
+
+## Figure S3
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+source('R/packages.R')
+source('R/indices_temp.R')
+
+tar_load(temp_clean)
+tar_load(sensor_pts)
+tar_load(sensor_con_pts)
+```
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+# calculate time of day for all temp pts
+  con_tod <- calc_tod(temp_clean, sensor_con_pts)
+  parks_tod <- calc_tod(temp_clean, sensor_pts)
+  
+  # calculate max and mean temps for day and night 
+  con_calc <- con_tod %>%
+    group_by(plot_id, date, tod) %>%
+    summarize(max = max(temperature_c),
+              mean = mean(temperature_c)) %>%
+    rename(con_id = plot_id)
+  
+  parks_calc <- parks_tod %>%
+    group_by(plot_id, Park, date, tod) %>%
+    summarize(max = max(temperature_c),
+              mean = mean(temperature_c))
+  
+  # calculate difference between parks and controls 
+  con_id <- c('CON-AT', 'CON-LAL-LAF-JAR', 'CON-P-M', 'CON-FB-SS', 'CON-MB-SG')
+  
+  temp_diff <- parks_calc %>%
+    filter(Park == "La Fontaine" | Park == "Baldwin" | Park == "Jean-Drapeau" | Park == "Jardin Botanique" | 
+             Park == "Lafond" | Park == "Lalancette" | Park == "Adrien-D.-Archambault") %>% 
+    group_by(Park) %>%
+    expand(con_id) %>%
+    filter(Park != "Adrien-D.-Archambault" | con_id != "CON-FB-SS",
+           Park != "Adrien-D.-Archambault" | con_id != "CON-LAL-LAF-JAR",
+           Park != "Adrien-D.-Archambault" | con_id != "CON-P-M",
+           Park != "La Fontaine" | con_id != "CON-AT",
+           Park != "Baldwin" | con_id != "CON-AT",
+           Park != "Jean-Drapeau" | con_id != "CON-AT",
+           Park != "Jardin Botanique" | con_id != "CON-AT",
+           Park != "Lafond" | con_id != "CON-AT",
+           Park != "Lalancette" | con_id != "CON-AT") %>% 
+    left_join(., parks_calc, by = "Park") %>% 
+    left_join(., con_calc, by = c('con_id', 'date', 'tod'), suffix = c("", "_con"))
+  
+  cooling <- temp_diff %>% 
+    drop_na(con_id) %>%
+    rowwise() %>% 
+    mutate(cooling = mean_con - mean)
+  
+  ggplot(data = cooling, aes(x = cooling, colour = con_id, fill = con_id )) + 
+    stat_density(alpha = 0.5) + 
+    scale_colour_viridis_d() + 
+    scale_fill_viridis_d() + 
+    facet_wrap(~Park) + 
+    theme_classic() + 
+    labs(x = "Cooling Effect (\u00B0C)", y = "Density of Observations", fill = "Control Sensor", colour = "Control Sensor")
+  
+  
+```
+
+Figure S3. Sensitivity analysis showing the cooling effect across all dates for each park where the control sensor was replaced due to missing data. Plots were made with the remaining control sensors closest to the park in question. CON-LAL-LAF-JAR indicates the control sensor that we used from another, similar study.
+
+## Figure S4
+
+Below are the math stats notations for all models run in our paper.
+
+### Total Effect of Past Land-Use on Cooling Effect
+
+$$
+\begin{split}
+&Cooling_i \sim Normal(\mu_i, \sigma) \\
+&\mu_i \sim \alpha_{Park[i]} + \alpha_{Plot[i]} + \gamma_{PLU[i]} +       \gamma_{tod[i]} + \beta_{PLU}tod + \beta_{PLU[i]} + \beta_{tod[i]} +     \beta_{age}age_i \\
+&\alpha_{Park[j]} \sim Normal(\bar{\alpha}, \sigma_{\alpha_{Park}}) \\
+&\alpha_{Plot[j]} \sim Normal(0, \sigma_{\alpha_{Plot}}) \\
+&\gamma_j \sim Normal(0, 0.5) \\
+&\beta_j \sim Normal(0, 0.5) \\
+&\bar{\alpha} \sim Normal(0, 0.5) \\
+&\sigma_{\alpha_{Park}} \sim Half-Normal(0, 0.2) \\
+&\sigma_{\alpha_{Plot}} \sim Half-Normal(0, 0.2) \\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+
+-   $\alpha$ and $\gamma$ both represent intercepts, $\alpha$ is used for random effects and $\gamma$ for fixed interaction effects
+-   $Cooling_i$ is the centered and scaled cooling effect in each plot in degrees Celsuis
+-   $Park_i$ is the park that each plot is in
+-   $Plot_i$ is the plot that each measurement is in
+-   $PLU_i$ is the past land use category that each measurement is in (i.e., agricultural, forested, industrial)
+-   $tod_i$ is the time of day category that each measurement is in (i.e., daytime, nighttime)
+-   $age_i$ is the centered and scaled age of the park that each measurement is in
+
+### Direct Effect of Past Land-Use on Forest Composition
+
+#### Large Tree Density
+
+$$
+\begin{split}
+&DensL_i \sim Normal(\mu_i, \sigma) \\
+&\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]} \\
+&\alpha\sim Normal(0, 0.5) \\
+&\beta_j \sim Normal(0, 0.5)\\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+
+Where:
+
+-   $DensL_i$ is the centered and scaled basal area of large trees in each plot
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+
+#### Small Tree Density
+
+$$
+\begin{split}
+&log(DensS_i) \sim Normal(\mu_i, \sigma) \\
+&\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]} \\
+&\alpha\sim Normal(0, 0.5) \\
+&\beta_j \sim Normal(0, 0.5) \\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+
+-   $log(DensS_i)$ is the centered and scaled density of small trees in each plot. Logged for model fit.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+
+#### Large Tree Size
+
+$$
+\begin{split}
+&SizeL_i \sim Normal(\mu_i, \sigma) \\
+&\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]} \\
+&\alpha\sim Normal(-1, 0.5) \\
+&\beta_j \sim Normal(0, 0.5) \\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+
+-   $SizeL_i$ is the centered and scaled median size of large trees in each plot.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+
+#### Small Tree Size
+
+$$
+\begin{split}
+&SizeS_i \sim Normal(\mu_i, \sigma) \\
+&\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]} \\
+&\alpha\sim Normal(1, 0.5) \\
+&\beta_j \sim Normal(0, 0.5) \\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+
+-   $SizeS_i$ is the centered and scaled median size of small trees in each plot.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+
+#### Large Tree Species Richness
+
+$$
+\begin{split}
+&SRL_i \sim Normal(\mu_i, \sigma) \\
+&\mu_i = \alpha + \beta_1forested_{[i]} + \beta_2industrial_{[i]} \\
+&\alpha\sim Normal(2, 1) \\
+&\beta_j \sim Normal(0, 0.5) \\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+
+-   $SRL_i$ is the centered and scaled species richness of large trees in each plot.
+-   `forested` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+-   `industrial` is the factor level from `PastLandUse` that indicates previously forested parks. Previously agricultural parks are the default level, absorbed into the intercept.
+
+### Direct Effect of Forest Composition on Cooling Effect
+
+::: {style="overflow-x:auto;overflow-y:hidden;"}
+$$
+\begin{split}
+&Cooling_i \sim Normal(\mu_i, \sigma) \\
+&\mu_i \sim \alpha_{Park[i]} + \alpha_{Plot[i]} + \gamma_{tod[i]} + \beta_{tod[i]}DensityL_{i} + \beta_{tod[i]}DensityS_{i} + \beta_{tod[i]}SizeL_{i} \\ 
+&+ \beta_{tod[i]}SizeS_{i} + \beta_{tod[i]}SRL_{i} + \beta_{DensityL}DensityL_i + \beta_{DensityS}DensityS_i + \beta_{SizeL}SizeL_i \\
+&+ \beta_{SizeS}SizeS_i + \beta_{SRL}SRL_i \\
+&\alpha_{Park[j]} \sim Normal(\bar{\alpha}, \sigma_{\alpha_{Park}}) \\
+&\alpha_{Plot[j]} \sim Normal(0, \sigma_{\alpha_{Plot}}) \\
+&\gamma_j \sim Normal(0, 0.5) \\
+&\beta_j \sim Normal(0, 0.5) \\
+&\bar{\alpha} \sim Normal(0, 0.5) \\
+&\sigma_{\alpha_{Park}} \sim Half-Normal(0, 0.2) \\
+&\sigma_{\alpha_{Plot}} \sim Half-Normal(0, 0.2) \\
+&\sigma \sim Exponential(1)
+\end{split}
+$$
+:::
+
+-   $\alpha$ and $\gamma$ both represent intercepts, $\alpha$ is used for random effects and $\gamma$ for fixed interaction effecst
+-   $Cooling_i$ is the centered and scaled cooling effect in each plot in degrees Celsuis
+-   $Park_i$ is the park that each plot is in
+-   $Plot_i$ is the plot that each measurement is in
+-   $PLU_i$ is the past land use category that each measurement is in (i.e., agricultural, forested, industrial)
+-   $tod_i$ is the time of day category that each measurement is in (i.e., daytime, nighttime)
+-   $age_i$ is the centered and scaled age of the park that each measurement is in
+
+## Figure S5
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+source('R/packages.R')
+
+prior_model_list <- tar_read(prior_model_list_plots)
+
+
+plot_prior <- function(mod, xmin, xmax, ylab){
+  
+  # how to sequence data
+  seq_d <- seq(xmin, xmax, by = 0.25)
+  
+  # pull variables from model 
+  vars <- colnames(mod$data)[-1]
+  
+  # identify categorical variables 
+  factors <- names(Filter(is.factor ,mod$data[-1]))
+  # remove any that are random effects 
+  factors <- factors[! factors %in% mod$ranef$group]
+  
+  # identify numeric variables 
+  numeric <- names(Filter(is.numeric,mod$data[-1]))
+  #numeric <- subset(numeric, numeric != "total_trees" & numeric != "n")
+  
+  figlist <- lapply(numeric, function(x){
+    
+    df <- data.frame(matrix(ncol=length(vars),nrow=0, dimnames=list(NULL, vars)))
+    
+    df %<>%
+      summarise_at(x, ~seq_d) %>% 
+      bind_rows(df, .) %>% 
+      mutate(across(all_of(factors), as.factor)) %>% 
+      mutate(across(all_of(numeric), ~ replace(., is.na(.), 0))) %>%
+      distinct() 
+    
+    epred <- add_epred_draws(df, mod, re_formula = NA)
+    
+    ggplot(epred, aes(x = get(x), y = .epred)) +
+      geom_line(aes(group = .draw), alpha = 0.1) +
+      labs(y = ylab, x = x) +
+      theme_classic()
+    
+  })
+  
+  # make data grid appropriate for each model
+  if (length(factors) > 1) {
+     md <- data_grid(mod$data, 
+                     PastLandUse,
+                     tod,
+                    .model = mod)
+  } 
+  
+  if (length(factors) == 1) {
+    
+    if (str_detect(factors, 'tod') == T){
+    md <- data_grid(mod$data,
+                     tod,
+                    .model = mod)}
+    
+    if (str_detect(factors, 'PastLandUse') == T){
+      md <- data_grid(mod$data,
+                     PastLandUse,
+                    .model = mod)}
+    
+    }
+  
+  
+  
+  
+  cat_figlist <- lapply(factors, function(x){
+    
+    
+    df <- data.frame(matrix(ncol=length(numeric),nrow= nrow(md), dimnames=list(NULL, numeric))) %>% 
+      cbind(., md) %>% 
+      mutate(across(all_of(numeric), ~ replace(., is.na(.), 0)),
+             total_trees = 50,
+             n = 50) %>% 
+      add_epred_draws(mod, re_formula = NA)  %>% 
+      ggplot(aes(x = .epred, y = get(x))) +
+      geom_jitter(alpha = 0.2, colour = 'darkgrey') +
+      geom_boxplot(outlier.shape = NA, alpha = 0, linewidth = 1) +
+      coord_flip() + 
+      labs(x = ylab, y = "") + 
+      theme_classic()
+    
+  
+  })
+  
+  list <- c(figlist, cat_figlist)
+  
+  
+}
+```
+
+### Prior Predictive Checks
+
+Prior predictive checks are used to ensure that the values selected for priors for our models allow a biologically reasonable range of values. For models with fixed effects fit to the model (models 1 and 5), we simulate predictive draws for prior only models and visualize the slope/intercept of the values. We then do a "posterior predictive check" but with the prior only model, to see if the data is captured in the priors. For models with only random effects, we only use the posterior predictive check.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['plu_temp_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Temperature")
+
+invisible(capture.output(wrap_plots(figs, nrow = 2, ncol = 2)))
+```
+
+Figure S5a. Model 1 - Total Effect of Past Land-Use on Temperature
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['plu_density_L_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Large Tree Basal Area (m^2/ha)")
+
+invisible(capture.output(wrap_plots(figs, nrow = 1, ncol = 1)))
+```
+
+Figure S5b. Model 2a - Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Basal Area
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['plu_density_S_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Small Tree Basal Area (m^2/ha)")
+
+invisible(capture.output(wrap_plots(figs[[2]], nrow = 1, ncol = 1)))
+```
+
+Figure S5c. Model 2b - Direct Effect of Past Land-Use on Small Tree (\< 5 cm DBH) Density
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['plu_size_L_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Large Tree Median DBH (cm)")
+
+invisible(capture.output(wrap_plots(figs, nrow = 1, ncol = 1)))
+```
+
+Figure S5d. Model 3a - Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Size
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['plu_size_S_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Small Tree Median DBH (cm)")
+
+invisible(capture.output(wrap_plots(figs, nrow = 1, ncol = 1)))
+```
+
+Figure S5e. Model 3b - Direct Effect of Past Land-Use on Small Tree (\< 5 cm DBH) Size
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['plu_SR_L_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Large Tree Species Richness")
+
+invisible(capture.output(wrap_plots(figs, nrow = 1, ncol = 1)))
+```
+
+Figure S5f. Model 4 - Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Species Richness
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- prior_model_list['tree_temp_prior']
+figs <- plot_prior(mod[[1]], -3, 3, "Temperature")
+
+invisible(capture.output(wrap_plots(figs, nrow = 3, ncol = 2)))
+```
+
+Figure S5g. Model 5 - Direct Effect of Forest Composition on Temperature
+
+## Figure S6
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+source('R/packages.R')
+
+model_list <- tar_read(model_list_plots)
+
+plot_model_1 <- function(model){
+    
+    # basic model fit plots
+    b <- mcmc_trace(model, pars = vars(starts_with('b_'), Intercept, any_of('sigma'), any_of(c(starts_with('sd_')))))
+  
+    # Gelman plot
+    ac <- as_draws_df(model) %>% 
+      mutate(chain = .chain) %>% 
+      mcmc_acf(pars = vars(b_Intercept), lags = 35)
+    
+    b / ac + 
+      plot_layout(ncol = 1, heights = c(3,1)) 
+}
+
+plot_model_2 <- function(model){
+    # rhat values
+    rhats <- brms::rhat(model)
+    rh <- mcmc_rhat(rhats)
+    
+    # neff 
+    ratios_cp <- neff_ratio(model)
+    neff <- mcmc_neff(ratios_cp, size = 2)
+    
+    # posterior check
+    pp <- pp_check(model, ndraws = 100)
+    
+    
+    rh / neff / pp + 
+      plot_layout(ncol = 1) 
+
+
+  }
+```
+
+### Model Diagnostic Plots
+
+These model diagnostic plots assess whether the chains of our models are converged and well mixed, and if the model is well specified and has an adequate fit.
+
+The first plot of the series shows trace plots for each of our parameters, where we want to see stationary and well-mixed chains. The second plot shows an autocorrelation plot by chain and parameter. We want our autocorrelation to quickly drop to zero with increasing lag. Thirdly, the Rhat plot monitors whether a chain has converged to the equilibrium distribution, if all chains are at equilibrium Rhat will be one. If chains have not converged, Rhat will be greater than 1. The fourth plot is the ratio between effective sample size (Neff) and total sample size (N).Because the draws within a Markov chain are not independent if there is autocorrelation, the effective sample size, neff, is usually smaller than the total sample size, N. The larger the ratio, the better. Finally, we have the posterior predictive check where we want the black line to be within/close to the blue lines, to indicate that our model is adequately generative.
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_temp']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6a. Model 1 - Total Effect of Past Land-Use on Temperature
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_density_L']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6b. Model 2a - Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Density
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_density_S']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6c. Model 2b - Direct Effect of Past Land-Use on Small Tree (\< 5 cm DBH) Density
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_size_L']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6d. Model 3a - Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Size
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_size_S']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6e. Model 3b - Direct Effect of Past Land-Use on Small Tree (\< 5 cm DBH) Size
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_SR_L']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6f. Model 4 - Direct Effect of Past Land-Use on Large Tree (\>= 5 cm DBH) Species Richness
+
+```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+mod <- model_list['plu_temp']
+plot_model_1(mod[[1]])
+plot_model_2(mod[[1]])
+```
+
+Figure S6g. Model 5 - Direct Effect of Forest Composition on Temperature
+
+## Figure S7
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+# calculate proportion of buckthorn 
+
+largebuck <- trees_clean %>% 
+  group_by(PastLandUse) %>% 
+  filter(DBHCalc >= 5) %>% 
+  summarize(total = n(),
+            notbuck = sum(SpCode != 'RHCA'),
+            buckthorn = sum(SpCode == 'RHCA'),
+            propbuck = buckthorn/total,
+            propnotbuck = notbuck/total,
+            treesize = 'Trees >= 5 cm DBH')
+
+smallbuck <- trees_clean %>% 
+  group_by(PastLandUse) %>% 
+  filter(DBHCalc < 5) %>% 
+  summarize(total = n(),
+            notbuck = sum(SpCode != 'RHCA'),
+            buckthorn = sum(SpCode == 'RHCA'),
+            propbuck = buckthorn/total,
+            propnotbuck = notbuck/total,
+            treesize = 'Trees < 5 cm DBH')
+
+buck <- rbind(largebuck, smallbuck) %>% 
+  pivot_longer(cols = c(propbuck, propnotbuck), values_to = 'prop')
+
+
+ggplot(buck, aes(fill=name, y=prop, x=PastLandUse)) + 
+  geom_bar(position='stack', stat = 'identity') + 
+  theme_classic() + 
+  scale_fill_manual(values = c("#c2d6a4", "#1e3d14"), labels = c("Buckthorn", "Other Species")) +
+  labs(x = "", fill = "", y = "% of Total Trees") + 
+  facet_wrap(~ treesize)
+
+```
+
+Figure S7. Proportion of common buckthorn (*Rhamnus cathartica*) across past land-use types for trees \< 5 cm DBH and trees \>= 5 cm DBH. Proportions were calculated across all plots and parks. All other species observed were pooled for the "Other Species" category.
+
+## Figure S8
+
+![](supp-images/Figure_S8.png)
+
+Figure S8. Examples of the trade-off that happens in urban parks, moving from areas with small, dense trees (often in previously forested or agricultural “nature” parks) to large, sparse trees (often found in more traditional “urban” parks). Photos taken by Isabella C Richmond.
+
+------------------------------------------------------------------------
+
+# Tables
+
+## Table S1.
+
+Table S1. Historical data sources used to reconstruct history of park sites to extract previous land-cover type and age of park.
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+s1 <- read.csv('output/supp-images/TableS1.csv', encoding = 'UTF-8')
+
+knitr::kable(s1, "latex", longtable = T) %>% 
+  kableExtra::column_spec(1:4, width = "5em") %>% 
+  kableExtra::column_spec(5, width = "10em") %>% 
+  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+```
+
+
+## Table S2
+
+Table S2. Park names, ID, legacies (i.e., past land use(s)), the municipalities parks are found in, and if they are in the City of Montreal, their borough, the year they were established, the number of temperature sensors deployed in each park, and the number of temperature sensors retrieved at the end of the season. An ID that begins with CON indicates a control sensor, found in a parking lot at least 500 m away from the associated park(s). Benny park had all three sensors stolen and was thus removed from the temperature analysis.
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+s2 <- read.csv('output/supp-images/TableS2.csv', encoding = 'UTF-8') %>% 
+  rename('Year Established' = Year.Established,
+         'Sensors Deployed' = Sensors.deployed,
+         'Sensors Retrieved' = Sensors.Retrieved)
+
+
+knitr::kable(s2, "latex", longtable = T) %>% 
+  kableExtra::column_spec(1:5, width = "5em") %>% 
+  kableExtra::column_spec(6:8, width = "3em") %>% 
+  kableExtra::kable_styling(latex_options = c("hold_position", "repeat_header"))
+
+```
