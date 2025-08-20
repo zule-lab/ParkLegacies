@@ -1,7 +1,7 @@
 # Land-use history causes differences in park nighttime cooling capacity and forest structure
 
 
-Zenodo: [![DOI](https://zenodo.org/badge/490309243.svg)](https://zenodo.org/doi/10.5281/zenodo.10406627)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16911622.svg)](https://doi.org/10.5281/zenodo.16911622)
 
 Paper (Open-Access): https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/eap.70082 
 
